@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -20,6 +21,11 @@ class UserSeeder extends Seeder
             'personal_id'=>'1',
             'password' => bcrypt('0000.**'), // Cambia esto por la contraseña que desees
         ]);
+
+         // Asigna el rol de administrador al usuario
+         $Role = Role::where('name', 'administrador')->first();
+         $user->assignRole($Role);
+
 
     }
 }
