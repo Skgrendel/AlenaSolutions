@@ -30,11 +30,10 @@
                         <div class="card-body text-center">
                             <div class=" d-flex justify-content-center ">
                                 <img alt="" src="../assets/img/images/logo_vixor.svg"
-                                    class="avatar avatar-lg rounded-circle m-2 bg-primary ">
+                                    class="avatar avatar-lg rounded m-2 bg-transparent ">
                                 <a type="button" href="{{route('Rerpotevixor')}}" class="btn">
                                     <div class="d-block text-center">
-                                        <span class="text-sm">Vixor</span>
-                                        <br> <span class="text-xs">Reportes</span>
+                                        <br> <span class="text-sm">Reportes</span>
                                     </div>
                                 </a>
                             </div>
@@ -44,12 +43,23 @@
                         <div class="card-body text-center">
                             <div class=" d-flex justify-content-center ">
                                 <img alt="" src="../assets/img/images/proderi.svg"
-                                    class="avatar avatar-lg rounded-circle m-2 bg-primary ">
+                                    class="avatar avatar-lg rounded m-2 bg-transparent ">
+                                <a type="button" href="#" class="btn">
+                                    <div class="d-block text-center">
+                                        <br> <span class="text-sm">Reportes</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border mr-1 ">
+                        <div class="card-body text-center">
+                            <div class=" d-flex justify-content-center ">
+                                <img alt="" src="../assets/img/images/LogoAlena.svg"
+                                    class="avatar avatar-lg rounded m-2 bg-transparent ">
                                 <a type="button" href="{{route('ReportOperaciones')}}" class="btn">
                                     <div class="d-block text-center">
-                                        <span class="text-sm">Proderi</span>
-                                        <br><span class="text-sm">Operaciones</span>
-                                        <br> <span class="text-xs">Reportes</span>
+                                        <br> <span class="text-sm">Reportes</span>
                                     </div>
                                 </a>
                             </div>

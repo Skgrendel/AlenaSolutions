@@ -26,7 +26,7 @@
                             </span>
                             <div class="media-body ml-2 d-none d-lg-block">
                                 <span class="mb-0 text-sm  font-weight-bold">Hola,
-                                    {{ Auth::user()->name }}</span>
+                                    {{ Auth::user()->personal->nombres }}</span>
                             </div>
                         </div>
                     </a>
