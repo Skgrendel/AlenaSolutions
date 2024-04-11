@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\EmpresasController;
+
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::resource('/empresa', EmpresasController::class)->names('empresas');
+Route::get('/vixor',[ReportController::class,'vixor'])->name('Rerpotevixor');
+Route::get('/operaciones',[ReportController::class,'operacion'])->name('ReportOperaciones');

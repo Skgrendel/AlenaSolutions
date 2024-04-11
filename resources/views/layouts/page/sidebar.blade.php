@@ -24,9 +24,9 @@
                 <h6 class="navbar-heading p-0 text-muted">Herramientas</h6>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{route('home')}}">
                             <i class="ni ni-single-copy-04 text-pink"></i>
-                            <span class="nav-link-text">Auditoria</span>
+                            <span class="nav-link-text">Reportes</span>
                         </a>
                     </li>
                 </ul>
