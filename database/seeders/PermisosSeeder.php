@@ -13,9 +13,14 @@ class PermisosSeeder extends Seeder
      */
     public function run(): void
     {
-         // Crea un permiso de ejemplo
+         // Crea un permiso
          Permission::create([
             'name' => 'administrador',
+            'guard_name' => 'web',
+            'estado' => 1, // Ajusta el valor según tus necesidades
+        ]);
+         Permission::create([
+            'name' => 'cliente',
             'guard_name' => 'web',
             'estado' => 1, // Ajusta el valor según tus necesidades
         ]);

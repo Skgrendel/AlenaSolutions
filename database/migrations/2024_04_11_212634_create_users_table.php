@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->foreign('personal_id')->references('id')->on('personals');
+            $table->boolean('estado')->default('1');
             $table->rememberToken();
             $table->timestamps();
         });

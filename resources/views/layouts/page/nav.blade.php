@@ -25,8 +25,11 @@
                                 <img alt="" src="../assets/img/images/defaultPerfil.png">
                             </span>
                             <div class="media-body ml-2 d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold">Hola,
-                                    {{ Auth::user()->personal->nombres }}</span>
+                                <div class="media-body ml-2 d-none d-lg-block">
+                                    <div class="d-flex flex-column">  <span class="mb-0 text-sm font-weight-bold"> {{ Auth::user()->personal->nombres }}</span>
+                                      <span class="mb-0 text-xs font-weight-bold"> {{ Auth::user()->email }}</span>
+                                    </div>
+                                  </div>
                             </div>
                         </div>
                     </a>
