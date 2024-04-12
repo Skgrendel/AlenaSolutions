@@ -78,6 +78,19 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card border mr-1 ">
+                        <div class="card-body text-center">
+                            <div class=" d-flex justify-content-center ">
+                                <img alt="" src="../assets/img/images/caplaft.png"
+                                    class="m-2 bg-transparent " style="width: 100px;high:60px;">
+                                <a type="button" href="#!" class="btn">
+                                    <div class="d-block text-center">
+                                        <br> <span class="text-sm">Reportes</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -41,4 +41,5 @@
                 <iframe title="proderi general" class="rounded" width="100%" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiODJjMTI3MjAtOWFjOS00NzU1LTk2MTQtM2ViOWNmOTE5ZTU0IiwidCI6ImE3MDViNGI5LWE3Y2UtNDA3YS04YTdlLTY0NThlYjVkZDQxNiJ9"frameborder="0" allowFullScreen="true"></iframe>
             </div>
         </div>
+    </div>
     @endsection

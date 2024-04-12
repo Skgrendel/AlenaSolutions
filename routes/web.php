@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PersonalsController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,4 +28,5 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/vixor',[ReportController::class,'vixor'])->name('Rerpotevixor');
 Route::get('/operaciones',[ReportController::class,'operacion'])->name('ReportOperaciones');
 Route::get('/qanalytic',[ReportController::class,'qanalytic'])->name('ReportQanalytic');
+Route::resource('personals', PersonalsController::class)->names('personals');
 });

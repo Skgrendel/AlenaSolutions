@@ -44,4 +44,5 @@
                 frameborder="0" allowFullScreen="true"></iframe>
             </div>
         </div>
+    </div>
     @endsection

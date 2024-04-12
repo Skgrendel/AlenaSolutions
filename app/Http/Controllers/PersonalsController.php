@@ -12,7 +12,7 @@ class PersonalsController extends Controller
      */
     public function index()
     {
-        //
+       return view ('personal.index');
     }
 
     /**

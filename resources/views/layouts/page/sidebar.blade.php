@@ -23,17 +23,22 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">
-                            <i class="ni ni-single-copy-04 text-pink"></i>
+                            <i class="ni ni-single-copy-04 text-success"></i>
                             <span class="nav-link-text">Reportes</span>
                         </a>
                     </li>
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">
-                <!-- Heading -->
-                {{-- <h6 class="navbar-heading p-0 text-muted">Información</h6> --}}
-                <!-- Navigation -->
-                {{-- <ul class="navbar-nav mb-md-3"></ul> --}}
+                <h6 class="navbar-heading p-0 text-muted">Configuracion</h6>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('personals.index')}}">
+                            <i class="fas fa-users text-success"></i>
+                            <span class="nav-link-text">Usuarios</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

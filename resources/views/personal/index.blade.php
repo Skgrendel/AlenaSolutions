@@ -7,11 +7,12 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-8">
+
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="?view=diagnostico">Reportes</a></li>
-                                <li class="breadcrumb-item text-dark active" aria-current="page">Q Analytic Data</li>
+                                <li class="breadcrumb-item text-dark active" aria-current="page">Operaciones</li>
                             </ol>
                         </nav>
 
@@ -38,7 +39,7 @@
     <div id="contenedorFullPreguntas" class="container-fluid mt--6">
         <div class="row">
             <div class="col-xl-12">
-                <iframe title="proderi general" class="rounded" width="100%" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiM2U0MGE0YWUtMTc0MS00NDhlLWI0MjctMzc2ODNkMDRjNmEyIiwidCI6ImE3MDViNGI5LWE3Y2UtNDA3YS04YTdlLTY0NThlYjVkZDQxNiJ9"frameborder="0" allowFullScreen="true"></iframe>
+
             </div>
         </div>
     </div>
