@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="../assets/css/mystyle.css">
     {{-- Personalize CSS --}}
     @yield('css')
+    @livewireStyles
 </head>
 
 <body class="body-page">
@@ -95,6 +96,7 @@
     <script src="../assets/js/argon.min.js?v=1.1.0"></script>
     {{-- Personalize js --}}
     @yield('js')
+    @livewireScripts
 </body>
 
 </html>

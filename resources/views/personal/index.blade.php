@@ -39,7 +39,7 @@
     <div id="contenedorFullPreguntas" class="container-fluid mt--6">
         <div class="row">
             <div class="col-xl-12">
-
+                
             </div>
         </div>
     </div>
