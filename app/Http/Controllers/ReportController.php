@@ -14,4 +14,7 @@ class ReportController extends Controller
     public function operacion(){
         return view('reportes.operaciones');
     }
+    public function qanalytic(){
+        return view('reportes.qdata');
+    }
 }
