@@ -2,7 +2,7 @@
 <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand" href="#!">
-        <h2 class="mb-0 text-white"><span class="font-weight-800">{{ config('app.name', 'Laravel') }}</span> <small class="font-14 pl-2 font-weight-500 text-dark">Beta v1.1</small></h2>
+        <h5 class="mb-0 text-white"><img src="../assets/img/images/LogoAlenaSolution.svg" alt=""> <small class="font-14 pl-2 font-weight-500 text-dark">Beta v1.1</small></h5>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,9 +11,9 @@
         <div class="navbar-collapse-header">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <!-- <a href="../dashboards/dashboard.html">
-                <img src="assets/img/brand/blue.png">
-              </a> -->
+              <a href="#!">
+                <img src="../assets/img/images/LogoAlenaSolution.svg">
+              </a>
             </div>
             <div class="col-6 collapse-close">
               <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">

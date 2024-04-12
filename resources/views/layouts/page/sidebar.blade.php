@@ -2,9 +2,7 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header d-flex align-items-center">
-            <a class="navbar-brand" href="#!">
-                <h2><span class="font-weight-600">{{ config('app.name', 'Laravel') }}</span></h2>
-            </a>
+                <img src="../assets/img/images/LogoAlenaSolution.svg" alt="" style="width: 250px; higth: 150px;" class="mt-2">
             <div class="ml-auto">
                 <!-- Sidenav toggler -->
                 <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main">
@@ -24,7 +22,7 @@
                 <h6 class="navbar-heading p-0 text-muted">Herramientas</h6>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('home')}}">
+                        <a class="nav-link" href="{{ route('home') }}">
                             <i class="ni ni-single-copy-04 text-pink"></i>
                             <span class="nav-link-text">Reportes</span>
                         </a>
