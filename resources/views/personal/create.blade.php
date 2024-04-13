@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Encabezado -->
-    <div class="header bg-gradient-success rounded  pb-6">
+    <div class="header bg-gradient-info rounded  pb-6">
         <div class="container-fluid">
             <div class="header-body">
                 <div class="row align-items-center py-4">
@@ -150,7 +150,7 @@
                                 </div>
                             </div>
                             <hr class="my-4">
-                            <button type="submit" id="btnCrearPersonal" class="btn btn-success mb-2">Crear
+                            <button type="submit" id="btnCrearPersonal" class="btn btn-info mb-2">Crear
                                 Personal</button>
                         </div>
                     </form>

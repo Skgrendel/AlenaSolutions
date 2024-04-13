@@ -1,4 +1,4 @@
- <nav class="navbar navbar-top navbar-expand navbar-dark bg-gradient-success border-bottom">
+ <nav class="navbar navbar-top navbar-expand navbar-dark bg-gradient-info border-bottom">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Navbar links -->

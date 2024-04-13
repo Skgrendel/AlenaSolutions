@@ -23,7 +23,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('Rerpoteindex') }}">
-                            <i class="ni ni-single-copy-04 text-success"></i>
+                            <i class="ni ni-single-copy-04 text-info"></i>
                             <span class="nav-link-text">Reportes</span>
                         </a>
                     </li>
@@ -34,7 +34,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('personals.index')}}">
-                            <i class="fas fa-users text-success"></i>
+                            <i class="fas fa-users text-info"></i>
                             <span class="nav-link-text">Usuarios</span>
                         </a>
                     </li>

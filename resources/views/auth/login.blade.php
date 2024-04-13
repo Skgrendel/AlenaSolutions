@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Header -->
-    <div class="header bg-gradient-success pt-7 pb-5 pb-lg-6 pt-lg-8">
+    <div class="header bg-gradient-info pt-7 pb-5 pb-lg-6 pt-lg-8">
         <div class="container">
             <div class="header-body text-center mb-7">
                 <div class="row justify-content-center">
@@ -50,7 +50,7 @@
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="submit" id="btn-iniciar-sesion" class="btn btn-success">Iniciar
+                                    <button type="submit" id="btn-iniciar-sesion" class="btn btn-info">Iniciar
                                         sesión</button>
                                 </div>
                             </form>

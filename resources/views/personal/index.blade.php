@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Encabezado -->
-    <div class="header bg-gradient-success rounded  pb-6">
+    <div class="header bg-gradient-info rounded  pb-6">
         <div class="container-fluid">
             <div class="header-body">
                 <div class="row align-items-center py-4">
@@ -39,7 +39,7 @@
         <div class="row">
             <div class="col-xl-12 bg-white rounded mb-4 card ">
                 <div class="mt-4 p-2 mr-2">
-                    <a href="{{ route('personals.create') }}" class="btn btn-success mb-2 ">Crear Nuevo</a>
+                    <a href="{{ route('personals.create') }}" class="btn btn-info mb-2 ">Crear Nuevo</a>
                     <table id="personal" class="table table-striped w-100">
                         <thead>
                             <tr>

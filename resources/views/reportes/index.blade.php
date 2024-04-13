@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-xl-12">
             <!-- Encabezado -->
-            <div class="header bg-gradient-success rounded  pb-6">
+            <div class="header bg-gradient-info rounded  pb-6">
                 <div class="container-fluid">
                     <div class="header-body">
                         <div class="row align-items-center py-4">
