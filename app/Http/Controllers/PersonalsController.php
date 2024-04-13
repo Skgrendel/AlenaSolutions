@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\personals;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class PersonalsController extends Controller
 {
@@ -12,7 +14,8 @@ class PersonalsController extends Controller
      */
     public function index()
     {
-       return view ('personal.index');
+        $datatable = personals::all();
+        return view('personal.index', compact('datatable'));
     }
 
     /**
@@ -20,7 +23,9 @@ class PersonalsController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::pluck('name', 'name')->all();
+        $userRoles = null;
+        return view('personal.create', compact('roles', 'userRoles'));
     }
 
     /**
@@ -28,7 +33,40 @@ class PersonalsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(personals::$rules);
+        
+        // Validar existencia de personal por número de documento
+        $userCorreo = $request['correo'];
+        $userRol = $request['rol'];
+        $existingPersonal = personals::where('numero_documento', $request->input('numero_documento'))->first();
+
+        if ($existingPersonal) {
+            // Si ya existe personal con ese número de documento, muestra un mensaje de error y redirige
+            return redirect()->back()->with('success', 'Ya existe un personal con este número de documento.')->with('title', 'Error');
+        }
+        // Si no existe, crea el personal
+        $data = $request->all();
+        $personal = personals::create($data);
+        $personal_id = $personal->id;
+
+        // Crear usuario
+        $user = new User([
+            'email' => $userCorreo,
+            'password' => bcrypt($request['numero_documento']),
+        ]);
+
+        // Asignar roles al usuario
+        $Role = Role::where('name', $userRol)->first();
+        $user->assignRole($Role);
+
+        // Asociar usuario al personal creado
+        $user->personal_id = $personal_id; //
+        $user->save();
+
+        return redirect()->route('personal.index')
+            ->with('success', 'Personal Creado con Exito.')
+            ->with('tittle', 'Exito')
+            ->with('icon', 'success');
     }
 
     /**

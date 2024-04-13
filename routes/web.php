@@ -26,6 +26,7 @@ Auth::routes();
 Route::middleware('check_user_status')->group(function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/vixor',[ReportController::class,'vixor'])->name('Rerpotevixor');
+Route::get('/reportes',[ReportController::class,'index'])->name('Rerpoteindex');
 Route::get('/operaciones',[ReportController::class,'operacion'])->name('ReportOperaciones');
 Route::get('/qanalytic',[ReportController::class,'qanalytic'])->name('ReportQanalytic');
 Route::resource('personals', PersonalsController::class)->names('personals');

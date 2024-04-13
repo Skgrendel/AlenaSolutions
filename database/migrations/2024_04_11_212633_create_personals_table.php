@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('tipo_documento',60);
             $table->string('numero_documento',60);
             $table->string('nombres',60);
-            $table->string('apellidos',60);
-            $table->string('direccion',100);
+            $table->string('apellidos',60)->nullable();
+            $table->string('direccion',100)->nullable();
             $table->string('telefono',100);
             $table->string('correo',60)->unique();
             $table->boolean('estado')->default('1');

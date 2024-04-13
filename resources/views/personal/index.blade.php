@@ -7,12 +7,12 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-8">
-
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="?view=diagnostico">Reportes</a></li>
-                                <li class="breadcrumb-item text-dark active" aria-current="page">Operaciones</li>
+                                <li class="breadcrumb-item"><a href="?view=diagnostico">Tabla de Personal</a></li>
+                                <li class="breadcrumb-item text-dark active" aria-current="page">Informacion de Registros
+                                </li>
                             </ol>
                         </nav>
 
@@ -38,9 +38,64 @@
     <!-- Contenido -->
     <div id="contenedorFullPreguntas" class="container-fluid mt--6">
         <div class="row">
-            <div class="col-xl-12">
-                
+            <div class="col-xl-12 bg-white rounded mb-4 card ">
+                <div class="mt-4 p-2 mr-2">
+                    <a href="{{ route('personals.create') }}" class="btn btn-success mb-2 ">Crear Nuevo</a>
+                    <table id="personal" class="table table-striped w-100">
+                        <thead>
+                            <tr>
+                                <th>Tipo Documento</th>
+                                <th>Numero Documento</th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Correo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (isset($datatable))
+                                @foreach ($datatable as $item)
+                                    <tr>
+                                        <td>{{ $item->tipo_documento }}</td>
+                                        <td>{{ $item->numero_documento }}</td>
+                                        <td>{{ $item->nombres }}</td>
+                                        <td>{{ $item->apellidos }}</td>
+                                        <td>{{ $item->correo }}</td>
+                                        <td>
+                                            @if ($item->estado == 1)
+                                                <span class="badge badge-success text-md">Activo</span>
+                                            @else
+                                                <span class="badge badge-danger text-md">Inactivo</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a href="{{ route('personals.show', $item->id) }}" class="btn text-info"><i class="fas fa-eye"></i></a>
+                                            <a href="{{ route('personals.edit', $item->id) }}"
+                                                class="btn text-primary"><i class="fas fa-user-edit"></i></a>
+                                            <form action="{{ route('personals.destroy', $item->id) }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn text-danger"><i class="fas fa-user-times"></i></button>
+                                            </form>
+                                        </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <td colspan="6">No hay registros</td>
+                            @endif
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-    @endsection
+@endsection
+@section('js')
+    <script src="../scripts/personal/datatable.js"></script>
+    <script src="../scripts/personal/AlertRegistro.js"></script>
+@endsection

@@ -21,8 +21,7 @@
     <script src="https://kit.fontawesome.com/049e213d27.js" crossorigin="anonymous"></script>
     <!-- Bootstrap File Input -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-fileinput@5.1.2/css/fileinput.min.css">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-fileinput@5.1.2/themes/explorer-fas/theme.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-fileinput@5.1.2/themes/explorer-fas/theme.min.css">
     <!-- SweetAlert 2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.3.5/dist/sweetalert2.min.css">
     <!-- Datatables -->
@@ -30,6 +29,7 @@
 
     <!-- Bootstrap-select: No le puse CDN por que modifiqué los archivos -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap-select/css/bootstrap-select.css">
+    
     <!-- SmartWizard - V. 4.3.1 ya que la version mas actual 5.1 genera error, habria que actualizar codigo -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/smartwizard@4.3.1/dist/css/smart_wizard.min.css">
     <link rel="stylesheet"
@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="../assets/css/mystyle.css">
     {{-- Personalize CSS --}}
     @yield('css')
-    @livewireStyles
+
 </head>
 
 <body class="body-page">
@@ -96,7 +96,6 @@
     <script src="../assets/js/argon.min.js?v=1.1.0"></script>
     {{-- Personalize js --}}
     @yield('js')
-    @livewireScripts
 </body>
 
 </html>

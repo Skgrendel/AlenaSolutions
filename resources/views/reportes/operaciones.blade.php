@@ -25,10 +25,8 @@
                                     <span class="d-md-none"><i class="fas fa-arrow-left"></i></span>
                                 </a>
                             </li>
-
                         </ul>
                     </div>
-
                 </div>
 
             </div>

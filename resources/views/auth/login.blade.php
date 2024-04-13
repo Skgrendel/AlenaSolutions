@@ -7,7 +7,8 @@
             <div class="header-body text-center mb-7">
                 <div class="row justify-content-center">
                     <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-                        <img src="../assets/img/images/LogoAlenaSolution.svg" alt="" style="width: 250px; higth: 150px;">
+                        <img src="../assets/img/images/LogoAlenaSolution.svg" alt=""
+                            style="width: 250px; higth: 150px;">
                     </div>
                 </div>
             </div>
@@ -28,7 +29,7 @@
 
                                 <div class="form-group">
                                     <input type="email" class="form-control" id="email" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email" autofocus
+                                        value="{{ old('email') }}" required  autocomplete="email" autofocus
                                         placeholder="Usuario">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -40,7 +41,7 @@
                                 <div class="form-group">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password" placeholder="Contraseña">
+                                         autocomplete="current-password" required placeholder="Contraseña">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -59,4 +60,15 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        @if ($errors->any())
+            Swal.fire({
+                title: "Error",
+                text: "{{ $errors->first() }}",
+                icon: "error"
+            });
+        @endif
+    </script>
 @endsection

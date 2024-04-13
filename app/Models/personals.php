@@ -24,9 +24,7 @@ class personals extends Model
         'tipo_documento' => 'required',
         'numero_documento' =>'required',
         'nombres'=>'required',
-        'apellidos'=>'required',
-        'correo'=>'required|unique:email|max:100',
-
+        'correo'=>'required',
     ];
 
     public function user()
