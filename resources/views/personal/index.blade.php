@@ -25,7 +25,6 @@
                                     <span class="d-md-none"><i class="fas fa-arrow-left"></i></span>
                                 </a>
                             </li>
-
                         </ul>
                     </div>
 
@@ -70,17 +69,30 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ route('personals.show', $item->id) }}" class="btn text-info"><i class="fas fa-eye"></i></a>
-                                            <a href="{{ route('personals.edit', $item->id) }}"
-                                                class="btn text-primary"><i class="fas fa-user-edit"></i></a>
-                                            <form action="{{ route('personals.destroy', $item->id) }}" method="POST"
-                                                style="display: inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn text-danger"><i class="fas fa-user-times"></i></button>
-                                            </form>
-                                        </div>
+
+                                            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-left">
+                                                <a href="{{ route('personals.show', $item->id) }}" class="dropdown-item">
+                                                    <i
+                                                        class="fas fa-eye
+                                                        "></i>
+                                                    <span>Ver</span>
+                                                </a>
+                                                <div class="dropdown-divider"></div>
+                                                <a href="{{ route('personals.edit', $item->id) }}" class="dropdown-item">
+                                                    <i class="fas fa-edit"></i>
+                                                    <span>Editar</span>
+                                                </a>
+                                                <div class="dropdown-divider"></div>
+                                                <a href="#" class="dropdown-item" onclick="AlertRegistro('{{ $item->id }}')">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                    <span>Eliminar</span>
+                                                </a>
+
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -98,4 +110,37 @@
 @section('js')
     <script src="../scripts/personal/datatable.js"></script>
     <script src="../scripts/personal/AlertRegistro.js"></script>
+    <script>
+function AlertRegistro(id) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#2DCE89',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, bórralo!',
+        cancelButtonText: 'No, cancelar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: '/personals/' + id,
+                type: 'DELETE',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                },
+                success: function(result) {
+                    // Recarga la página o haz algo cuando la eliminación sea exitosa
+                    location.reload();
+                },
+                error: function(result) {
+                    // Muestra un mensaje de error si algo sale mal
+                    Swal.fire('Error!', 'No se pudo eliminar el registro.', 'error');
+                }
+            });
+        }
+    })
+}
+
+    </script>
 @endsection
