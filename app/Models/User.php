@@ -47,4 +47,8 @@ class User extends Authenticatable
     public function personal(){
         return $this->hasOne(personals::class, 'id', 'personal_id'); // Cambia personals por personal
     }
+
+    public function proyectos(){
+        return $this->hasMany(proyectos::class);
+    }
 }

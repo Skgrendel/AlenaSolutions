@@ -24,5 +24,10 @@ class PermisosSeeder extends Seeder
             'guard_name' => 'web',
             'estado' => 1, // Ajusta el valor según tus necesidades
         ]);
+         Permission::create([
+            'name' => 'empleado',
+            'guard_name' => 'web',
+            'estado' => 1, // Ajusta el valor según tus necesidades
+        ]);
     }
 }

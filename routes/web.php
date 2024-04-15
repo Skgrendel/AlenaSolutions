@@ -29,5 +29,7 @@ Route::get('/vixor',[ReportController::class,'vixor'])->name('Rerpotevixor');
 Route::get('/reportes',[ReportController::class,'index'])->name('Rerpoteindex');
 Route::get('/operaciones',[ReportController::class,'operacion'])->name('ReportOperaciones');
 Route::get('/qanalytic',[ReportController::class,'qanalytic'])->name('ReportQanalytic');
+Route::get('/proderi',[ReportController::class,'proderiIndex'])->name('proderiIndex');
+Route::get('/proderi/datos',[ReportController::class,'proderiAdatos'])->name('proderiAdatos');
 Route::resource('personals', PersonalsController::class)->names('personals');
 });

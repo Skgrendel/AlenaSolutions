@@ -26,5 +26,12 @@ class RolSeeder extends Seeder
             'estado' => 1,
         ]);
         $cliente->syncPermissions(['cliente']);
+
+        $empleado = Role::create([
+            'name' => 'Empleado',
+            'guard_name' => 'web',
+            'estado' => 1,
+        ]);
+        $cliente->syncPermissions(['empleado']);
     }
 }

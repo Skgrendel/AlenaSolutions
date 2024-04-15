@@ -34,7 +34,7 @@ class PersonalsController extends Controller
     public function store(Request $request)
     {
         $request->validate(personals::$rules);
-        
+
         // Validar existencia de personal por número de documento
         $userCorreo = $request['correo'];
         $userRol = $request['rol'];
@@ -74,7 +74,7 @@ class PersonalsController extends Controller
      */
     public function show(personals $personals)
     {
-        //
+        $personal = personals::find($personals);
     }
 
     /**
