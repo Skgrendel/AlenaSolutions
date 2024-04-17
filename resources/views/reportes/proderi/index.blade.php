@@ -21,7 +21,7 @@
                             <div class="col-4">
                                 <ul class="nav nav-pills justify-content-end">
                                     <li class="nav-item mr-2 mr-md-0">
-                                        <a href="{{ route('Rerpoteindex') }}" class="btn btn-transparent py-2 px-3">
+                                        <a href="{{ route('home') }}" class="btn btn-transparent py-2 px-3">
                                             <span class="d-none d-md-block">Volver</span>
                                             <span class="d-md-none"><i class="fas fa-arrow-left"></i></span>
                                         </a>
