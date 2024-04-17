@@ -13,7 +13,7 @@
                                     <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                         <li class="breadcrumb-item"><a href="{{ route('proderiIndex') }}"><i
                                                     class="fas fa-home"></i></a></li>
-                                        <li class="breadcrumb-item"><a href="?view=diagnostico">Reportes</a></li>
+                                        <li class="breadcrumb-item"><a href="">Reportes</a></li>
                                         <li class="breadcrumb-item text-dark active" aria-current="page">Proderi</li>
                                     </ol>
                                 </nav>
@@ -44,35 +44,9 @@
                                             <div class=" d-flex justify-content-center ">
                                                 <img alt="" src="../assets/img/images/proderi.svg"
                                                     class="avatar avatar-xl rounded m-2 bg-transparent ">
-                                                <a type="button" href="{{route('prodericompras')}}" class="btn">
+                                                <a type="button" href="{{route('itsoporte')}}" class="btn">
                                                     <div class="d-block text-center">
-                                                        <br> <span class="text-sm">Solicitud de Compras</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- <div class="card border mr-1 ">
-                                        <div class="card-body text-center">
-                                            <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="../assets/img/images/proderi.svg"
-                                                    class="avatar avatar-xl rounded m-2 bg-transparent ">
-                                                <a type="button" href="{{route('proderiAdmi')}}" class="btn">
-                                                    <div class="d-block text-center">
-                                                        <br> <span class="text-sm">Asistencias</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                    <div class="card border mr-1 ">
-                                        <div class="card-body text-center">
-                                            <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="../assets/img/images/proderi.svg"
-                                                    class="avatar avatar-xl rounded m-2 bg-transparent ">
-                                                <a type="button" href="{{route('proderipermisos')}}" class="btn">
-                                                    <div class="d-block text-center">
-                                                        <br> <span class="text-sm">Solicitud de Permisos</span>
+                                                        <br> <span class="text-sm">Solicitud de Soporte</span>
                                                     </div>
                                                 </a>
                                             </div>

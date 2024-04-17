@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
+    <link rel="icon" href="{{asset('/assets/img/brand/favicon.png')}}" type="image/png">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
@@ -23,8 +23,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.3.5/dist/sweetalert2.min.css">
 
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="../assets/css/argon.min.css?v=1.1.0" type="text/css">
-    <link rel="stylesheet" href="../assets/css/mystyle.css">
+    <link rel="stylesheet" href="{{asset('/assets/css/argon.min.css?v=1.1.0')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('/assets/css/mystyle.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
     @yield('css')
 </head>
@@ -50,7 +50,7 @@
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.3.5/dist/sweetalert2.min.js"></script>
     <!-- Argon JS -->
-    <script src="../assets/js/argon.min.js?v=1.1.0"></script>
+    <script src="{{asset('/assets/js/argon.min.js?v=1.1.0')}}"></script>
     @yield('js')
 </body>
 

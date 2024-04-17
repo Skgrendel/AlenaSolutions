@@ -39,10 +39,16 @@ class ReportController extends Controller
     public function proderiAdministrativo(){
         return view('reportes.proderi.administrativa');
     }
-    public function prodericompras(){
+    public function proderiAdministrativocompras(){
         return view('reportes.proderi.administrativo.solicitudcompra');
     }
-    public function proderipermisos(){
+    public function proderiAdministrativopermisos(){
         return view('reportes.proderi.administrativo.solicitudpermisos');
+    }
+    public function proderidepartamentoit(){
+        return view('reportes.proderi.it');
+    }
+    public function proderidepartamentoitsoporte(){
+        return view('reportes.proderi.it.solicitudsoporte');
     }
 }

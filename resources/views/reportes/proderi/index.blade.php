@@ -46,7 +46,20 @@
                                                     class="avatar avatar-xl rounded m-2 bg-transparent ">
                                                 <a type="button" href="{{route('proderiAdatos')}}" class="btn">
                                                     <div class="d-block text-center">
-                                                        <br> <span class="text-sm">Analisis de Datos</span>
+                                                        <br> <span class="text-sm">depto. Analisis de Datos</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card border mr-1 ">
+                                        <div class="card-body text-center">
+                                            <div class=" d-flex justify-content-center ">
+                                                <img alt="" src="../assets/img/images/proderi.svg"
+                                                    class="avatar avatar-xl rounded m-2 bg-transparent ">
+                                                <a type="button" href="{{route('departamentoit')}}" class="btn">
+                                                    <div class="d-block text-center">
+                                                        <br> <span class="text-sm">Departamento IT</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -59,7 +72,7 @@
                                                     class="avatar avatar-xl rounded m-2 bg-transparent ">
                                                 <a type="button" href="{{route('proderiAdmi')}}" class="btn">
                                                     <div class="d-block text-center">
-                                                        <br> <span class="text-sm">Adminiatrativo</span>
+                                                        <br> <span class="text-sm">depto. Administrativo</span>
                                                     </div>
                                                 </a>
                                             </div>

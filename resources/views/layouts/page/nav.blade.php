@@ -22,7 +22,7 @@
                         aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                             <span class="avatar avatar-sm " style="background: #F3F6F9;">
-                                <img alt="" src="../assets/img/images/defaultPerfil.png">
+                                <img alt="" src="{{asset('/assets/img/images/defaultPerfil.png')}}">
                             </span>
                             <div class="media-body ml-2 d-none d-lg-block">
                                 <div class="media-body ml-2 d-none d-lg-block">
