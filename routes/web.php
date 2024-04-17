@@ -33,6 +33,8 @@ Route::get('/qanalytic',[ReportController::class,'qanalytic'])->name('ReportQana
 Route::get('/proderi',[ReportController::class,'proderiIndex'])->name('proderiIndex');
 Route::get('/proderi/datos',[ReportController::class,'proderiAdatos'])->name('proderiAdatos');
 Route::get('/proderi/administrativo',[ReportController::class,'proderiAdministrativo'])->name('proderiAdmi');
+Route::get('/proderi/administrativo/compras',[ReportController::class,'prodericompras'])->name('prodericompras');
+Route::get('/proderi/administrativo/permisos',[ReportController::class,'proderipermisos'])->name('proderipermisos');
 Route::resource('personals', PersonalsController::class)->names('personals');
 Route::resource('proyectos', ProyectosController::class)->names('proyectos');
 });
