@@ -42,7 +42,7 @@
                                     <div class="card border mr-1 ">
                                         <div class="card-body text-center">
                                             <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="../assets/img/images/proderi.svg"
+                                                <img alt="" src="{{asset('/assets/img/images/proderi.svg')}}"
                                                     class="avatar avatar-xl rounded m-2 bg-transparent ">
                                                 <a type="button" href="{{route('proderiAdatos')}}" class="btn">
                                                     <div class="d-block text-center">
@@ -55,7 +55,7 @@
                                     <div class="card border mr-1 ">
                                         <div class="card-body text-center">
                                             <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="../assets/img/images/proderi.svg"
+                                                <img alt="" src="{{asset('/assets/img/images/proderi.svg')}}"
                                                     class="avatar avatar-xl rounded m-2 bg-transparent ">
                                                 <a type="button" href="{{route('departamentoit')}}" class="btn">
                                                     <div class="d-block text-center">
@@ -68,7 +68,7 @@
                                     <div class="card border mr-1 ">
                                         <div class="card-body text-center">
                                             <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="../assets/img/images/proderi.svg"
+                                                <img alt="" src="{{asset('/assets/img/images/proderi.svg')}}"
                                                     class="avatar avatar-xl rounded m-2 bg-transparent ">
                                                 <a type="button" href="{{route('proderiAdmi')}}" class="btn">
                                                     <div class="d-block text-center">

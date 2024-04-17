@@ -13,7 +13,7 @@
                                 <li class="breadcrumb-item"><a href="{{ route('proderiAdmi') }}"><i
                                             class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a >Reportes</a></li>
-                                <li class="breadcrumb-item text-dark active" aria-current="page">Area Administrativa</li>
+                                <li class="breadcrumb-item text-dark active" aria-current="page">Solicitud de Compras</li>
                             </ol>
                         </nav>
 

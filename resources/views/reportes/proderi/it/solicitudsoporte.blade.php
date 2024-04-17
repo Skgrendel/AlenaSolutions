@@ -12,7 +12,7 @@
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('departamentoit') }}"><i class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="">Reportes</a></li>
-                                <li class="breadcrumb-item text-dark active" aria-current="page"></li>
+                                <li class="breadcrumb-item text-dark active" aria-current="page">Solicitudes de Soporte</li>
                             </ol>
                         </nav>
 

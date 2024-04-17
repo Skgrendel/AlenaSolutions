@@ -11,8 +11,8 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('proderiAdmi') }}"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="?view=diagnostico">Reportes</a></li>
-                                <li class="breadcrumb-item text-dark active" aria-current="page">Area Administrativa</li>
+                                <li class="breadcrumb-item"><a href="">Reportes</a></li>
+                                <li class="breadcrumb-item text-dark active" aria-current="page">Solicitud de Permisos</li>
                             </ol>
                         </nav>
 

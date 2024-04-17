@@ -42,7 +42,7 @@
                                     <div class="card border mr-1 ">
                                         <div class="card-body text-center">
                                             <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="../assets/img/images/logo_vixor.svg"
+                                                <img alt="" src="{{asset('/assets/img/images/logo_vixor.svg')}}"
                                                     class="avatar avatar-xl rounded m-2 bg-transparent ">
                                                 <a type="button" href="{{ route('Rerpotevixor') }}" class="btn">
                                                     <div class="d-block text-center">
@@ -55,7 +55,7 @@
                                     <div class="card border mr-1 ">
                                         <div class="card-body text-center">
                                             <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="../assets/img/images/proderi.svg"
+                                                <img alt="" src="{{asset('/assets/img/images/proderi.svg')}}"
                                                     class="avatar avatar-xl rounded m-2 bg-transparent ">
                                                 <a type="button" href="{{route('proderiIndex')}}" class="btn">
                                                     <div class="d-block text-center">
@@ -68,7 +68,7 @@
                                     <div class="card border mr-1 ">
                                         <div class="card-body text-center">
                                             <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="../assets/img/images/LogoAlena.svg"
+                                                <img alt="" src="{{asset('/assets/img/images/LogoAlena.svg')}}"
                                                     class="avatar avatar-xl rounded m-2 bg-transparent ">
                                                 <a type="button" href="{{ route('ReportOperaciones') }}" class="btn">
                                                     <div class="d-block text-center">
@@ -81,8 +81,8 @@
                                     <div class="card border mr-1 ">
                                         <div class="card-body text-center">
                                             <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="../assets/img/images/LogoAlenaQanalyticData.svg"
-                                                    class="avatar avatar-xl rounded m-2 bg-transparent ">
+                                                <img alt="" src="{{asset('/assets/img/images/LogoAlenaQanalyticData.svg')}}"
+                                                    class="avatar avatar-xl rounded m-2 bg-transparent">
                                                 <a type="button" href="{{ route('ReportQanalytic') }}" class="btn">
                                                     <div class="d-block text-center">
                                                         <br> <span class="text-sm">Reportes</span>
@@ -94,8 +94,8 @@
                                     <div class="card border mr-1 ">
                                         <div class="card-body text-center">
                                             <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="../assets/img/images/caplaft.png" class="m-2 bg-transparent "
-                                                    style="width: 100px;high:60px;">
+                                                <img alt="" src="{{asset('/assets/img/images/logo_caplaft.svg')}}"
+                                                class="avatar avatar-xl rounded m-2 bg-transparent">
                                                 <a type="button" href="#!" class="btn">
                                                     <div class="d-block text-center">
                                                         <br> <span class="text-sm">Reportes</span>
