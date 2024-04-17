@@ -6,18 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Aplicación AuditApp">
     <!-- Favicon -->
-    <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
+    <link rel="icon" href="{{asset('/assets/img/brand/favicon.png')}}" type="image/png">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-
-    <!-- Favicon -->
-    <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
     <!-- Icons -->
-    <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="{{asset('assets/vendor/nucleo/css/nucleo.css')}}" type="text/css">
     <script src="https://kit.fontawesome.com/049e213d27.js" crossorigin="anonymous"></script>
     <!-- Bootstrap File Input -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-fileinput@5.1.2/css/fileinput.min.css">
@@ -28,15 +25,14 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
 
     <!-- Bootstrap-select: No le puse CDN por que modifiqué los archivos -->
-    <link rel="stylesheet" href="../assets/vendor/bootstrap-select/css/bootstrap-select.css">
+    <link rel="stylesheet" href="{{asset('assets/vendor/bootstrap-select/css/bootstrap-select.css')}}">
 
     <!-- SmartWizard - V. 4.3.1 ya que la version mas actual 5.1 genera error, habria que actualizar codigo -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/smartwizard@4.3.1/dist/css/smart_wizard.min.css">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/smartwizard@4.3.1/dist/css/smart_wizard_theme_arrows.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/smartwizard@4.3.1/dist/css/smart_wizard_theme_arrows.min.css">
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="../assets/css/argon.min.css?v=1.1.0" type="text/css">
-    <link rel="stylesheet" href="../assets/css/mystyle.css">
+    <link rel="stylesheet" href="{{asset('assets/css/argon.min.css?v=1.1.0')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('assets/css/mystyle.css')}}">
     {{-- Personalize CSS --}}
     @yield('css')
 
@@ -85,13 +81,13 @@
     <!-- SmartWizard -->
     <script src="https://cdn.jsdelivr.net/npm/smartwizard@4.3.1/dist/js/jquery.smartWizard.min.js"></script>
     <!-- Jquery-UI - Script solo tiene la función Draggable -->
-    <script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{asset('assets/vendor/jquery-ui/jquery-ui.min.js')}}"></script>
     <!-- PDF Object -->
     <script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.3/pdfobject.min.js"></script>
     <!-- HTML CANVAS -->
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.7/dist/html2canvas.min.js"></script>
     <!-- Argon JS -->
-    <script src="../assets/js/argon.min.js?v=1.1.0"></script>
+    <script src="{{asset('/assets/js/argon.min.js?v=1.1.0')}}"></script>
     {{-- Personalize js --}}
     @yield('js')
 </body>

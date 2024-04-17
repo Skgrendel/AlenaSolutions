@@ -10,8 +10,9 @@
 
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                                <li class="breadcrumb-item"><a href="{{ route('proderiAdmi') }}"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="?view=diagnostico">Reportes</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('proderiAdmi') }}"><i
+                                            class="fas fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a >Reportes</a></li>
                                 <li class="breadcrumb-item text-dark active" aria-current="page">Area Administrativa</li>
                             </ol>
                         </nav>
@@ -37,11 +38,11 @@
     <div id="contenedorFullPreguntas" class="container-fluid mt--6">
         <div class="row">
             <div class="col-xl-12">
-                <iframe title="Operaciones" class="rounded" width="100%" height="720" src="
+                <iframe title="Operaciones" class="rounded" width="100%" height="720"
+                    src="
                 https://app.powerbi.com/view?r=eyJrIjoiMTE0ZmM2MWYtZjZhNy00Y2JhLThiNzktMTkyMzE1ZTY1MDRiIiwidCI6ImE3MDViNGI5LWE3Y2UtNDA3YS04YTdlLTY0NThlYjVkZDQxNiJ9"
-                frameborder="0" allowFullScreen="true"></iframe>
+                    frameborder="0" allowFullScreen="true"></iframe>
             </div>
         </div>
     </div>
-    
 @endsection
