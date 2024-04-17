@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PersonalsController;
+use App\Http\Controllers\ProyectosController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,5 +32,7 @@ Route::get('/operaciones',[ReportController::class,'operacion'])->name('ReportOp
 Route::get('/qanalytic',[ReportController::class,'qanalytic'])->name('ReportQanalytic');
 Route::get('/proderi',[ReportController::class,'proderiIndex'])->name('proderiIndex');
 Route::get('/proderi/datos',[ReportController::class,'proderiAdatos'])->name('proderiAdatos');
+Route::get('/proderi/administrativo',[ReportController::class,'proderiAdministrativo'])->name('proderiAdmi');
 Route::resource('personals', PersonalsController::class)->names('personals');
+Route::resource('proyectos', ProyectosController::class)->names('proyectos');
 });

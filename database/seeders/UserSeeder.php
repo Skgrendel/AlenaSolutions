@@ -26,6 +26,17 @@ class UserSeeder extends Seeder
          $Role = Role::where('name', 'administrador')->first();
          $user->assignRole($Role);
 
+            // Asigna los permisos directamente al rol
+            $Role->givePermissionTo('administrador');
+            $Role->givePermissionTo('cliente');
+            $Role->givePermissionTo('empleado');
+
+            $ClienteRole = Role::where('name', 'Cliente')->first();
+            $ClienteRole->givePermissionTo('cliente');
+
+            $empleadoRole = Role::where('name', 'Empleado')->first();
+            $empleadoRole->givePermissionTo('empleado');
+
 
     }
 }

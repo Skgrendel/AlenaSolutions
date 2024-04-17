@@ -63,7 +63,7 @@ class PersonalsController extends Controller
         $user->personal_id = $personal_id; //
         $user->save();
 
-        return redirect()->route('personal.index')
+        return redirect()->route('personals.index')
             ->with('success', 'Personal Creado con Exito.')
             ->with('tittle', 'Exito')
             ->with('icon', 'success');

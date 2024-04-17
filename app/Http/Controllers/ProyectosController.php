@@ -12,7 +12,7 @@ class ProyectosController extends Controller
      */
     public function index()
     {
-        //
+        return view('proyectos.index');
     }
 
     /**

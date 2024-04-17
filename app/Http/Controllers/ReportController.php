@@ -36,4 +36,7 @@ class ReportController extends Controller
     public function proderiAdatos(){
         return view('reportes.proderi.analisisdedatos');
     }
+    public function proderiAdministrativo(){
+        return view('reportes.proderi.administrativa');
+    }
 }
