@@ -27,6 +27,12 @@
                             <span class="nav-link-text">Reportes</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('proyectos.index') }}">
+                            <i class="fas fa-project-diagram text-info"></i>
+                            <span class="nav-link-text">Proyectos</span>
+                        </a>
+                    </li>
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">

@@ -16,7 +16,7 @@ class vs_areas extends Model
 
     public function proyectos()
     {
-        return $this->hasMany(proyectos::class);
+        return $this->hasOne(proyectos::class,'id','area');
     }
 
     public function actividades()

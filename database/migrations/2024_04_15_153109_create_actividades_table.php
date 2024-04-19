@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('fecha_estimada')->nullable();
             $table->integer('avance')->nullable();
             $table->string('prioridad');
-            $table->string('estado')->default('Pendiente');
+            $table->string('estado')->default('21');
             $table->foreign('proyecto_id')->references('id')->on('proyectos');
             $table->timestamps();
         });

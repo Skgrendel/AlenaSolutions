@@ -38,7 +38,7 @@
     <div id="contenedorFullPreguntas" class="container-fluid mt--6">
         <div class="row">
             <div class="col-xl-12 bg-white rounded mb-4 card ">
-                <div class="mt-4 p-2 mr-2">
+                <div class="card-body mt-4 p-2 mr-2">
                     <a href="{{ route('personals.create') }}" class="btn btn-info mb-2 ">Crear Nuevo</a>
                     <table id="personal" class="table table-striped w-100">
                         <thead>
@@ -87,7 +87,8 @@
                                                     <span>Editar</span>
                                                 </a>
                                                 <div class="dropdown-divider"></div>
-                                                <a href="#" class="dropdown-item" onclick="AlertRegistro('{{ $item->id }}')">
+                                                <a href="#" class="dropdown-item"
+                                                    onclick="AlertRegistro('{{ $item->id }}')">
                                                     <i class="fas fa-trash-alt"></i>
                                                     <span>Eliminar</span>
                                                 </a>
@@ -109,38 +110,14 @@
 @endsection
 @section('js')
     <script src="../scripts/personal/datatable.js"></script>
-    <script src="../scripts/personal/AlertRegistro.js"></script>
+    <script src="../scripts/personal/AlertEliminar.js"></script>
     <script>
-function AlertRegistro(id) {
-    Swal.fire({
-        title: '¿Estás seguro?',
-        text: "No podrás revertir esto!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#2DCE89',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Sí, bórralo!',
-        cancelButtonText: 'No, cancelar!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                url: '/personals/' + id,
-                type: 'DELETE',
-                data: {
-                    _token: "{{ csrf_token() }}",
-                },
-                success: function(result) {
-                    // Recarga la página o haz algo cuando la eliminación sea exitosa
-                    location.reload();
-                },
-                error: function(result) {
-                    // Muestra un mensaje de error si algo sale mal
-                    Swal.fire('Error!', 'No se pudo eliminar el registro.', 'error');
-                }
+        @if (session('success'))
+            Swal.fire({
+                title: "{{ session('tittle') }}",
+                text: "{{ session('success') }}",
+                icon: "{{ session('icon') }}"
             });
-        }
-    })
-}
-
+        @endif
     </script>
 @endsection

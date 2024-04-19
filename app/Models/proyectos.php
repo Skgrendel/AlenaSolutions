@@ -21,31 +21,32 @@ class proyectos extends Model
     ];
 
     static $rules = [
-        'user_id' => 'required',
         'nombre' => 'required',
         'descripcion' => 'required',
+        'fecha_estimada'=> 'required',
         'area' => 'required',
+        'avance' => 'required',
         'prioridad' => 'required',
-        'estado' => 'required',
     ];
+
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belngsTo(User::class);
     }
 
-    public function area()
+    public function areas()
     {
-        return $this->belongsTo(vs_areas::class);
+        return $this->hasOne(vs_areas::class,'id','area');
     }
 
-    public function prioridad()
+    public function prioridades()
     {
-        return $this->belongsTo(vs_prioridades::class);
+        return $this->hasOne(vs_prioridades::class,'id','prioridad');
     }
 
-    public function estado()
+    public function estados()
     {
-        return $this->belongsTo(vs_estados::class);
+        return $this->hasOne(vs_estados::class,'id','estado');
     }
 }

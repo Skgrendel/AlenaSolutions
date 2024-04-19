@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#personal').DataTable({
+    $('#proyecto').DataTable({
         responsive: true,
         language: {
             processing: "Procesando...",
