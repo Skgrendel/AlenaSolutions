@@ -2,7 +2,7 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header d-flex align-items-center">
-                <img src="../assets/img/images/LogoAlenaSolution.svg" alt="" style="width: 250px; higth: 150px;" class="mt-2">
+                <img src="../assets/img/images/LogoAlenaSolution.svg" alt="" style="width: 150px; higth: 150px;" class="mt-2">
             <div class="ml-auto">
                 <!-- Sidenav toggler -->
                 <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main">
