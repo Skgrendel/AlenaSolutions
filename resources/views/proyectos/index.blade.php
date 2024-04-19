@@ -40,97 +40,156 @@
             <div class="col-xl-12 bg-white rounded mb-4 card ">
                 <div class="mt-4 p-2 mr-2">
                     <a href="{{ route('proyectos.create') }}" class="btn btn-info mb-2 ">Crear Nuevo</a>
-                    <table id="personal" class="table table-striped w-100">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Area</th>
-                                <th>Descripcion</th>
-                                <th>Fecha Estimada</th>
-                                <th>Avance</th>
-                                <th>Prioridad</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (isset($datatable))
-                                @foreach ($datatable as $item)
-                                    <tr>
-                                        <td>{{ $item->nombre }}</td>
-                                        <td>{{ $item->areas->nombre }}</td>
-                                        <td>{{ $item->descripcion }}</td>
-                                        <td>{{ $item->fecha_estimada }}</td>
-                                        <td>
-                                            <div class="progress text-dark text-center" style="height: 20px;">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info "
-                                                    role="progressbar" style="width:{{ $item->avance }}%;"
-                                                    aria-valuenow="{{ $item->avance }}" aria-valuemin="0"
-                                                    aria-valuemax="100">{{ $item->avance }} %</div>
+                    <div class="table-responsive py-2">
+                        <table id="proyecto" class="table table-striped align-items-center table-hover w-100">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Area</th>
+                                    <th scope="col">Fecha Estimada</th>
+                                    <th scope="col">Avance</th>
+                                    <th scope="col">Prioridad</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (isset($datatable))
+                                    @foreach ($datatable as $item)
+                                        <tr>
+                                            <td><img src="../assets/img/images/grupo.png"
+                                                    class="avatar avatar-md bg-transparent "></td>
+                                            <td>{{ $item->nombre }}</td>
+                                            <td>{{ $item->areas->nombre }}</td>
+                                            <td>{{ $item->fecha_estimada }}</td>
+                                            <td>
+                                                <div class="progress text-dark " style="height:10px;">
+                                                    <div class="progress-bar progress-bar-striped bg-success"
+                                                        role="progressbar" style="width:{{ is_null($item->avance) ? 0 : $item->avance }}%;"
+                                                        aria-valuenow="{{ is_null($item->avance) ? 0 : $item->avance }}" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
+                                                </div>{{ is_null($item->avance) ? 0 : $item->avance }}%
+                                            </td>
+                                            <td>{{ $item->prioridades->nombre }}</td>
+                                            <td>
+                                                @switch($item->estado)
+                                                    @case(23)
+                                                        <span class="badge badge-success">Finalizado</span>
+                                                    @break
+
+                                                    @case(22)
+                                                        <span class="badge badge-warning">En curso</span>
+                                                    @break
+
+                                                    @default
+                                                        <span class="badge badge-danger">Pendiente</span>
+                                                @endswitch
+                                            </td>
+                                            <td>
+                                                <a class="nav-link pr-0" role="button" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
+                                                    <h6 class="dropdown-header" style="color: rgba(0,0,0,.72) !important;">
+                                                        Gestionar</h6>
+                                                    <a data-toggle="modal" data-target="#actividadesExistentes"
+                                                        class="dropdown-item text-dark "
+                                                        onclick="ModalActividad('{{ $item->id }}')">
+                                                        <i class="far fa-folder-open"></i>
+                                                        <span> Ver Actividades Existentes</span>
+                                                    </a>
+                                                    <a href="{{ route('actividades.show', $item->id) }}"
+                                                        class="dropdown-item font-dropdown-documento">
+                                                        <i class="fas fa-folder-plus"></i>
+                                                        <span>Crear Nueva Actividad</span>
+                                                    </a>
+                                                    <a href="#" class="dropdown-item font-dropdown-documento"
+                                                        onclick="AlertRegistro('{{ $item->id }}')">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                        <span>Eliminar</span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <td colspan="8">No hay registros</td>
+                                @endif
+                                <!-- Modal -->
+                                <div class="modal fade" id="actividadesExistentes" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <div class="col-10">
+                                                    <h4 class="mb-0 modalNombreGrupo">Proyecto</h4>
+                                                    <p class="text-sm mb-0">Actividades que pertenecen a este Proyecto.</p>
+                                                </div>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
                                             </div>
-                                        </td>
-                                        <td>{{ $item->prioridades->nombre }}</td>
-                                        <td>
-                                            @switch($item->estado)
-                                                @case(23)
-                                                    <span class="badge badge-success text-md">Finalizado</span>
-                                                @break
-
-                                                @case(22)
-                                                    <span class="badge badge-warning text-md">En curso</span>
-                                                @break
-
-                                                @default
-                                                    <span class="badge badge-danger text-md">Pendiente</span>
-                                            @endswitch
-                                        </td>
-                                        <td>
-
-                                            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-left">
-                                                <a href="{{ route('proyectos.show', $item->id) }}" class="dropdown-item">
-                                                    <i
-                                                        class="fas fa-eye
-                                                        "></i>
-                                                    <span>Ver</span>
-                                                </a>
-                                                <div class="dropdown-divider"></div>
-                                                <a href="{{ route('proyectos.edit', $item->id) }}" class="dropdown-item">
-                                                    <i class="fas fa-edit"></i>
-                                                    <span>Editar</span>
-                                                </a>
-                                                <div class="dropdown-divider"></div>
-                                                <a href="#" class="dropdown-item"
-                                                    onclick="AlertRegistro('{{ $item->id }}')">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                    <span>Eliminar</span>
-                                                </a>
-
+                                            <div class="modal-body">
+                                                ...
                                             </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @else
-                                <td colspan="8">No hay registros</td>
-                            @endif
-
-                        </tbody>
-                    </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
 @section('js')
     <script src="../scripts/proyectos/datatable.js"></script>
-    <script src="../scripts/proyectos/AlertEliminar.js"></script>
+    <script>
+        function AlertRegistro(id) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2DCE89',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, bórralo!',
+                cancelButtonText: 'No, cancelar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/proyectos/' + id,
+                        type: 'DELETE',
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                        },
+                        success: function(result) {
+                            // Recarga la página o haz algo cuando la eliminación sea exitosa
+                            location.reload();
+                            Swal.fire({
+                                title: 'Éxito',
+                                text: result.success,
+                                icon: 'success'
+                            });
+                        },
+                        error: function(result) {
+                            // Muestra un mensaje de error si algo sale mal
+                            Swal.fire('Error!', 'No se pudo eliminar el registro.', 'error');
+                        }
+                    });
+                }
+            })
+        }
+    </script>
     <script>
         @if (session('success'))
             Swal.fire({
-                title: "{{ session('tittle') }}",
+                title: "{{ session('title') }}",
                 text: "{{ session('success') }}",
                 icon: "{{ session('icon') }}"
             });

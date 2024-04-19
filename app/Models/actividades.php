@@ -37,12 +37,12 @@ class actividades extends Model
 
     public function prioridad()
     {
-        return $this->belongsTo(vs_prioridades::class);
+        return $this->hasOne(vs_prioridades::class, 'id', 'prioridad');
     }
 
     public function estado()
     {
-        return $this->belongsTo(vs_estados::class);
+        return $this->hasOne(vs_estados::class, 'id', 'estado');
     }
 
 

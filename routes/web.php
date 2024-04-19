@@ -1,8 +1,11 @@
 <?php
+
+use App\Http\Controllers\ActividadesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PersonalsController;
 use App\Http\Controllers\ProyectosController;
 use App\Http\Controllers\ReportController;
+use App\Models\actividades;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +38,7 @@ Route::get('/proderi/administrativo/compras',[ReportController::class,'proderiAd
 Route::get('/proderi/administrativo/permisos',[ReportController::class,'proderiAdministrativopermisos'])->name('proderipermisos');
 Route::get('/proderi/departamentoit',[ReportController::class,'proderidepartamentoit'])->name('departamentoit');
 Route::get('/proderi/departamentoit/soporte',[ReportController::class,'proderidepartamentoitsoporte'])->name('itsoporte');
-Route::resource('personals', PersonalsController::class)->names('personals');
-Route::resource('proyectos', ProyectosController::class)->names('proyectos');
+Route::resource('/personals', PersonalsController::class)->names('personals');
+Route::resource('/proyectos', ProyectosController::class)->names('proyectos');
+Route::resource('/actividades',ActividadesController::class)->names('actividades');
 });

@@ -96,8 +96,14 @@ class PersonalsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(personals $personals)
+    public function destroy($id)
     {
-        //
+        try {
+            $proyecto = personals::findOrFail($id);
+            $proyecto->delete();
+            return response()->json(['success' => 'Usuario eliminado correctamente.'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error al eliminar el Usuario.'], 500);
+        }
     }
 }

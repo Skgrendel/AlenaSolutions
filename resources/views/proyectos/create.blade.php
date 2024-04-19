@@ -11,7 +11,7 @@
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('proyectos.index') }}"><i
                                             class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="">Registro de Actividades</a></li>
+                                <li class="breadcrumb-item"><a href="">Registro de Proyectos</a></li>
                                 <li class="breadcrumb-item text-dark active" aria-current="page">Nuevo</li>
                             </ol>
                         </nav>
@@ -42,7 +42,7 @@
                 <div class="mt-4 p-2 mr-2">
                     <form id="proyectosForm" action="{{ route('proyectos.store') }}" method="POST">
                         @csrf
-                        <h6 class="heading-small text-muted mb-0">Información de la Actividad Nueva que Desea Registrar
+                        <h6 class="heading-small text-muted mb-0">Información del Nuevo Proyecto que Desea Registrar
                         </h6>
                         <p class="small mb-4"><i class="fas fa-info-circle"></i> Por favor, asegúrate de llenar todos los
                             campos requeridos marcados con <span class="text-danger">*</span> y verificar la información
@@ -51,10 +51,10 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="nombres">Nombre de la Actividad <span
+                                        <label class="form-control-label" for="nombres">Nombre del Proyecto <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" id="nombres" name="nombre" class="form-control"
-                                            placeholder="Ingrese El Nombre de Su Actividad" required value="{{ old('nombre') }}" >
+                                            placeholder="Ingrese El Nombre de Su Proyecto" required value="{{ old('nombre') }}" >
                                         @if ($errors->has('nombre'))
                                             <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                         @endif
@@ -91,7 +91,7 @@
                                     <div class="form-group">
                                         <label class="form-control-label" for="prioridad">Prioridad<span class="text-danger">*</span></label>
                                         <select name="prioridad" id="prioridad" class="form-control" required>
-                                            <option value="" disabled>Seleccione su Prioridad</option>
+                                            <option value="" disabled selected>Seleccione su Prioridad</option>
                                             @foreach ($prioridades as $id => $nombre)
                                                 <option value="{{ $id }}" {{ old('prioridad') == $id ? 'selected' : '' }}>{{ $nombre }}</option>
                                             @endforeach
@@ -99,27 +99,6 @@
                                         @if ($errors->has('prioridad'))
                                             <span class="text-danger">{{ $errors->first('prioridad') }}</span>
                                         @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="avance">Avance de Actividad</label>
-                                        <input type="number" id="avance" name="avance" class="form-control"
-                                            placeholder="Ingrese El Numero de  Avance de Su Actividad" min="0" max="999" required value="{{ old('avance') }}" >
-                                        @if ($errors->has('avance'))
-                                            <span class="text-danger">{{ $errors->first('avance') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label  " for="avance">Porcentace de Avance</label>
-                                        <div class="progress mt-2 " style="height: 20px;">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style="width:0%;"
-                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +116,7 @@
                                 </div>
                             </div>
                             <hr class="my-4">
-                            <button type="submit" id="btnCrearActividad" class="btn btn-info mb-2">Crear Actividad</button>
+                            <button type="submit" id="btnCrearActividad" class="btn btn-info mb-2">Crear Proyecto</button>
                         </div>
                     </form>
                 </div>

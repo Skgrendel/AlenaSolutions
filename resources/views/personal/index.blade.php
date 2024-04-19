@@ -40,69 +40,73 @@
             <div class="col-xl-12 bg-white rounded mb-4 card ">
                 <div class="card-body mt-4 p-2 mr-2">
                     <a href="{{ route('personals.create') }}" class="btn btn-info mb-2 ">Crear Nuevo</a>
-                    <table id="personal" class="table table-striped w-100">
-                        <thead>
-                            <tr>
-                                <th>Tipo Documento</th>
-                                <th>Numero Documento</th>
-                                <th>Nombres</th>
-                                <th>Apellidos</th>
-                                <th>Correo</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (isset($datatable))
-                                @foreach ($datatable as $item)
-                                    <tr>
-                                        <td>{{ $item->tipo_documento }}</td>
-                                        <td>{{ $item->numero_documento }}</td>
-                                        <td>{{ $item->nombres }}</td>
-                                        <td>{{ $item->apellidos }}</td>
-                                        <td>{{ $item->correo }}</td>
-                                        <td>
-                                            @if ($item->estado == 1)
-                                                <span class="badge badge-success text-md">Activo</span>
-                                            @else
-                                                <span class="badge badge-danger text-md">Inactivo</span>
-                                            @endif
-                                        </td>
-                                        <td>
+                    <div class="table-responsive py-2">
+                        <table id="personal" class="table table table-striped align-items-center table-hover w-100">
+                            <thead>
+                                <tr>
+                                    <th>Tipo Documento</th>
+                                    <th>Numero Documento</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Correo</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (isset($datatable))
+                                    @foreach ($datatable as $item)
+                                        <tr>
+                                            <td>{{ $item->tipo_documento }}</td>
+                                            <td>{{ $item->numero_documento }}</td>
+                                            <td>{{ $item->nombres }}</td>
+                                            <td>{{ $item->apellidos }}</td>
+                                            <td>{{ $item->correo }}</td>
+                                            <td>
+                                                @if ($item->estado == 1)
+                                                    <span class="badge badge-success text-md">Activo</span>
+                                                @else
+                                                    <span class="badge badge-danger text-md">Inactivo</span>
+                                                @endif
+                                            </td>
+                                            <td>
 
-                                            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-left">
-                                                <a href="{{ route('personals.show', $item->id) }}" class="dropdown-item">
-                                                    <i
-                                                        class="fas fa-eye
+                                                <a class="nav-link pr-0" href="#" role="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-left">
+                                                    <a href="{{ route('personals.show', $item->id) }}"
+                                                        class="dropdown-item">
+                                                        <i
+                                                            class="fas fa-eye
                                                         "></i>
-                                                    <span>Ver</span>
-                                                </a>
-                                                <div class="dropdown-divider"></div>
-                                                <a href="{{ route('personals.edit', $item->id) }}" class="dropdown-item">
-                                                    <i class="fas fa-edit"></i>
-                                                    <span>Editar</span>
-                                                </a>
-                                                <div class="dropdown-divider"></div>
-                                                <a href="#" class="dropdown-item"
-                                                    onclick="AlertRegistro('{{ $item->id }}')">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                    <span>Eliminar</span>
-                                                </a>
+                                                        <span>Ver</span>
+                                                    </a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a href="{{ route('personals.edit', $item->id) }}"
+                                                        class="dropdown-item">
+                                                        <i class="fas fa-edit"></i>
+                                                        <span>Editar</span>
+                                                    </a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a href="#" class="dropdown-item"
+                                                        onclick="AlertRegistro('{{ $item->id }}')">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                        <span>Eliminar</span>
+                                                    </a>
 
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @else
-                                <td colspan="6">No hay registros</td>
-                            @endif
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <td colspan="6">No hay registros</td>
+                                @endif
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -110,7 +114,43 @@
 @endsection
 @section('js')
     <script src="../scripts/personal/datatable.js"></script>
-    <script src="../scripts/personal/AlertEliminar.js"></script>
+    <script>
+        function AlertRegistro(id) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2DCE89',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, bórralo!',
+                cancelButtonText: 'No, cancelar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/personals/' + id,
+                        type: 'DELETE',
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                        },
+                        success: function(result) {
+                            // Recarga la página o haz algo cuando la eliminación sea exitosa
+                            location.reload();
+                            Swal.fire({
+                                title: 'Éxito',
+                                text: result.success,
+                                icon: 'success'
+                            });
+                        },
+                        error: function(result) {
+                            // Muestra un mensaje de error si algo sale mal
+                            Swal.fire('Error!', 'No se pudo eliminar el registro.', 'error');
+                        }
+                    });
+                }
+            })
+        }
+    </script>
     <script>
         @if (session('success'))
             Swal.fire({

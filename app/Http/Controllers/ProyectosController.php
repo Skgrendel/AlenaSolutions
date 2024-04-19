@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\actividades;
 use App\Models\proyectos;
 use App\Models\vs_estados;
 use App\Models\vs_areas;
@@ -15,9 +16,9 @@ class ProyectosController extends Controller
      */
     public function index()
     {
-        $datatable = proyectos::all();
 
-        return view('proyectos.index', compact('datatable'));
+        $datatable = proyectos::all();
+            return view('proyectos.index', compact('datatable'));
     }
 
     /**
@@ -49,7 +50,8 @@ class ProyectosController extends Controller
         $proyecto->save();
 
 
-        return redirect()->route('proyectos.index')->with('success', 'Proyecto creado exitosamente.');
+        return redirect()->route('proyectos.index')->with('success', 'Proyecto creado exitosamente.')
+            ->with('icon', 'success')->with('title', '¡Éxito!');
     }
 
     /**
@@ -79,8 +81,14 @@ class ProyectosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(proyectos $proyectos)
+    public function destroy($id)
     {
-        //
+        try {
+            $proyecto = proyectos::findOrFail($id);
+            $proyecto->delete();
+            return response()->json(['success' => 'Proyecto eliminado correctamente.'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error al eliminar el proyecto.'], 500);
+        }
     }
 }

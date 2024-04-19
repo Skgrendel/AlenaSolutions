@@ -25,10 +25,13 @@ class proyectos extends Model
         'descripcion' => 'required',
         'fecha_estimada'=> 'required',
         'area' => 'required',
-        'avance' => 'required',
         'prioridad' => 'required',
     ];
 
+    public function actividades()
+    {
+        return $this->hasMany(actividades::class);
+    }
 
     public function user()
     {
