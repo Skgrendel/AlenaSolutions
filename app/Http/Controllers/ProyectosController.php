@@ -18,7 +18,7 @@ class ProyectosController extends Controller
     {
 
         $datatable = proyectos::all();
-            return view('proyectos.index', compact('datatable'));
+        return view('proyectos.index', compact('datatable'));
     }
 
     /**
@@ -85,6 +85,7 @@ class ProyectosController extends Controller
     {
         try {
             $proyecto = proyectos::findOrFail($id);
+            actividades::where('proyecto_id', $id)->delete();
             $proyecto->delete();
             return response()->json(['success' => 'Proyecto eliminado correctamente.'], 200);
         } catch (\Exception $e) {
