@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('encabezados_dets', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('encabezado_id');
+            $table->unsignedbigInteger('encabezado_id');
             $table->string('nombre');
             $table->string('nomenclatura');
             $table->foreign('encabezado_id')->references('id')->on('encabezados');
