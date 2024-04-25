@@ -38,11 +38,7 @@
     <div id="contenedorFullPreguntas" class="container-fluid mt--6">
         <div class="row">
             <div class="col-xl-12">
-<<<<<<< HEAD
                 <iframe title="proderi general" class="rounded" width="100%" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiZmQ5MmQwYTAtNDQ3ZC00YzY3LWJkN2ItNzJiMDllZDQ4YjZiIiwidCI6ImE3MDViNGI5LWE3Y2UtNDA3YS04YTdlLTY0NThlYjVkZDQxNiJ9"frameborder="0" allowFullScreen="true"></iframe>
-=======
-                <iframe title="proderi general" class="rounded" width="100%" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiZjkwYjZlM2EtMWVjZi00N2U3LWIxOTktNzgxYzc1NThlNjI3IiwidCI6ImE3MDViNGI5LWE3Y2UtNDA3YS04YTdlLTY0NThlYjVkZDQxNiJ9"frameborder="0" allowFullScreen="true"></iframe>
->>>>>>> 126e9f8467b7a4ec71b988fb798f1cbc6c10f243
             </div>
         </div>
     </div>
