@@ -37,12 +37,12 @@ class ActividadesController extends Controller
         $promedio = round($totalActividades->avg('avance'));
         proyectos::where('id', $request->proyecto_id)->update(['avance' => $promedio]);
 
-        
+
         $proyecto = proyectos::find($request->proyecto_id);
         if ($proyecto->avance > 0) {
-            proyectos::where('id', $request->proyecto_id)->update(['estado' =>'22']);
-        }elseif ($proyecto->avance == 100){
-            proyectos::where('id', $request->proyecto_id)->update(['estado' =>'23']);
+            proyectos::where('id', $request->proyecto_id)->update(['estado' => '22']);
+        } elseif ($proyecto->avance == 100) {
+            proyectos::where('id', $request->proyecto_id)->update(['estado' => '23']);
         }
 
         return redirect()->route('proyectos.index')
@@ -63,9 +63,13 @@ class ActividadesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(actividades $actividades)
+    public function edit(string $id)
     {
-        //
+        $prioridades = vs_prioridades::pluck('nombre', 'id');
+        $estados = vs_estados::pluck('nombre', 'id');
+        $actividades = actividades::find($id);
+        $proyecto = proyectos::find($actividades->proyecto_id);
+        return view('actividades.edit', compact('actividades', 'estados', 'prioridades', 'proyecto'));
     }
 
     /**
@@ -79,8 +83,22 @@ class ActividadesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(actividades $actividades)
+
+    public function destroy(string $id)
     {
-        //
+        try {
+            $actividades = actividades::findOrFail($id);
+            $proyecto_id = $actividades->proyecto_id;
+            $actividades->delete();
+
+            $totalActividades = actividades::where('proyecto_id', $proyecto_id);
+            $promedio = round($totalActividades->avg('avance'));
+            proyectos::where('id', $proyecto_id)->update(['avance' => $promedio]);
+
+            return response()->json(['success' => 'Actividad eliminada correctamente.'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error al eliminar la Actividad.'], 500);
+        }
     }
+    
 }

@@ -30,17 +30,17 @@ class actividades extends Model
         'estado' => 'required',
     ];
 
-    public function proyecto()
+    public function proyectos()
     {
         return $this->belongsTo(proyectos::class);
     }
 
-    public function prioridad()
+    public function prioridades()
     {
         return $this->hasOne(vs_prioridades::class, 'id', 'prioridad');
     }
 
-    public function estado()
+    public function estados()
     {
         return $this->hasOne(vs_estados::class, 'id', 'estado');
     }

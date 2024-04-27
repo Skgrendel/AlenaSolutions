@@ -62,17 +62,27 @@ class ProyectosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(proyectos $proyectos)
+    public function edit(string $id)
     {
-        //
+        $proyecto = proyectos::findOrFail($id);
+        $prioridades = vs_prioridades::pluck('nombre', 'id');
+        $estados = vs_estados::pluck('nombre', 'id');
+        $areas = vs_areas::pluck('nombre', 'id');
+
+        return view('proyectos.edit', compact('proyecto', 'estados', 'areas', 'prioridades'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, proyectos $proyectos)
+    public function update(Request $request, string $id)
     {
-        //
+        request()->validate(proyectos::$rules);
+        $proyecto = proyectos::findOrFail($id);
+        $proyecto->update($request->all());
+
+        return redirect()->route('proyectos.index')->with('success', 'Proyecto actualizado exitosamente.')
+            ->with('icon', 'success')->with('title', '¡Éxito!');
     }
 
     /**
@@ -93,7 +103,7 @@ class ProyectosController extends Controller
 
     public function actividades($id)
     {
-        $actividades = actividades::where('proyecto_id', $id)->get();
+        $actividades = actividades::where('proyecto_id', $id)->with('prioridades')->get();
         return response()->json($actividades);
     }
 
