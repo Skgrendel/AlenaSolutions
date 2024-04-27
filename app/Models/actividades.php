@@ -23,11 +23,9 @@ class actividades extends Model
 
 
     static $rules = [
-        'proyecto_id' => 'required',
         'nombre' => 'required',
         'descripcion' => 'required',
         'prioridad' => 'required',
-        'estado' => 'required',
     ];
 
     public function proyectos()

@@ -32,18 +32,27 @@ class ActividadesController extends Controller
     {
 
         $request->validate(actividades::$rules);
-        actividades::create($request->all());
+        $actividades = actividades::create($request->all());
         $totalActividades = actividades::where('proyecto_id', $request->proyecto_id);
         $promedio = round($totalActividades->avg('avance'));
         proyectos::where('id', $request->proyecto_id)->update(['avance' => $promedio]);
 
+        $proyecto = proyectos::find($request->proyecto_id); // Obtiene el proyecto después de actualizar el avance
 
-        $proyecto = proyectos::find($request->proyecto_id);
-        if ($proyecto->avance > 0) {
+         // Actualiza el estado del proyecto
+        if ($proyecto->avance > 0 && $proyecto->avance < 100) {
             proyectos::where('id', $request->proyecto_id)->update(['estado' => '22']);
         } elseif ($proyecto->avance == 100) {
             proyectos::where('id', $request->proyecto_id)->update(['estado' => '23']);
         }
+
+          // Actualiza el estado de la actividad
+          if ($actividades->avance > 0 && $actividades->avance < 100) {
+            actividades::where('id', $actividades->id)->update(['estado' => '22']);
+        } elseif ($actividades->avance == 100) {
+            actividades::where('id', $actividades->id)->update(['estado' => '23']);
+        }
+
 
         return redirect()->route('proyectos.index')
             ->with('success', 'Actividad creada correctamente.')->with('icon', 'success')->with('title', '¡Éxito!');
@@ -75,11 +84,36 @@ class ActividadesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, actividades $actividades)
+    public function update(Request $request, string $id)
     {
-        //
-    }
+        $request->validate(actividades::$rules);
+        $actividades = actividades::find($id);
+        $proyecto_id = $actividades->proyecto_id;
+        $actividades->update($request->all());
 
+
+        $totalActividades = actividades::where('proyecto_id', $proyecto_id);
+        $promedio = round($totalActividades->avg('avance'));
+        proyectos::where('id', $proyecto_id)->update(['avance' => $promedio]);
+
+        $proyecto = proyectos::find($proyecto_id); // Obtiene el proyecto después de actualizar el avance
+
+        if ($proyecto->avance > 0 && $proyecto->avance < 100) {
+            proyectos::where('id', $proyecto_id)->update(['estado' => '22']);
+        } elseif ($proyecto->avance == 100) {
+            proyectos::where('id', $proyecto_id)->update(['estado' => '23']);
+        }
+
+        // Actualiza el estado de la actividad
+        if ($actividades->avance > 0 && $actividades->avance < 100) {
+            actividades::where('id', $id)->update(['estado' => '22']);
+        } elseif ($actividades->avance == 100) {
+            actividades::where('id', $id)->update(['estado' => '23']);
+        }
+
+        return redirect()->route('proyectos.index')
+            ->with('success', 'Actividad actualizada correctamente.')->with('icon', 'success')->with('title', '¡Éxito!');
+    }
     /**
      * Remove the specified resource from storage.
      */
@@ -95,10 +129,18 @@ class ActividadesController extends Controller
             $promedio = round($totalActividades->avg('avance'));
             proyectos::where('id', $proyecto_id)->update(['avance' => $promedio]);
 
+            $proyecto = proyectos::find($proyecto_id);
+            
+            if ($proyecto->avance > 0 && $proyecto->avance < 100) {
+                proyectos::where('id', $proyecto_id)->update(['estado' => '22']);
+            } elseif ($proyecto->avance == 100) {
+                proyectos::where('id', $proyecto_id)->update(['estado' => '23']);
+            }
+
             return response()->json(['success' => 'Actividad eliminada correctamente.'], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error al eliminar la Actividad.'], 500);
         }
     }
-    
+
 }

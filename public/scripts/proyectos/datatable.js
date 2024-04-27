@@ -38,23 +38,21 @@ function ModalActividad(id) {
                 const editBaseUrl = '/actividades/';
                 const edit = '/edit'
 
-
                 if (response.length > 0) {
                     response.forEach((element) => {
                         let badge;
-                        switch (element.estado) {
+                        let estado = Number(element.estado);
+                        switch (estado) {
                             case 23:
-                                badge =
-                                    '<span class="badge badge-success">Finalizado</span>';
+                                badge = '<span class="badge badge-success">Finalizado</span>';
                                 break;
                             case 22:
-                                badge =
-                                    '<span class="badge badge-warning">En curso</span>';
+                                badge = '<span class="badge badge-warning">En curso</span>';
                                 break;
                             default:
-                                badge =
-                                    '<span class="badge badge-danger">Pendiente</span>';
+                                badge = '<span class="badge badge-danger">Pendiente</span>';
                         }
+
                         tableContent += `
             <tr>
                 <td><img src="../assets/img/images/grupo.png" class="avatar avatar-md bg-transparent "></td>

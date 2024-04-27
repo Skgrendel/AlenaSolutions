@@ -66,7 +66,7 @@
                                         <label class="form-control-label" for="personal_asignado">Nombre de la persona Asignada <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" id="personal_asignado" name="personal_asignado" class="form-control"
-                                            placeholder="Ingrese El Nombre de Su Actividad" required value="{{ old('nombre') }}" >
+                                            placeholder="Ingrese El Nombre de la Persona Asignada" required value="{{ old('nombre') }}" >
                                         @if ($errors->has('nombre'))
                                             <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                         @endif
@@ -139,22 +139,6 @@
                                             placeholder="Observacion de actividad" rows="5" required value="{{ old('observaciones') }}"></textarea>
                                         @if ($errors->has('observaciones'))
                                             <span class="text-danger">{{ $errors->first('observaciones') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="estado">Estado de La Actividad<span class="text-danger">*</span></label>
-                                        <select name="estado" id="estado" class="form-control" required>
-                                            <option value="" disabled selected>Seleccione su Estado</option>
-                                            @foreach ($estados as $id => $nombre)
-                                                <option value="{{ $id }}" {{ old('estado') == $id ? 'selected' : '' }}>{{ $nombre }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('estado'))
-                                            <span class="text-danger">{{ $errors->first('estado') }}</span>
                                         @endif
                                     </div>
                                 </div>
