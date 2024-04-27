@@ -17,7 +17,8 @@ class ProyectosController extends Controller
     public function index()
     {
 
-        $datatable = proyectos::all();
+        $datatable = proyectos::where('user_id',auth()->id())->get();
+
         return view('proyectos.index', compact('datatable'));
     }
 
@@ -29,6 +30,7 @@ class ProyectosController extends Controller
         $prioridades = vs_prioridades::pluck('nombre', 'id');
         $estados = vs_estados::pluck('nombre', 'id');
         $areas = vs_areas::pluck('nombre', 'id');
+
         return view('proyectos.create', compact('estados', 'areas', 'prioridades'));
     }
 
@@ -41,12 +43,7 @@ class ProyectosController extends Controller
         request()->validate(proyectos::$rules);
         $proyecto = new proyectos();
         $proyecto->user_id = auth()->id();
-        $proyecto->nombre = $request->nombre;
-        $proyecto->descripcion = $request->descripcion;
-        $proyecto->avance = $request->avance;
-        $proyecto->fecha_estimada = $request->fecha_estimada;
-        $proyecto->area = $request->area;
-        $proyecto->prioridad = $request->prioridad;
+        $proyecto->request->all();
         $proyecto->save();
 
 
@@ -92,4 +89,12 @@ class ProyectosController extends Controller
             return response()->json(['error' => 'Error al eliminar el proyecto.'], 500);
         }
     }
+
+
+    public function actividades($id)
+    {
+        $actividades = actividades::where('proyecto_id', $id)->get();
+        return response()->json($actividades);
+    }
+
 }

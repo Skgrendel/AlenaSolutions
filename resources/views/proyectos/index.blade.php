@@ -66,9 +66,10 @@
                                             <td>
                                                 <div class="progress text-dark " style="height:10px;">
                                                     <div class="progress-bar progress-bar-striped bg-success"
-                                                        role="progressbar" style="width:{{ is_null($item->avance) ? 0 : $item->avance }}%;"
-                                                        aria-valuenow="{{ is_null($item->avance) ? 0 : $item->avance }}" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                        role="progressbar"
+                                                        style="width:{{ is_null($item->avance) ? 0 : $item->avance }}%;"
+                                                        aria-valuenow="{{ is_null($item->avance) ? 0 : $item->avance }}"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>{{ is_null($item->avance) ? 0 : $item->avance }}%
                                             </td>
                                             <td>{{ $item->prioridades->nombre }}</td>
@@ -94,16 +95,16 @@
                                                 <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
                                                     <h6 class="dropdown-header" style="color: rgba(0,0,0,.72) !important;">
                                                         Gestionar</h6>
+                                                    <a href="{{ route('actividades.show', $item->id) }}"
+                                                        class="dropdown-item font-dropdown-documento">
+                                                        <i class="fas fa-folder-plus"></i>
+                                                        <span>Crear Nueva Actividad</span>
+                                                    </a>
                                                     <a data-toggle="modal" data-target="#actividadesExistentes"
                                                         class="dropdown-item text-dark "
                                                         onclick="ModalActividad('{{ $item->id }}')">
                                                         <i class="far fa-folder-open"></i>
                                                         <span> Ver Actividades Existentes</span>
-                                                    </a>
-                                                    <a href="{{ route('actividades.show', $item->id) }}"
-                                                        class="dropdown-item font-dropdown-documento">
-                                                        <i class="fas fa-folder-plus"></i>
-                                                        <span>Crear Nueva Actividad</span>
                                                     </a>
                                                     <a href="#" class="dropdown-item font-dropdown-documento"
                                                         onclick="AlertRegistro('{{ $item->id }}')">
@@ -117,35 +118,50 @@
                                 @else
                                     <td colspan="8">No hay registros</td>
                                 @endif
-                                <!-- Modal -->
-                                <div class="modal fade" id="actividadesExistentes" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-xl">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <div class="col-10">
-                                                    <h4 class="mb-0 modalNombreGrupo">Proyecto</h4>
-                                                    <p class="text-sm mb-0">Actividades que pertenecen a este Proyecto.</p>
-                                                </div>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                ...
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
+    <!-- Modal de Actividades -->
+    <div class="modal fade" id="actividadesExistentes" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col-10">
+                        <h4 class="mb-0 modalNombreGrupo">Proyecto</h4>
+                        <p class="text-sm mb-0">Actividades que pertenecen a este Proyecto.</p>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive py-2">
+                        <table id="actividades" class="table table-striped align-items-center table-hover w-100">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Personal Asignado</th>
+                                    <th scope="col">Fecha Estimada</th>
+                                    <th scope="col">Avance</th>
+                                    <th scope="col">Prioridad</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('js')
     <script src="../scripts/proyectos/datatable.js"></script>
@@ -194,5 +210,77 @@
                 icon: "{{ session('icon') }}"
             });
         @endif
+    </script>
+    <script>
+        function ModalActividad(id) {
+           
+
+            if (id) {
+                $.ajax({
+                    url: '/proyectos/actividades/' + id,
+                    type: 'GET',
+                    success: function(response) {
+                        // Aquí puedes manejar la respuesta del servidor
+                        console.log(response);
+                        if (response.length > 0) {
+                            response.forEach(element => {
+                                $('#actividades tbody').append(`
+                                <tr>
+                                    <td><img src="../assets/img/images/grupo.png" class="avatar avatar-md bg-transparent "></td>
+                                    <td>${element.nombre}</td>
+                                    <td>${element.personal_asignado}</td>
+                                    <td>${element.fecha_estimada}</td>
+                                    <td>
+                                        <div class="progress text-dark " style="height:10px;">
+                                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                                                style="width:${element.avance}%;"
+                                                aria-valuenow="${element.avance}" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>${element.avance}%
+                                    </td>
+                                    <td>${element.prioridad}</td>
+                                    <td>${element.estado}</td>
+                                    <td>
+                                        <a class="nav-link pr-0" role="button" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
+                                            <h6 class="dropdown-header" style="color: rgba(0,0,0,.72) !important;">Gestionar</h6>
+                                            <a href="#" class="dropdown-item text-dark ">
+                                                <i class="far fa-folder-open"></i>
+                                                <span>Modificar</span>
+                                            </a>
+                                            <a href="#" class="dropdown-item font-dropdown-documento">
+                                                <i class="fas fa-trash-alt"></i>
+                                                <span>Eliminar</span>
+                                            </a>
+                                    </td>
+                                </tr>
+                            `);
+                            });
+                        } else {
+                            $('#actividades tbody').append(`
+                            <td colspan="8">No hay registros</td>
+                        `);
+                        }
+                    },
+                    error: function(error) {
+                        if (error.responseJSON && error.responseJSON.error) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: error.responseJSON.error,
+                            });
+                        }
+                    }
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Ingrese un numero de contrato',
+                });
+            }
+        }
     </script>
 @endsection

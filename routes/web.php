@@ -40,5 +40,6 @@ Route::get('/proderi/departamentoit',[ReportController::class,'proderidepartamen
 Route::get('/proderi/departamentoit/soporte',[ReportController::class,'proderidepartamentoitsoporte'])->name('itsoporte');
 Route::resource('/personals', PersonalsController::class)->names('personals');
 Route::resource('/proyectos', ProyectosController::class)->names('proyectos');
+route::get('/proyectos/actividades/{proyecto}',[ProyectosController::class,'actividades'])->name('proyectos.actividades');
 Route::resource('/actividades',ActividadesController::class)->names('actividades');
 });
