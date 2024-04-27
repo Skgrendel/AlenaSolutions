@@ -137,7 +137,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="col-6">
-                        <h4 class="mb-0 modalNombreGrupo">Proyecto</h4>
+                        <h4 class="mb-0">Proyecto</h4>
                         <p class="text-sm mb-0">Actividades que pertenecen a este Proyecto.</p>
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -155,7 +155,7 @@
     <script>
         function AlertRegistro(id) {
             $('#actividadesExistentes').modal('hide');
-            
+
             Swal.fire({
                 title: '¿Estás seguro?',
                 text: "No podrás revertir esto!",
