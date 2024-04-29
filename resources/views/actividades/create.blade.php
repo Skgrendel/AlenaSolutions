@@ -43,7 +43,7 @@
                     <form id="proyectosForm" action="{{ route('actividades.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="proyecto_id" value="{{ $proyecto->id }}">
-                        <h5 class="heading  mb-0">Proyecto: {{$proyecto->nombre}}</h5>
+                        <h5 class="heading  mb-0">Proyecto: {{ $proyecto->nombre }}</h5>
                         <h6 class="heading-small text-muted mb-0">Información de la Actividad Nueva que Desea Registrar</h6>
                         <p class="small mb-4"><i class="fas fa-info-circle"></i> Por favor, asegúrate de llenar todos los
                             campos requeridos marcados con <span class="text-danger">*</span> y verificar la información
@@ -55,7 +55,8 @@
                                         <label class="form-control-label" for="nombres">Nombre de la Actividad <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" id="nombres" name="nombre" class="form-control"
-                                            placeholder="Ingrese El Nombre de Su Actividad" required value="{{ old('nombre') }}" >
+                                            placeholder="Ingrese El Nombre de Su Actividad" required
+                                            value="{{ old('nombre') }}">
                                         @if ($errors->has('nombre'))
                                             <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                         @endif
@@ -63,10 +64,11 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="personal_asignado">Nombre de la persona Asignada <span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" id="personal_asignado" name="personal_asignado" class="form-control"
-                                            placeholder="Ingrese El Nombre de la Persona Asignada" required value="{{ old('nombre') }}" >
+                                        <label class="form-control-label" for="personal_asignado">Nombre de la persona
+                                            Asignada <span class="text-danger">*</span></label>
+                                        <input type="text" id="personal_asignado" name="personal_asignado"
+                                            class="form-control" placeholder="Ingrese El Nombre de la Persona Asignada"
+                                            required value="{{ old('nombre') }}">
                                         @if ($errors->has('nombre'))
                                             <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                         @endif
@@ -86,11 +88,14 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="prioridad">Prioridad<span class="text-danger">*</span></label>
+                                        <label class="form-control-label" for="prioridad">Prioridad<span
+                                                class="text-danger">*</span></label>
                                         <select name="prioridad" id="prioridad" class="form-control" required>
                                             <option value="" disabled selected>Seleccione su Prioridad</option>
                                             @foreach ($prioridades as $id => $nombre)
-                                                <option value="{{ $id }}" {{ old('prioridad') == $id ? 'selected' : '' }}>{{ $nombre }}</option>
+                                                <option value="{{ $id }}"
+                                                    {{ old('prioridad') == $id ? 'selected' : '' }}>{{ $nombre }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         @if ($errors->has('prioridad'))
@@ -104,7 +109,9 @@
                                     <div class="form-group">
                                         <label class="form-control-label" for="avance">Avance de Actividad</label>
                                         <input type="number" id="avance" name="avance" class="form-control"
-                                            placeholder="Ingrese El Numero de  Avance de Su Actividad" min="0" max="999" required value="{{ old('avance') }}" >
+                                            placeholder="Ingrese El Numero de  Avance de Su Actividad" min="0"
+                                            max="100" required value="{{ old('avance') }}"
+                                            oninput="validity.valid||(value='');">
                                         @if ($errors->has('avance'))
                                             <span class="text-danger">{{ $errors->first('avance') }}</span>
                                         @endif
@@ -114,8 +121,9 @@
                                     <div class="form-group">
                                         <label class="form-control-label  " for="avance">Porcentace de Avance</label>
                                         <div class="progress mt-2 " style="height: 20px;">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style="width:0%;"
-                                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+                                                role="progressbar" style="width:0%;" aria-valuenow="0" aria-valuemin="0"
+                                                aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -144,7 +152,8 @@
                                 </div>
                             </div>
                             <hr class="my-4">
-                            <button type="submit" id="btnCrearActividad" class="btn btn-info mb-2">Crear Actividad</button>
+                            <button type="submit" id="btnCrearActividad" class="btn btn-info mb-2">Crear
+                                Actividad</button>
                         </div>
                     </form>
                 </div>
@@ -154,16 +163,23 @@
 @endsection
 
 @section('js')
-<script>
-    document.getElementById('avance').addEventListener('input', function(e) {
-        var value = e.target.value;
-        if (value === '') {
-            value = 0;
-        }
-        var progressBar = document.querySelector('.progress-bar');
-        progressBar.style.width = value + '%';
-        progressBar.setAttribute('aria-valuenow', value);
-        progressBar.textContent = value + '%';
-    });
-</script>
+    <script>
+        document.getElementById('avance').addEventListener('input', function() {
+            if (this.value > 100) {
+                this.value = 100;
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('avance').addEventListener('input', function(e) {
+            var value = e.target.value;
+            if (value === '') {
+                value = 0;
+            }
+            var progressBar = document.querySelector('.progress-bar');
+            progressBar.style.width = value + '%';
+            progressBar.setAttribute('aria-valuenow', value);
+            progressBar.textContent = value + '%';
+        });
+    </script>
 @endsection
