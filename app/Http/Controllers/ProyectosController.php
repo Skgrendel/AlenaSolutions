@@ -43,7 +43,7 @@ class ProyectosController extends Controller
         request()->validate(proyectos::$rules);
         $proyecto = new proyectos();
         $proyecto->user_id = auth()->id();
-        $proyecto->request->all();
+        $proyecto->fill($request->all());
         $proyecto->save();
 
 
