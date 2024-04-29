@@ -41,16 +41,16 @@ class ActividadesController extends Controller
 
          // Actualiza el estado del proyecto
         if ($proyecto->avance > 0 && $proyecto->avance < 100) {
-            proyectos::where('id', $request->proyecto_id)->update(['estado' => '22']);
+            proyectos::where('id', $request->proyecto_id)->update(['estado' => '19']);
         } elseif ($proyecto->avance == 100) {
-            proyectos::where('id', $request->proyecto_id)->update(['estado' => '23']);
+            proyectos::where('id', $request->proyecto_id)->update(['estado' => '20']);
         }
 
           // Actualiza el estado de la actividad
           if ($actividades->avance > 0 && $actividades->avance < 100) {
-            actividades::where('id', $actividades->id)->update(['estado' => '22']);
+            actividades::where('id', $actividades->id)->update(['estado' => '19']);
         } elseif ($actividades->avance == 100) {
-            actividades::where('id', $actividades->id)->update(['estado' => '23']);
+            actividades::where('id', $actividades->id)->update(['estado' => '20']);
         }
 
 
@@ -99,16 +99,16 @@ class ActividadesController extends Controller
         $proyecto = proyectos::find($proyecto_id); // Obtiene el proyecto después de actualizar el avance
 
         if ($proyecto->avance > 0 && $proyecto->avance < 100) {
-            proyectos::where('id', $proyecto_id)->update(['estado' => '22']);
+            proyectos::where('id', $proyecto_id)->update(['estado' => '19']);
         } elseif ($proyecto->avance == 100) {
-            proyectos::where('id', $proyecto_id)->update(['estado' => '23']);
+            proyectos::where('id', $proyecto_id)->update(['estado' => '20']);
         }
 
         // Actualiza el estado de la actividad
         if ($actividades->avance > 0 && $actividades->avance < 100) {
-            actividades::where('id', $id)->update(['estado' => '22']);
+            actividades::where('id', $id)->update(['estado' => '19']);
         } elseif ($actividades->avance == 100) {
-            actividades::where('id', $id)->update(['estado' => '23']);
+            actividades::where('id', $id)->update(['estado' => '20']);
         }
 
         return redirect()->route('proyectos.index')
@@ -130,11 +130,11 @@ class ActividadesController extends Controller
             proyectos::where('id', $proyecto_id)->update(['avance' => $promedio]);
 
             $proyecto = proyectos::find($proyecto_id);
-            
+
             if ($proyecto->avance > 0 && $proyecto->avance < 100) {
-                proyectos::where('id', $proyecto_id)->update(['estado' => '22']);
+                proyectos::where('id', $proyecto_id)->update(['estado' => '19']);
             } elseif ($proyecto->avance == 100) {
-                proyectos::where('id', $proyecto_id)->update(['estado' => '23']);
+                proyectos::where('id', $proyecto_id)->update(['estado' => '20']);
             }
 
             return response()->json(['success' => 'Actividad eliminada correctamente.'], 200);

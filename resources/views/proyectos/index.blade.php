@@ -75,11 +75,11 @@
                                             <td>{{ $item->prioridades->nombre }}</td>
                                             <td>
                                                 @switch($item->estado)
-                                                    @case(23)
+                                                    @case(20)
                                                         <span class="badge badge-success">Finalizado</span>
                                                     @break
 
-                                                    @case(22)
+                                                    @case(19)
                                                         <span class="badge badge-warning">En curso</span>
                                                     @break
 

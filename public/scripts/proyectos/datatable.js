@@ -43,10 +43,10 @@ function ModalActividad(id) {
                         let badge;
                         let estado = Number(element.estado);
                         switch (estado) {
-                            case 23:
+                            case 20:
                                 badge = '<span class="badge badge-success">Finalizado</span>';
                                 break;
-                            case 22:
+                            case 19:
                                 badge = '<span class="badge badge-warning">En curso</span>';
                                 break;
                             default:

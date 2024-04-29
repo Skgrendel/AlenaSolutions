@@ -15,16 +15,16 @@ class EncabezadoSeeder extends Seeder
     {
         $encabezados = [
             [
-                'nombre' => 'Areas',
-                'nomenclatura' => 'AR',
+                'nombre' => 'Estados',
+                'nomenclatura' => 'ES',
             ],
             [
                 'nombre' => 'Prioridades',
                 'nomenclatura' => 'PR',
             ],
             [
-                'nombre' => 'Estados',
-                'nomenclatura' => 'ES',
+                'nombre' => 'Areas',
+                'nomenclatura' => 'AR',
             ],
         ];
 
