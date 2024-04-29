@@ -47,11 +47,6 @@ class EncabezadoDetSeeder extends Seeder
             ],
             [
                 'encabezado_id' => '3',
-                'nombre' => 'Operaciones',
-                'nomenclatura' => 'CO',
-            ],
-            [
-                'encabezado_id' => '3',
                 'nombre' => 'Comercial',
                 'nomenclatura' => 'CM',
             ],
