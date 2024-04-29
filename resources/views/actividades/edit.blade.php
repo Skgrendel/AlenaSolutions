@@ -43,7 +43,7 @@
                     <form id="proyectosForm" action="{{ route('actividades.update', $actividades->id) }}" method="POST">
                         @method('PUT')
                         @csrf
-                        
+
                         <h5 class="heading  mb-0">Proyecto: {{ $proyecto->nombre }}</h5>
                         <h6 class="heading-small text-muted mb-0">Información de la Actividad Nueva que Desea Registrar</h6>
                         <p class="small mb-4"><i class="fas fa-info-circle"></i> Por favor, asegúrate de llenar todos los
@@ -111,7 +111,8 @@
                                         <label class="form-control-label" for="avance">Avance de Actividad</label>
                                         <input type="number" id="avance" name="avance" class="form-control"
                                             placeholder="Ingrese El Numero de  Avance de Su Actividad" min="0"
-                                            max="999" required value="{{ $actividades->avance }}">
+                                            max="100" required value="{{ old('avance') }}"
+                                            oninput="validity.valid||(value='');">
                                         @if ($errors->has('avance'))
                                             <span class="text-danger">{{ $errors->first('avance') }}</span>
                                         @endif
@@ -163,6 +164,13 @@
 @endsection
 
 @section('js')
+<script>
+    document.getElementById('avance').addEventListener('input', function() {
+        if (this.value > 100) {
+            this.value = 100;
+        }
+    });
+</script>
         <script>
         $(document).ready(function() {
             var avance = {{ $actividades->avance }}; // Obtiene el valor de avance desde la base de datos
