@@ -75,12 +75,12 @@
                                             <td>{{ $item->prioridades->nombre }}</td>
                                             <td>
                                                 @switch($item->estado)
-                                                    @case(20)
-                                                        <span class="badge badge-success">Finalizado</span>
+                                                    @case(2)
+                                                        <span class="badge badge-warning">En curso</span>
                                                     @break
 
-                                                    @case(19)
-                                                        <span class="badge badge-warning">En curso</span>
+                                                    @case(3)
+                                                        <span class="badge badge-success">Finalizado</span>
                                                     @break
 
                                                     @default
@@ -106,7 +106,8 @@
                                                         <i class="far fa-folder-open"></i>
                                                         <span> Ver Actividades Existentes</span>
                                                     </a>
-                                                    <a href="{{route('proyectos.edit',$item->id)}}" class="dropdown-item font-dropdown-documento">
+                                                    <a href="{{ route('proyectos.edit', $item->id) }}"
+                                                        class="dropdown-item font-dropdown-documento">
                                                         <i class="far fa-edit"></i>
                                                         <span>Editar Proyecto</span>
                                                     </a>
@@ -191,7 +192,7 @@
             })
         }
     </script>
-     <script>
+    <script>
         function AlertActividades(id) {
             Swal.fire({
                 title: '¿Estás seguro?',

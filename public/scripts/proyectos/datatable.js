@@ -35,22 +35,25 @@ function ModalActividad(id) {
             type: "GET",
             success: function (response) {
                 let tableContent = "";
-                const editBaseUrl = '/actividades/';
-                const edit = '/edit'
+                const editBaseUrl = "/actividades/";
+                const edit = "/edit";
 
                 if (response.length > 0) {
                     response.forEach((element) => {
                         let badge;
                         let estado = Number(element.estado);
                         switch (estado) {
-                            case 20:
-                                badge = '<span class="badge badge-success">Finalizado</span>';
+                            case 2:
+                                badge =
+                                    '<span class="badge badge-warning">En curso</span>';
                                 break;
-                            case 19:
-                                badge = '<span class="badge badge-warning">En curso</span>';
+                            case 3:
+                                badge =
+                                    '<span class="badge badge-success">Finalizado</span>';
                                 break;
                             default:
-                                badge = '<span class="badge badge-danger">Pendiente</span>';
+                                badge =
+                                    '<span class="badge badge-danger">Pendiente</span>';
                         }
 
                         tableContent += `
@@ -63,7 +66,9 @@ function ModalActividad(id) {
                     <div class="progress text-dark " style="height:10px;">
                         <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
                             style="width:${element.avance}%;"
-                            aria-valuenow="${element.avance}" aria-valuemin="0" aria-valuemax="100"></div>
+                            aria-valuenow="${
+                                element.avance
+                            }" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>${element.avance}%
                 </td>
                 <td>${element.prioridades.nombre}</td>
@@ -77,11 +82,15 @@ function ModalActividad(id) {
                     </a>
                     <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
                         <h6 class="dropdown-header" style="color: rgba(0,0,0,.72) !important;">Gestionar</h6>
-                        <a href="${editBaseUrl + element.id + edit}" class="dropdown-item text-dark ">
+                        <a href="${
+                            editBaseUrl + element.id + edit
+                        }" class="dropdown-item text-dark ">
                             <i class="far fa-folder-open"></i>
                             <span>Modificar</span>
                         </a>
-                        <a href="#" onclick="$('#actividadesExistentes').modal('hide'); AlertActividades(${element.id});" class="dropdown-item font-dropdown-documento">
+                        <a href="#" onclick="$('#actividadesExistentes').modal('hide'); AlertActividades(${
+                            element.id
+                        });" class="dropdown-item font-dropdown-documento">
                             <i class="fas fa-trash-alt"></i>
                             <span>Eliminar</span>
                         </a>
