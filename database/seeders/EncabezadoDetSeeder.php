@@ -14,7 +14,41 @@ class EncabezadoDetSeeder extends Seeder
     public function run(): void
     {
         $detalles = [
-
+            [
+                'encabezado_id' => '1',
+                'nombre' => 'Pendiente',
+                'nomenclatura' => 'PE',
+            ],
+            [
+                'encabezado_id' => '1',
+                'nombre' => 'En Curso',
+                'nomenclatura' => 'EC',
+            ],
+            [
+                'encabezado_id' => '1',
+                'nombre' => 'Finalizado',
+                'nomenclatura' => 'FI',
+            ],
+            [
+                'encabezado_id' => '2',
+                'nombre' => 'Finalizado',
+                'nomenclatura' => 'FN',
+            ],
+            [
+                'encabezado_id' => '2',
+                'nombre' => 'Baja',
+                'nomenclatura' => 'BA',
+            ],
+            [
+                'encabezado_id' => '2',
+                'nombre' => 'Media',
+                'nomenclatura' => 'ME',
+            ],
+            [
+                'encabezado_id' => '2',
+                'nombre' => 'Alta',
+                'nomenclatura' => 'AL',
+            ],
             [
                 'encabezado_id' => '3',
                 'nombre' => 'Debida Diligencia',
@@ -75,41 +109,8 @@ class EncabezadoDetSeeder extends Seeder
                 'nombre' => 'Consultores',
                 'nomenclatura' => 'TI',
             ],
-            [
-                'encabezado_id' => '2',
-                'nombre' => 'Finalizado',
-                'nomenclatura' => 'FN',
-            ],
-            [
-                'encabezado_id' => '2',
-                'nombre' => 'Alta',
-                'nomenclatura' => 'AL',
-            ],
-            [
-                'encabezado_id' => '2',
-                'nombre' => 'Media',
-                'nomenclatura' => 'ME',
-            ],
-            [
-                'encabezado_id' => '2',
-                'nombre' => 'Baja',
-                'nomenclatura' => 'BA',
-            ],
-            [
-                'encabezado_id' => '1',
-                'nombre' => 'Pendiente',
-                'nomenclatura' => 'PE',
-            ],
-            [
-                'encabezado_id' => '1',
-                'nombre' => 'En Curso',
-                'nomenclatura' => 'EC',
-            ],
-            [
-                'encabezado_id' => '1',
-                'nombre' => 'Finalizado',
-                'nomenclatura' => 'FI',
-            ],
+
+
 
         ];
 
