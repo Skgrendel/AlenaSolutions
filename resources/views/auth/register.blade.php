@@ -90,21 +90,6 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="form-control-label" for="telefono">Rol <span
-                                                        class="text-danger">*</span></label>
-                                                <select name="rol" class="form-control" id="rol">
-                                                    <option value="">Seleccionar rol</option>
-                                                    @foreach ($roles as $id => $name)
-                                                        <option value="{{ $id }}"
-                                                            {{ is_array($userRoles) && in_array($id, $userRoles) ? 'selected' : '' }}>
-                                                            {{ $name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
                                     </div>
                                         <hr class="my-4">
                                     <button type="submit" id="btnCrearPersonal" class="btn btn-info mb-2">Crear

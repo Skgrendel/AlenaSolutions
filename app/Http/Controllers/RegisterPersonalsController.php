@@ -41,7 +41,7 @@ class RegisterPersonalsController extends Controller
         ]);
 
         // Asignar roles al usuario
-        $Role = Role::where('name', $userRol)->first();
+        $Role = Role::where('name', 'Empleado')->first();
         $user->assignRole($Role);
 
         // Asociar usuario al personal creado
