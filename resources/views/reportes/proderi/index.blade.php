@@ -44,9 +44,9 @@
                                             <div class=" d-flex justify-content-center ">
                                                 <img alt="" src="{{asset('/assets/img/images/proderi.svg')}}"
                                                     class="avatar avatar-xl rounded m-2 bg-transparent ">
-                                                <a type="button" href="{{route('proderiAdatos')}}" class="btn">
+                                                <a type="button" href="{{route('proderiGestion')}}" class="btn">
                                                     <div class="d-block text-center">
-                                                        <br> <span class="text-sm">depto. Analisis de Datos</span>
+                                                        <br> <span class="text-sm">Informes de Gestion</span>
                                                     </div>
                                                 </a>
                                             </div>

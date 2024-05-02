@@ -62,6 +62,15 @@
     </div>
 @endsection
 @section('js')
+<script>
+  @if (session('success'))
+            Swal.fire({
+                title: "{{ session('title') }}",
+                text: "{{ session('success') }}",
+                icon: "{{ session('icon') }}"
+            });
+        @endif
+</script>
     <script>
         @if ($errors->any())
             Swal.fire({

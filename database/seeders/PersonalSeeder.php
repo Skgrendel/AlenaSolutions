@@ -20,8 +20,6 @@ class PersonalSeeder extends Seeder
             'nombres'=>'Administrador',
             'apellidos'=>'Sistema',
             'correo'=>'admin@proderi.com',
-            'direccion' => 'proderi',
-            'telefono' => '000000',
         ]);
     }
 }

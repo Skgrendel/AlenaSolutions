@@ -26,6 +26,7 @@ Route::get('/', function () {
 });
 
 Route::get('/registrarse',[RegisterPersonalsController::class,'index'])->name('Registrarse');
+Route::post('/registrarse',[RegisterPersonalsController::class,'store'])->name('Registrarse.store');
 Auth::routes();
 Route::middleware('check_user_status')->group(function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -34,7 +35,7 @@ Route::get('/reportes',[ReportController::class,'index'])->name('Rerpoteindex');
 Route::get('/operaciones',[ReportController::class,'operacion'])->name('ReportOperaciones');
 Route::get('/qanalytic',[ReportController::class,'qanalytic'])->name('ReportQanalytic');
 Route::get('/proderi',[ReportController::class,'proderiIndex'])->name('proderiIndex');
-Route::get('/proderi/datos',[ReportController::class,'proderiAdatos'])->name('proderiAdatos');
+Route::get('/proderi/gestion',[ReportController::class,'proderiGestion'])->name('proderiGestion');
 Route::get('/proderi/administrativo',[ReportController::class,'proderiAdministrativo'])->name('proderiAdmi');
 Route::get('/proderi/administrativo/compras',[ReportController::class,'proderiAdministrativocompras'])->name('prodericompras');
 Route::get('/proderi/administrativo/permisos',[ReportController::class,'proderiAdministrativopermisos'])->name('proderipermisos');

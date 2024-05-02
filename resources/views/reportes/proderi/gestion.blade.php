@@ -12,7 +12,7 @@
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('proderiIndex') }}"><i class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="?view=diagnostico">Reportes</a></li>
-                                <li class="breadcrumb-item text-dark active" aria-current="page">Analisis de Datos</li>
+                                <li class="breadcrumb-item text-dark active" aria-current="page">Informes de Gestion</li>
                             </ol>
                         </nav>
 
@@ -37,7 +37,7 @@
     <div id="contenedorFullPreguntas" class="container-fluid mt--6">
         <div class="row">
             <div class="col-xl-12">
-                <iframe title="Operaciones" class="rounded" width="100%" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiOTA1ZTE2ZjItOWRkOC00YTgyLTg4MTItNzg1ZDc3ZWE4MGMwIiwidCI6ImE3MDViNGI5LWE3Y2UtNDA3YS04YTdlLTY0NThlYjVkZDQxNiJ9"
+                <iframe title="Operaciones" class="rounded" width="100%" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiMmM0ZDk2N2YtNjViOS00YmQ3LTgyY2ItMzY3YjIxZWZjMGU0IiwidCI6ImE3MDViNGI5LWE3Y2UtNDA3YS04YTdlLTY0NThlYjVkZDQxNiJ9"
                 frameborder="0" allowFullScreen="true"></iframe>
             </div>
         </div>

@@ -22,19 +22,24 @@
                 <h6 class="navbar-heading p-0 text-muted">Herramientas</h6>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('Rerpoteindex') }}">
-                            <i class="ni ni-single-copy-04 text-info"></i>
-                            <span class="nav-link-text">Reportes</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('proyectos.index') }}">
                             <i class="fas fa-project-diagram text-info"></i>
-                            <span class="nav-link-text">Proyectos</span>
+                            <span class="nav-link-text">Procesos de Area</span>
+                        </a>
+                    </li>
+                </ul>
+                <hr class="my-3">
+                <h6 class="navbar-heading p-0 text-muted">Reportes</h6>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('Rerpoteindex') }}">
+                            <i class="ni ni-single-copy-04 text-info"></i>
+                            <span class="nav-link-text">Informes</span>
                         </a>
                     </li>
                 </ul>
                 <!-- Divider -->
+                @can('administrador')
                 <hr class="my-3">
                 <h6 class="navbar-heading p-0 text-muted">Configuracion</h6>
                 <ul class="navbar-nav">
@@ -45,6 +50,7 @@
                         </a>
                     </li>
                 </ul>
+                @endcan
             </div>
         </div>
     </div>

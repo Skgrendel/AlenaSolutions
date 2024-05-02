@@ -39,8 +39,8 @@
           </li>
 
           <li class="nav-item d-none d-lg-block ml-lg-4">
-            <a href="#!" target="_blank" class="btn btn-neutral btn-icon disabled">
-              <span class="nav-link-inner--text">Soporte</span>
+            <a href="{{route('Registrarse')}}" class="btn btn-neutral ">
+              <span class="nav-link-inner--text">Registrarse</span>
             </a>
           </li>
         </ul>

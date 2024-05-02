@@ -20,7 +20,7 @@
             <div class="col-12 col-md-7">
                 <div class="card animated bg-white mb-0">
                     <div class="card-body px-lg-5 py-lg-5">
-                            <form id="personalForm" action="{{ route('personals.store') }}" method="POST">
+                            <form id="personalForm" action="{{ route('Registrarse.store') }}" method="POST">
                                 @csrf
                                 <h6 class="heading-small text-muted mb-0">Información Basica del Personal Nuevo que Desea Registrar
                                 </h6>
@@ -119,11 +119,11 @@
 @endsection
 @section('js')
     <script>
-        @if ($errors->any())
+        @if (session('success'))
             Swal.fire({
-                title: "Error",
-                text: "{{ $errors->first() }}",
-                icon: "error"
+                title: "{{ session('title') }}",
+                text: "{{ session('success') }}",
+                icon: "{{ session('icon') }}"
             });
         @endif
     </script>
