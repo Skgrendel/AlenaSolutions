@@ -15,7 +15,6 @@ class personals extends Model
         'nombres',
         'apellidos',
         'direccion',
-        'telefono',
         'correo',
         'estado',
     ];
