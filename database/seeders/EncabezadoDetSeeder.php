@@ -109,6 +109,11 @@ class EncabezadoDetSeeder extends Seeder
                 'nombre' => 'Consultores',
                 'nomenclatura' => 'TI',
             ],
+            [
+                'encabezado_id' => '3',
+                'nombre' => 'Gerencia',
+                'nomenclatura' => 'GR',
+            ],
 
 
 

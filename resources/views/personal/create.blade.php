@@ -110,29 +110,8 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="direccion">Dirección</label>
-                                        <input type="text" id="direccion" name="direccion" class="form-control"
-                                            placeholder="Dirección">
-                                            @if ($errors->has('direccion'))
-                                            <span class="text-danger">{{ $errors->first('direccion') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="telefono">Teléfono <span
-                                                class="text-danger">*</span></label>
-                                        <input type="number" id="telefono" name="telefono" class="form-control"
-                                            placeholder="(+57)" required>
-                                            @if ($errors->has('telefono'))
-                                            <span class="text-danger">{{ $errors->first('telefono') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="telefono">Rol <span

@@ -15,7 +15,7 @@ class PersonalSeeder extends Seeder
     {
          // Personal de Administrador Predeterminado
          $personal = personals::create([
-            'tipo_documento'=>'Cedula de Ciudadania',
+            'tipo_documento'=>'CC',
             'numero_documento'=>'0000',
             'nombres'=>'Administrador',
             'apellidos'=>'Sistema',
