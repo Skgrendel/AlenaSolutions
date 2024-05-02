@@ -92,20 +92,6 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label class="form-control-label" for="telefono">Teléfono <span
-                                                        class="text-danger">*</span></label>
-                                                <input type="number" id="telefono" name="telefono" class="form-control"
-                                                    placeholder="(+57)" required>
-                                                    @if ($errors->has('telefono'))
-                                                    <span class="text-danger">{{ $errors->first('telefono') }}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
                                                 <label class="form-control-label" for="telefono">Rol <span
                                                         class="text-danger">*</span></label>
                                                 <select name="rol" class="form-control" id="rol">
@@ -120,7 +106,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <hr class="my-4">
+                                        <hr class="my-4">
                                     <button type="submit" id="btnCrearPersonal" class="btn btn-info mb-2">Crear
                                         Usuario</button>
                                 </div>
