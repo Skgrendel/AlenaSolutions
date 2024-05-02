@@ -52,6 +52,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @can('administrador')
                                     <div class="card border mr-1 ">
                                         <div class="card-body text-center">
                                             <div class=" d-flex justify-content-center ">
@@ -78,6 +79,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endcan
                                 </div>
                             </div>
                         </div>

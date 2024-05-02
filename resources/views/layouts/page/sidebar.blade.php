@@ -29,6 +29,7 @@
                         </a>
                     </li>
                 </ul>
+                @can('administrador')
                 <hr class="my-3">
                 <h6 class="navbar-heading p-0 text-muted">Reportes</h6>
                 <ul class="navbar-nav">
@@ -39,6 +40,7 @@
                         </a>
                     </li>
                 </ul>
+                @endcan
                 <!-- Divider -->
                 @can('administrador')
                     <hr class="my-3">
