@@ -2,7 +2,8 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header d-flex align-items-center">
-                <img src="../assets/img/images/LogoAlenaSolution.svg" alt="" style="width: 150px; higth: 150px;" class="mt-2">
+            <img src="../assets/img/images/LogoAlenaSolution.svg" alt="" style="width: 150px; higth: 150px;"
+                class="mt-2">
             <div class="ml-auto">
                 <!-- Sidenav toggler -->
                 <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main">
@@ -39,18 +40,18 @@
                     </li>
                 </ul>
                 <!-- Divider -->
-
-                <hr class="my-3">
-                <h6 class="navbar-heading p-0 text-muted">Configuracion</h6>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('personals.index')}}">
-                            <i class="fas fa-users text-info"></i>
-                            <span class="nav-link-text">Usuarios</span>
-                        </a>
-                    </li>
-                </ul>
-          
+                @can('administrador')
+                    <hr class="my-3">
+                    <h6 class="navbar-heading p-0 text-muted">Configuracion</h6>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('personals.index') }}">
+                                <i class="fas fa-users text-info"></i>
+                                <span class="nav-link-text">Usuarios</span>
+                            </a>
+                        </li>
+                    </ul>
+                @endcan
             </div>
         </div>
     </div>
