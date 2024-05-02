@@ -79,7 +79,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="fecha_estimada">Fecha Estimada</label>
+                                        <label class="form-control-label" for="fecha_estimada">Fecha Estimada de Finalizacion</label>
                                         <input type="date" id="fecha_estimada" name="fecha_estimada" class="form-control"
                                             placeholder="Dirección" value="{{ old('fecha_estimada') }}">
                                         @if ($errors->has('fecha_estimada'))
@@ -108,7 +108,7 @@
                                         <label class="form-control-label" for="descripcion">Descripcion<span
                                                 class="text-danger"> *</span></label>
                                         <textarea type="text" id="descripcion" name="descripcion" class="form-control"
-                                            placeholder="Descripcion de actividad" rows="5" required value="{{ old('descripcion') }}"></textarea>
+                                            placeholder="Descripcion del Proyecto" rows="5" required value="{{ old('descripcion') }}"></textarea>
                                         @if ($errors->has('descripcion'))
                                             <span class="text-danger">{{ $errors->first('descripcion') }}</span>
                                         @endif
