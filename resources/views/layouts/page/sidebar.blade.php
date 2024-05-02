@@ -39,7 +39,7 @@
                     </li>
                 </ul>
                 <!-- Divider -->
-                @can('administrador')
+
                 <hr class="my-3">
                 <h6 class="navbar-heading p-0 text-muted">Configuracion</h6>
                 <ul class="navbar-nav">
@@ -50,7 +50,7 @@
                         </a>
                     </li>
                 </ul>
-                @endcan
+          
             </div>
         </div>
     </div>
