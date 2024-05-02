@@ -74,7 +74,7 @@ class PersonalsController extends Controller
      */
     public function show(personals $personals)
     {
-        $personal = personals::find($personals);
+       
     }
 
     /**

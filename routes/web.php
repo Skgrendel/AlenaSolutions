@@ -4,6 +4,7 @@ use App\Http\Controllers\ActividadesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PersonalsController;
 use App\Http\Controllers\ProyectosController;
+use App\Http\Controllers\RegisterPersonalsController;
 use App\Http\Controllers\ReportController;
 use App\Models\actividades;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/registrarse',[RegisterPersonalsController::class,'index'])->name('Registrarse');
 Auth::routes();
 Route::middleware('check_user_status')->group(function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -42,4 +44,5 @@ Route::resource('/personals', PersonalsController::class)->names('personals');
 Route::resource('/proyectos', ProyectosController::class)->names('proyectos');
 route::get('/proyectos/actividades/{proyecto}',[ProyectosController::class,'actividades'])->name('proyectos.actividades');
 Route::resource('/actividades',ActividadesController::class)->names('actividades');
+
 });
