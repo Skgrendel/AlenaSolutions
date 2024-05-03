@@ -134,7 +134,7 @@
                                         <label class="form-control-label" for="descripcion">Descripción<span
                                                 class="text-danger"> *</span></label>
                                         <textarea type="text" id="descripcion" name="descripcion" class="form-control"
-                                            placeholder="Descripcion de actividad" rows="5" required value="{{ old('descripcion') }}"></textarea>
+                                            placeholder="Descripcion de actividad" rows="5" required value="">{{ old('descripcion') }}</textarea>
                                         @if ($errors->has('descripcion'))
                                             <span class="text-danger">{{ $errors->first('descripcion') }}</span>
                                         @endif
@@ -144,7 +144,7 @@
                                     <div class="form-group">
                                         <label class="form-control-label" for="descripcion">Observaciones</label>
                                         <textarea type="text" id="observaciones" name="observaciones" class="form-control"
-                                            placeholder="Observacion de actividad" rows="5" required value="{{ old('observaciones') }}"></textarea>
+                                            placeholder="Observacion de actividad" rows="5" value="">{{ old('observaciones') }}</textarea>
                                         @if ($errors->has('observaciones'))
                                             <span class="text-danger">{{ $errors->first('observaciones') }}</span>
                                         @endif
