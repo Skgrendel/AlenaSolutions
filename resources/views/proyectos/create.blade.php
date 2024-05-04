@@ -11,7 +11,7 @@
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('proyectos.index') }}"><i
                                             class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="">Registro de Proyectos</a></li>
+                                <li class="breadcrumb-item"><a href="">Registro de Proyectos / Procesos</a></li>
                                 <li class="breadcrumb-item text-dark active" aria-current="page">Nuevo</li>
                             </ol>
                         </nav>
@@ -67,12 +67,13 @@
                                         <select name="area" id="area" class="form-control" required>
                                             <option value=""selected disabled>Seleccione su Area</option>
                                             @foreach ($areas as $id => $nombre)
-                                            <option value="{{ $id }}" {{ old('area') == $id ? 'selected' : '' }}>{{ $nombre }}</option>
+                                            <option value="{{ $id }}" {{ Auth::user()->personal->area == $id ? 'selected' : '' }}>{{ $nombre }}</option>
                                             @endforeach
                                         </select>
                                         @if ($errors->has('area'))
                                             <span class="text-danger">{{ $errors->first('area') }}</span>
                                         @endif
+
                                     </div>
                                 </div>
                             </div>

@@ -10,8 +10,8 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="?view=diagnostico">Proyectos</a></li>
-                                <li class="breadcrumb-item text-dark active" aria-current="page">Informacion de Proyectos
+                                <li class="breadcrumb-item"><a href="?view=diagnostico">Informacion de Proyectos / Procesos</a></li>
+                                <li class="breadcrumb-item text-dark active" aria-current="page">Home
                                 </li>
                             </ol>
                         </nav>
@@ -98,18 +98,18 @@
                                                     <a href="{{ route('actividades.show', $item->id) }}"
                                                         class="dropdown-item font-dropdown-documento">
                                                         <i class="fas fa-folder-plus"></i>
-                                                        <span>Crear Nueva Actividad</span>
+                                                        <span>Crear Actividad</span>
                                                     </a>
                                                     <a data-toggle="modal" data-target="#actividadesExistentes"
                                                         class="dropdown-item text-dark "
                                                         onclick="ModalActividad('{{ $item->id }}')">
                                                         <i class="far fa-folder-open"></i>
-                                                        <span> Ver Actividades Existentes</span>
+                                                        <span> Ver Actividades</span>
                                                     </a>
                                                     <a href="{{ route('proyectos.edit', $item->id) }}"
                                                         class="dropdown-item font-dropdown-documento">
                                                         <i class="far fa-edit"></i>
-                                                        <span>Editar Proyecto</span>
+                                                        <span>Editar</span>
                                                     </a>
                                                     <a href="#" class="dropdown-item font-dropdown-documento"
                                                         onclick="AlertRegistro('{{ $item->id }}')">
@@ -138,8 +138,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="col-6">
-                        <h4 class="mb-0">Proyecto</h4>
-                        <p class="text-sm mb-0">Actividades que pertenecen a este Proyecto.</p>
+                        <h4 class="mb-0">Proyectos / Procesos</h4>
+                        <p class="text-sm mb-0">Actividades que pertenecen a este Proyecto / Proceso.</p>
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

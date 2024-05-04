@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\personals;
 use App\Models\User;
+use App\Models\vs_areas;
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 
@@ -11,9 +12,9 @@ class RegisterPersonalsController extends Controller
 {
    public function index()
     {
-        $roles = Role::whereIn('name', ['Empleado'])->pluck('name', 'name')->all();
+        $areas = vs_areas::pluck('nombre', 'id');
         $userRoles = null;
-        return view('auth.register', compact('roles', 'userRoles'));
+        return view('auth.register', compact('areas'));
     }
 
     public  function store(Request $request)

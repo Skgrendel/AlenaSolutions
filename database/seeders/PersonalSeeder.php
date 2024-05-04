@@ -18,6 +18,7 @@ class PersonalSeeder extends Seeder
             'tipo_documento'=>'CC',
             'numero_documento'=>'0000',
             'nombres'=>'Administrador',
+            'area'=>'16',
             'apellidos'=>'Sistema',
             'correo'=>'admin@proderi.com',
         ]);

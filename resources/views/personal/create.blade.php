@@ -110,8 +110,6 @@
                                         @endif
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="telefono">Rol <span
@@ -125,6 +123,20 @@
                                                 </option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="area">Area<span
+                                            class="text-danger">*</span></label>
+                                    <select name="area" id="area" class="form-control">
+                                        <option value="" disabled selected>Seleccione un Area</option>
+                                      @foreach ($areas as $id => $nombre)
+                                        <option value="{{$id}}">{{$nombre}}</option>
+                                      @endforeach
+                                    </select>
                                     </div>
                                 </div>
                             </div>

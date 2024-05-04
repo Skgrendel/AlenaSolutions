@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\personals;
 use App\Models\User;
+use App\Models\vs_areas;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
@@ -23,9 +24,10 @@ class PersonalsController extends Controller
      */
     public function create()
     {
+        $areas = vs_areas::pluck('nombre', 'id');
         $roles = Role::pluck('name', 'name')->all();
         $userRoles = null;
-        return view('personal.create', compact('roles', 'userRoles'));
+        return view('personal.create', compact('roles', 'userRoles', 'areas'));
     }
 
     /**
@@ -74,7 +76,7 @@ class PersonalsController extends Controller
      */
     public function show(personals $personals)
     {
-       
+
     }
 
     /**

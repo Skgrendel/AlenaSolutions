@@ -79,7 +79,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-12">
+                                        <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="correo">Correo electrónico <span
                                                         class="text-danger">*</span></label>
@@ -88,6 +88,18 @@
                                                     @if ($errors->has('correo'))
                                                     <span class="text-danger">{{ $errors->first('correo') }}</span>
                                                 @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="area">Area<span
+                                                    class="text-danger">*</span></label>
+                                            <select name="area" id="area" class="form-control">
+                                                <option value="" disabled selected>Seleccione un Area</option>
+                                              @foreach ($areas as $id => $nombre)
+                                                <option value="{{$id}}">{{$nombre}}</option>
+                                              @endforeach
+                                            </select>
                                             </div>
                                         </div>
                                     </div>

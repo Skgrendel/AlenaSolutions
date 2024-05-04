@@ -14,7 +14,7 @@ class personals extends Model
         'numero_documento',
         'nombres',
         'apellidos',
-        'direccion',
+        'area',
         'correo',
         'estado',
     ];
