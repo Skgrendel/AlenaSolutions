@@ -62,7 +62,7 @@
                                                     class="avatar avatar-md bg-transparent "></td>
                                             <td>{{ $item->nombre }}</td>
                                             <td>{{ $item->areas->nombre }}</td>
-                                            <td>{{ $item->fecha_estimada }}</td>
+                                            <td>{{ $item->fecha_estimada->format('d-m-Y') }}</td>
                                             <td>
                                                 <div class="progress text-dark " style="height:10px;">
                                                     <div class="progress-bar progress-bar-striped bg-success"
@@ -120,8 +120,6 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                @else
-                                    <td colspan="8">No hay registros</td>
                                 @endif
                             </tbody>
                         </table>
@@ -156,7 +154,6 @@
     <script>
         function AlertRegistro(id) {
             $('#actividadesExistentes').modal('hide');
-
             Swal.fire({
                 title: '¿Estás seguro?',
                 text: "No podrás revertir esto!",

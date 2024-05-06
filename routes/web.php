@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ActividadesController;
+use App\Http\Controllers\FuntionController;
+use App\Http\Controllers\GrupodiagnosticoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PersonalsController;
 use App\Http\Controllers\ProyectosController;
@@ -45,5 +47,6 @@ Route::resource('/personals', PersonalsController::class)->names('personals');
 Route::resource('/proyectos', ProyectosController::class)->names('proyectos');
 route::get('/proyectos/actividades/{proyecto}',[ProyectosController::class,'actividades'])->name('proyectos.actividades');
 Route::resource('/actividades',ActividadesController::class)->names('actividades');
+Route::resource('/auditorias',GrupodiagnosticoController::class)->names('auditorias');
 
 });
