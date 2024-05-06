@@ -103,6 +103,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <small class='text-muted'><span class="text-muted"> SU CONTRASEÑA SERA SU NUMERO DE DOCUMENTO</span></small>
                                         <hr class="my-4">
                                     <button type="submit" id="btnCrearPersonal" class="btn btn-info mb-2">Crear
                                         Usuario</button>

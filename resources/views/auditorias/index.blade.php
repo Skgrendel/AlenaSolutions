@@ -127,18 +127,17 @@
                     <div class="col-12 mx-auto" style="width: 300px;">
                         <form id="formTipoDiagnostico" method="POST">
                             <div class="form-group">
-                                <div class="dropdown bootstrap-select show-tick bg-white form-control"><select
+                                <div class="dropdown bootstrap-select show-tick bg-white form-control">
+                                    <select
                                         class="selectpicker bg-white show-tick form-control" data-container="body"
-                                        data-header="Seleccione el tipo de prueba" id="tipoDiagnostico"
-                                        name="tipoDiagnostico" title="Seleccione el tipo de diagnostico"
+                                         id="tipoDiagnostico" name="tipoDiagnostico" title="Seleccione el tipo de diagnostico"
                                         data-style="btn-neutral font-weight-400" required="" tabindex="-98">
-                                        <optgroup data-divider="false" label="Recientes">
-                                            <option value="1"
-                                                data-content="<span> Auditoria Sagrilaf.</span> <small class='text-muted'>">
-                                            </option>
+                                        <optgroup data-divider="false" label="Diagnosticos">
+                                            <option value="1" data-content="<span> Auditoria Sagrilaf.</span> <small class='text-muted'>"></option>
                                         </optgroup>
                                     </select>
                                 </div>
+                                .
                                 <div class="modal-footer mt-3 ">
                                     <button type="button" class="btn btn-secondary"
                                         data-dismiss="modal">Cancelar</button>
@@ -147,6 +146,7 @@
                                 </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>

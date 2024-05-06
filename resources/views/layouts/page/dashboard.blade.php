@@ -27,6 +27,7 @@
 
     <!-- Bootstrap-select: No le puse CDN por que modifiqué los archivos -->
     <link rel="stylesheet" href="{{asset('assets/vendor/bootstrap-select/css/bootstrap-select.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/stepper/bsStepper.min.css')}}">
 
     <!-- SmartWizard - V. 4.3.1 ya que la version mas actual 5.1 genera error, habria que actualizar codigo -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/smartwizard@4.3.1/dist/css/smart_wizard.min.css">
@@ -90,6 +91,7 @@
     <!-- Argon JS -->
     <script src="{{asset('/assets/js/argon.min.js?v=1.1.0')}}"></script>
     {{-- Personalize js --}}
+    <script src="{{asset('assets/libs/stepper/bsStepper.min.js')}}"></script>
     @yield('js')
 </body>
 

@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <input type="email" class="form-control" id="email" name="email"
                                         value="{{ old('email') }}" required  autocomplete="email" autofocus
-                                        placeholder="Usuario">
+                                        placeholder="Correo Electronico">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
