@@ -61,7 +61,7 @@
                                             <td><img src="../assets/img/images/grupo.png"
                                                     class="avatar avatar-md bg-transparent "></td>
                                             <td>{{ $item->nombre }}</td>
-                                            <td>{{ $item->areas->nombre }}</td>
+                                            <td>{{ $item->areas?->nombre }}</td>
                                             <td>{{ $item->fecha_estimada->format('d-m-Y') }}</td>
                                             <td>
                                                 <div class="progress text-dark " style="height:10px;">
@@ -72,7 +72,7 @@
                                                         aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>{{ is_null($item->avance) ? 0 : $item->avance }}%
                                             </td>
-                                            <td>{{ $item->prioridades->nombre }}</td>
+                                            <td>{{ $item->prioridades?->nombre }}</td>
                                             <td>
                                                 @switch($item->estado)
                                                     @case(2)

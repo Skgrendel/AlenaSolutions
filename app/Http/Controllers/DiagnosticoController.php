@@ -12,7 +12,7 @@ class DiagnosticoController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -20,7 +20,8 @@ class DiagnosticoController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('diagnosticos.create');
     }
 
     /**

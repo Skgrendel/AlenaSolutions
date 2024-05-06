@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('diagnosticos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('preguntas_id')->constrained();
+            $table->foreignId('grupodiagnosticos_id')->constrained();
+            $table->foreignId('calificacion_id')->constrained();
+            $table->string('observacion')->nullable();
             $table->timestamps();
         });
     }

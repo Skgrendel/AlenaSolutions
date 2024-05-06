@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('/assets/css/argon.min.css?v=1.1.0')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('/assets/css/mystyle.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
     @yield('css')
 </head>
 
@@ -51,6 +52,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.3.5/dist/sweetalert2.min.js"></script>
     <!-- Argon JS -->
     <script src="{{asset('/assets/js/argon.min.js?v=1.1.0')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
     @yield('js')
 </body>
 

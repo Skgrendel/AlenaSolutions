@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActividadesController;
+use App\Http\Controllers\DiagnosticoController;
 use App\Http\Controllers\FuntionController;
 use App\Http\Controllers\GrupodiagnosticoController;
 use App\Http\Controllers\HomeController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\ProyectosController;
 use App\Http\Controllers\RegisterPersonalsController;
 use App\Http\Controllers\ReportController;
 use App\Models\actividades;
+use App\Models\diagnostico;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -45,8 +47,8 @@ Route::get('/proderi/departamentoit',[ReportController::class,'proderidepartamen
 Route::get('/proderi/departamentoit/soporte',[ReportController::class,'proderidepartamentoitsoporte'])->name('itsoporte');
 Route::resource('/personals', PersonalsController::class)->names('personals');
 Route::resource('/proyectos', ProyectosController::class)->names('proyectos');
-route::get('/proyectos/actividades/{proyecto}',[ProyectosController::class,'actividades'])->name('proyectos.actividades');
+Route::get('/proyectos/actividades/{proyecto}',[ProyectosController::class,'actividades'])->name('proyectos.actividades');
 Route::resource('/actividades',ActividadesController::class)->names('actividades');
 Route::resource('/auditorias',GrupodiagnosticoController::class)->names('auditorias');
-
+Route::resource('/diagnosticos',DiagnosticoController::class)->names('diagnosticos');
 });

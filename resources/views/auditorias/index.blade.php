@@ -137,7 +137,6 @@
                                         </optgroup>
                                     </select>
                                 </div>
-                                .
                                 <div class="modal-footer mt-3 ">
                                     <button type="button" class="btn btn-secondary"
                                         data-dismiss="modal">Cancelar</button>
@@ -146,7 +145,6 @@
                                 </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -192,7 +190,7 @@
             });
 
             if (form.valid() && $('#tipoDiagnostico').val() == "1") {
-                window.location.href = "{{ route('auditorias.create') }}";
+                window.location.href = "{{ route('diagnosticos.create') }}";
             }
         });
     </script>
