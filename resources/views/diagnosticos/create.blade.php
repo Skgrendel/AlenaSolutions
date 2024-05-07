@@ -147,12 +147,11 @@
                                                             {{$pregunta->pregunta}}
                                                         </label>
                                                     </div>
-
                                                     <div class="opcion-respuesta py-3 col-md-3">
                                                         <div class="dropdown bootstrap-select show-tick bg-white form-control">
                                                             <select class="selectpicker bg-white show-tick form-control"
-                                                                data-container="body" id="tipoDiagnostico"
-                                                                name="cumplimineto" title="Seleccione el Cumplimiento"
+                                                                data-container="body" id="tipoDiagnostico{{$pregunta->id}}"
+                                                                name="cumplimineto{{$pregunta->id}}" title="Seleccione el Cumplimiento"
                                                                 data-style="btn-neutral font-weight-400" required=""
                                                                 tabindex="-98">
                                                                 <optgroup data-divider="false" label="Cumplimiento">
@@ -164,13 +163,12 @@
                                                             </select>
                                                         </div>
                                                     </div>
-
                                                     <div class="campo-observaciones input-group input-group-alternative ">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="fas fa-pencil-alt"
                                                                     aria-hidden="true"></i></span>
                                                         </div>
-                                                        <textarea id="observaciones" data-id-checkbox="observaciones" name="observaciones"
+                                                        <textarea id="observaciones{{$pregunta->id}}" data-id-checkbox="observaciones{{$pregunta->id}}" name="observaciones{{$pregunta->id}}"
                                                             class="form-control form-control-alternative" rows="1" placeholder="Observaciones"></textarea>
                                                     </div>
                                                 </div>
