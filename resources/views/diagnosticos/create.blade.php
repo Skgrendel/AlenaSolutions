@@ -39,147 +39,166 @@
             <div class="col-xl-12 bg-white rounded mb-4 card ">
                 <div class="mt-4 p-2 mr-2">
                     <!-- SmartWizard html -->
-                    <div id="smartwizard">
-                        <ul class="nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#step-1">
-                                    <div class="num">1</div>
-                                    <span>Modulo 1</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#step-2">
-                                    <span class="num">2</span>
-                                    <span>Modulo 2</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#step-3">
-                                    <span class="num">3</span>
-                                    <span>Modulo 3</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#step-4">
-                                    <span class="num">4</span>
-                                    <span>Modulo 4</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#step-5">
-                                    <span class="num">5</span>
-                                    <span>Modulo 5</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#step-6">
-                                    <span class="num">6</span>
-                                    <span>Modulo 6</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#step-7">
-                                    <span class="num">7</span>
-                                    <span>Modulo 7</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#step-8">
-                                    <span class="num">8</span>
-                                    <span>Modulo 8</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#step-9">
-                                    <span class="num">9</span>
-                                    <span>Modulo 9</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#step-10">
-                                    <span class="num">10</span>
-                                    <span>Modulo 10</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#step-11">
-                                    <span class="num">11</span>
-                                    <span>Modulo 11</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#step-12">
-                                    <span class="num">12</span>
-                                    <span>Modulo 12</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#step-13">
-                                    <span class="num">13</span>
-                                    <span>Modulo 13</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <input type="text" hidden id="inputNombreDiagnostico">
-                        <input type="text" hidden id="inputDescripDiagnostico">
+                    <form method="POST" id="myForm" action="{{ route('diagnosticos.store') }}">
+                        @csrf
+                        <div id="smartwizard">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#step-1">
+                                        <div class="num">1</div>
+                                        <span>Modulo 1</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#step-2">
+                                        <span class="num">2</span>
+                                        <span>Modulo 2</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#step-3">
+                                        <span class="num">3</span>
+                                        <span>Modulo 3</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#step-4">
+                                        <span class="num">4</span>
+                                        <span>Modulo 4</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#step-5">
+                                        <span class="num">5</span>
+                                        <span>Modulo 5</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#step-6">
+                                        <span class="num">6</span>
+                                        <span>Modulo 6</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#step-7">
+                                        <span class="num">7</span>
+                                        <span>Modulo 7</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#step-8">
+                                        <span class="num">8</span>
+                                        <span>Modulo 8</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#step-9">
+                                        <span class="num">9</span>
+                                        <span>Modulo 9</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#step-10">
+                                        <span class="num">10</span>
+                                        <span>Modulo 10</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#step-11">
+                                        <span class="num">11</span>
+                                        <span>Modulo 11</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#step-12">
+                                        <span class="num">12</span>
+                                        <span>Modulo 12</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#step-13">
+                                        <span class="num">13</span>
+                                        <span>Modulo 13</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <input type="text" hidden id="id_diagnostico" name="id_diagnostico"
+                                value="{{ $empresa->id }}">
+                            <input type="text" hidden id="inputNombreDiagnostico">
+                            <input type="text" hidden id="inputDescripDiagnostico">
 
-                        <div class="tab-content">
-                            @for ($i = 1; $i <= 13; $i++)
-                            <div id="step-{{$i}}" class="tab-pane" role="tabpanel" aria-labelledby="step-{{$i}}">
-                                <div id="modulo{{$i}}" class="tab-pane step-content" style="display: block;">
-                                    <div class="col text-center py-4">
-                                        @foreach ($encabezados as $encabezado)
-                                            @if ($encabezado->id == $i)
-                                                <h2 style="color: #525f7f;" class="mb-1">{{ $encabezado->nombre }}</h2>
-                                                <p class="text-uppercase text-muted font-weight-500">Módulo {{ $i }}</p>
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                    @foreach ($mods["mod{$i}"] as $pregunta )
-                                        <div class="col-md-12 mb-3 px-2 px-md-4" id="contenedorPregunta{{$pregunta->id}}">
-                                            <div class="card border card-body px-3 px-md-4 shadow-none bg-cuadro"
-                                                id="cardPregunta{{$pregunta->id}}">
-                                                <div class="form-group fade show my-3 mb-0">
-                                                    <div class="pregunta">
-                                                        <span class="text-primary opacity-8 display-4 d-inline txtNumeros">{{$pregunta->id}}
-                                                        </span>
-                                                        <label for="" class="d-inline txtPreguntas">
-                                                            {{$pregunta->pregunta}}
-                                                        </label>
-                                                    </div>
-                                                    <div class="opcion-respuesta py-3 col-md-3">
-                                                        <div class="dropdown bootstrap-select show-tick bg-white form-control">
-                                                            <select class="selectpicker bg-white show-tick form-control"
-                                                                data-container="body" id="tipoDiagnostico{{$pregunta->id}}"
-                                                                name="cumplimineto{{$pregunta->id}}" title="Seleccione el Cumplimiento"
-                                                                data-style="btn-neutral font-weight-400" required=""
-                                                                tabindex="-98">
-                                                                <optgroup data-divider="false" label="Cumplimiento">
-                                                                    @foreach ($calificaciones as $id => $nombre)
-                                                                        <option value="{{ $id }}"
-                                                                            data-content="<span> {{ $nombre }}</span> <small class='text-muted'>">
-                                                                        </option>
-                                                                    @endforeach
-                                                            </select>
+                            <div class="tab-content">
+                                @for ($i = 1; $i <= 13; $i++)
+                                    <div id="step-{{ $i }}" class="tab-pane" role="tabpanel"
+                                        aria-labelledby="step-{{ $i }}">
+                                        <div id="modulo{{ $i }}" class="tab-pane step-content"
+                                            style="display: block;">
+                                            <div class="col text-center py-4">
+                                                @foreach ($encabezados as $encabezado)
+                                                    @if ($encabezado->id == $i)
+                                                        <h2 style="color: #525f7f;" class="mb-1">
+                                                            {{ $encabezado->nombre }}</h2>
+                                                        <p class="text-uppercase text-muted font-weight-500">Módulo
+                                                            {{ $i }}</p>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                            @foreach ($mods["mod{$i}"] as $pregunta)
+                                                <div class="col-md-12 mb-3 px-2 px-md-4"
+                                                    id="contenedorPregunta{{ $pregunta->id }}">
+                                                    <div class="card border card-body px-3 px-md-4 shadow-none bg-cuadro"
+                                                        id="cardPregunta{{ $pregunta->id }}">
+                                                        <div class="form-group fade show my-3 mb-0">
+                                                            <div class="pregunta">
+                                                                <span
+                                                                    class="text-primary opacity-8 display-4 d-inline txtNumeros">{{ $pregunta->id }}
+                                                                </span>
+                                                                <label for="" class="d-inline txtPreguntas">
+                                                                    {{ $pregunta->pregunta }}
+                                                                </label>
+                                                            </div>
+                                                            <div class="opcion-respuesta py-3 col-md-3">
+                                                                <div
+                                                                    class="dropdown bootstrap-select show-tick bg-white form-control">
+                                                                    <select
+                                                                        class="selectpicker bg-white show-tick form-control"
+                                                                        data-container="body"
+                                                                        id="tipoDiagnostico{{ $pregunta->id }}"
+                                                                        name="cumplimineto{{ $pregunta->id }}"
+                                                                        title="Seleccione el Cumplimiento"
+                                                                        data-style="btn-neutral font-weight-400"
+                                                                        tabindex="-98">
+                                                                        <optgroup data-divider="false"
+                                                                            label="Cumplimiento">
+                                                                            @foreach ($calificaciones as $id => $nombre)
+                                                                                <option value="{{ $id }}"
+                                                                                    data-content="<span> {{ $nombre }}</span> <small class='text-muted'>">
+                                                                                </option>
+                                                                            @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="campo-observaciones input-group input-group-alternative ">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text"><i
+                                                                            class="fas fa-pencil-alt"
+                                                                            aria-hidden="true"></i></span>
+                                                                </div>
+                                                                <textarea id="observaciones{{ $pregunta->id }}" data-id-checkbox="observaciones{{ $pregunta->id }}"
+                                                                    name="observaciones{{ $pregunta->id }}" class="form-control form-control-alternative" rows="1"
+                                                                    placeholder="Observaciones"></textarea>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="campo-observaciones input-group input-group-alternative ">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text"><i class="fas fa-pencil-alt"
-                                                                    aria-hidden="true"></i></span>
-                                                        </div>
-                                                        <textarea id="observaciones{{$pregunta->id}}" data-id-checkbox="observaciones{{$pregunta->id}}" name="observaciones{{$pregunta->id}}"
-                                                            class="form-control form-control-alternative" rows="1" placeholder="Observaciones"></textarea>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endforeach
                                         </div>
-                                    @endforeach
-                                </div>
+                                    </div>
+                                @endfor
                             </div>
-                        @endfor
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -200,71 +219,26 @@
                     position: 'bottom', // none|top|bottom|both
                     showNextButton: true, // show/hide a Next button
                     showPreviousButton: true, // show/hide a Previous button
-                    extraHtml: [
-                        $('<button></button>').text('Guardar')
-                        .attr('type', 'button')
-                        .addClass('btn btn-outline-success mt-3 mt-md-0 btnFinalizar')
-                        .on('click', function() {
-                            Swal.fire({
-                                title: '¿Ya terminaste?',
-                                text: "Estamos preparados para generar los resultados.",
-                                icon: 'question',
-                                showCancelButton: true,
-                                confirmButtonText: '¡Si, ver resultados!',
-                                cancelButtonText: 'No, cancelar',
-                                buttonsStyling: false,
-                                customClass: {
-                                    confirmButton: 'btn btn-primary',
-                                    cancelButton: 'btn btn-neutral',
-                                }
-                            }).then((result) => {
-                                if (result.value) {
-                                    var idDiagnostico = getParameter('idDiagnostico');
-                                    var request = $.ajax({
-                                        url: 'models/diagnostico/guardarStatusCompletado.php',
-                                        method: "POST",
-                                        data: {
-                                            'idDiagnostico': idDiagnostico,
-                                        },
-                                        // contentType: false,
-                                        // processData: false,
-                                        dataType: 'json',
-
-                                        beforeSend: function(xhr) {}
-                                    });
-
-                                    request.done(function(response) {
-                                        if (response.status == "statusGuardado") {
-                                            Toast.fire({
-                                                icon: 'success',
-                                                timer: 500,
-                                                title: 'Redireccionando a los resultados.',
-                                                position: 'top-end',
-                                            });
-
-                                            setTimeout(() => {
-                                                verResultadosDiagnostico(
-                                                    true,
-                                                    idGrupoDiagnostico,
-                                                    idDiagnostico);
-                                            }, 500);
-                                        }
-
-                                    });
-
-                                    request.fail(function(jqXHR, textStatus) {});
-
-                                }
-                            });
-                        }),
-                    ] // Extra html to show on toolbar
+                    extraHtml: `<button class="btn btn-success" onclick="onFinish()">Guardar</button>
+                <button class="btn btn-secondary" onclick="onCancel()">Cancelar</button>` // Extra html to show on toolbar
                 },
                 lang: { // Language variables for button
                     next: 'Siguiente',
                     previous: 'Anterior',
                 },
             });
+
+
         });
+    </script>
+    <script>
+        function onFinish() {
+            document.getElementById('myForm').submit();
+        }
+
+        function onCancel() {
+            $('#smartwizard').smartWizard("reset");
+        }
     </script>
     <script>
         $(document).ready(function() {
@@ -404,9 +378,9 @@
                         });
 
                     }
-                }else if(result.dismiss === Swal.DismissReason.cancel){
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
                     window.location.href = "{{ route('auditorias.index') }}";
-        }
+                }
             });
         }
     </script>

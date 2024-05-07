@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\calificaciones;
 use App\Models\diagnostico;
 use App\Models\encabezados_preguntas;
+use App\Models\grupodiagnostico;
 use App\Models\preguntas;
 use Illuminate\Http\Request;
 
@@ -22,13 +23,6 @@ class DiagnosticoController extends Controller
      */
     public function create()
     {
-        $mods = [];
-        for ($i = 1; $i <= 13; $i++) {
-            $mods["mod{$i}"] = preguntas::where('grupo', (string)$i)->get();
-        }
-        $calificaciones = calificaciones::pluck('nombre', 'id');
-        $encabezados = encabezados_preguntas::all();
-        return view('diagnosticos.create', compact('calificaciones', 'mods', 'encabezados'));
     }
 
     /**
@@ -36,21 +30,35 @@ class DiagnosticoController extends Controller
      */
     public function store(Request $request)
     {
+
+        $data = $request->all();
+        
         $nombreDiagnostico = $request->get('nombreDiagnostico');
         $descripcionDiagnostico = $request->get('descripcionDiagnostico');
         return response()->json([
+            'data' => $data,
             'status' => 'diagnosticoGuardado',
             'nombreDiagnostico' => $nombreDiagnostico,
             'descripcionDiagnostico' => $descripcionDiagnostico
         ]);
+
     }
+
 
     /**
      * Display the specified resource.
      */
-    public function show(diagnostico $diagnostico)
+    public function show(string $id)
     {
-        //
+
+        $empresa = grupodiagnostico::findOrFail($id);
+        $mods = [];
+        for ($i = 1; $i <= 13; $i++) {
+            $mods["mod{$i}"] = preguntas::where('grupo', (string)$i)->get();
+        }
+        $calificaciones = calificaciones::pluck('nombre', 'id');
+        $encabezados = encabezados_preguntas::all();
+        return view('diagnosticos.create', compact('calificaciones', 'mods', 'encabezados', 'empresa'));
     }
 
     /**

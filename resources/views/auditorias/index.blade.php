@@ -55,6 +55,7 @@
                                 @if (isset($datatable))
                                     @foreach ($datatable as $item)
                                         <tr>
+                                            <input type="text" hidden id="id_diagnostico" value="{{ $item->id }}">
                                             <td><img src="../assets/img/images/grupo.png"
                                                     class="avatar avatar-md bg-transparent "></td>
                                             <td>{{ $item->nombre_empresa }}</td>
@@ -197,11 +198,13 @@
                     type: 'POST',
                     data: form.serialize(),
                     headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     success: function(response) {
                         // Aquí puedes manejar la respuesta del servidor
-                        window.location.href = "{{ route('diagnosticos.create') }}";
+                        var url = "{{ route('diagnosticos.show', ['diagnostico' => ':id']) }}";
+                        url = url.replace(':id', $('#id_diagnostico').val());
+                        window.location.href = url;
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         // Aquí puedes manejar los errores
