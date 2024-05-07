@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('direccion_empresa2')->nullable( );
             $table->string('telefono_fijo')->nullable( );
             $table->string('telefono_celular')->nullable( );
-            $table->string('nombre_oficial_cumplimiento');
+            $table->string('nombre_oficial_cumplimiento')->nullable( );
             $table->timestamps();
         });
     }
