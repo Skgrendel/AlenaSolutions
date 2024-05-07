@@ -28,6 +28,12 @@
                             <span class="nav-link-text">Procesos de Area</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('auditorias.index') }}">
+                            <i class="fas fa-swatchbook text-info"></i>
+                            <span class="nav-link-text">Auditorias</span>
+                        </a>
+                    </li>
                 </ul>
 
                 <hr class="my-3">
