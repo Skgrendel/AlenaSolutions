@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('objetivo')->nullable();
             $table->foreignId('preguntas_id')->constrained();
             $table->foreignId('grupodiagnosticos_id')->constrained();
-            $table->foreignId('calificacion_id')->constrained();
+            $table->unsignedBigInteger('calificaciones_id');
             $table->string('observacion')->nullable();
+            $table->foreign('calificaciones_id')->references('id')->on('calificaciones');
             $table->timestamps();
         });
     }
