@@ -413,9 +413,6 @@
 
                     }
                 }
-            }else{
-                window.location.href = "{{ route('auditorias.index') }}";
-
             });
         }
     </script>

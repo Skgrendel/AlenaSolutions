@@ -68,7 +68,7 @@
                                             Asignada <span class="text-danger">*</span></label>
                                         <input type="text" id="personal_asignado" name="personal_asignado"
                                             class="form-control" placeholder="Ingrese El Nombre de la Persona Asignada"
-                                            required value="{{ old('nombre') }}">
+                                            required value="{{ Auth::user()->personal->nombres. ' ' .Auth::user()->personal->apellidos  }}">
                                         @if ($errors->has('nombre'))
                                             <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                         @endif
