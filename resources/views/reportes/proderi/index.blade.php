@@ -79,6 +79,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="card border mr-1 ">
+                                        <div class="card-body text-center">
+                                            <div class=" d-flex justify-content-center ">
+                                                <img alt="" src="{{asset('/assets/img/images/proderi.svg')}}"
+                                                    class="avatar avatar-xl rounded m-2 bg-transparent ">
+                                                <a type="button" href="{{route('proderidebidadiligencia')}}" class="btn">
+                                                    <div class="d-block text-center">
+                                                        <br> <span class="text-sm">Debida Diligencia</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                     @endcan
                                 </div>
                             </div>

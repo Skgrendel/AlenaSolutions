@@ -31,7 +31,6 @@
 
     <!-- SmartWizard - V. 4.3.1 ya que la version mas actual 5.1 genera error, habria que actualizar codigo -->
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/smartwizard@4.3.1/dist/css/smart_wizard_theme_arrows.min.css">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/argon.min.css?v=1.1.0')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/css/mystyle.css')}}">

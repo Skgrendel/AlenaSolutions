@@ -29,12 +29,16 @@ class ReportController extends Controller
         return view('reportes.qdata');
     }
 
+
     public function proderiIndex(){
         return view('reportes.proderi.index');
     }
 
     public function proderiGestion(){
         return view('reportes.proderi.gestion');
+    }
+    public function debidadiligencia(){
+        return view('reportes.proderi.debidadiligencia');
     }
     public function proderiAdministrativo(){
         return view('reportes.proderi.administrativa');

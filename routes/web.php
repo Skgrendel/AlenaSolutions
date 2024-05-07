@@ -40,6 +40,7 @@ Route::get('/operaciones',[ReportController::class,'operacion'])->name('ReportOp
 Route::get('/qanalytic',[ReportController::class,'qanalytic'])->name('ReportQanalytic');
 Route::get('/proderi',[ReportController::class,'proderiIndex'])->name('proderiIndex');
 Route::get('/proderi/gestion',[ReportController::class,'proderiGestion'])->name('proderiGestion');
+Route::get('/proderi/debidadiligencia',[ReportController::class,'debidadiligencia'])->name('proderidebidadiligencia');
 Route::get('/proderi/administrativo',[ReportController::class,'proderiAdministrativo'])->name('proderiAdmi');
 Route::get('/proderi/administrativo/compras',[ReportController::class,'proderiAdministrativocompras'])->name('prodericompras');
 Route::get('/proderi/administrativo/permisos',[ReportController::class,'proderiAdministrativopermisos'])->name('proderipermisos');

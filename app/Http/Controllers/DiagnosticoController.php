@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\calificaciones;
 use App\Models\diagnostico;
 use Illuminate\Http\Request;
 
@@ -20,8 +21,8 @@ class DiagnosticoController extends Controller
      */
     public function create()
     {
-
-        return view('diagnosticos.create');
+        $calificaciones = calificaciones::pluck('nombre', 'id');
+        return view('diagnosticos.create', compact('calificaciones'));
     }
 
     /**
@@ -29,7 +30,13 @@ class DiagnosticoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nombreDiagnostico = $request->get('nombreDiagnostico');
+        $descripcionDiagnostico = $request->get('descripcionDiagnostico');
+        return response()->json([
+            'status' => 'diagnosticoGuardado',
+            'nombreDiagnostico' => $nombreDiagnostico,
+            'descripcionDiagnostico' => $descripcionDiagnostico
+        ]);
     }
 
     /**
