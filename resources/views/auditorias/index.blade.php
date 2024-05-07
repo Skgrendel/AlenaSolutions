@@ -193,24 +193,18 @@
             });
 
             if (form.valid() && $('#tipoDiagnostico').val() == "1") {
-                $.ajax({
-                    url: "{{ route('diagnosticos.store') }}",
-                    type: 'POST',
-                    data: form.serialize(),
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-                        // Aquí puedes manejar la respuesta del servidor
-                        var url = "{{ route('diagnosticos.show', ['diagnostico' => ':id']) }}";
-                        url = url.replace(':id', $('#id_diagnostico').val());
-                        window.location.href = url;
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        // Aquí puedes manejar los errores
-                        console.log(textStatus, errorThrown);
-                    }
-                });
+                var id_diagnostico = $('#id_diagnostico').val();
+                if (id_diagnostico) {
+                    var url = "{{ route('diagnosticos.show', ['diagnostico' => ':id']) }}";
+                    url = url.replace(':id', id_diagnostico);
+                    window.location.href = url;
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'No se pudo obtener el id del diagnostico.',
+                        icon: 'error'
+                    });
+                }
 
             }
         });

@@ -41,6 +41,11 @@
                     <!-- SmartWizard html -->
                     <form method="POST" id="myForm" action="{{ route('diagnosticos.store') }}">
                         @csrf
+
+                        <input type="text" hidden id="id_diagnostico" name="id_diagnostico" value="{{ $empresa->id }}">
+                        <input type="text" hidden id="inputNombreDiagnostico" name="inputNombreDiagnostico">
+                        <input type="text" hidden id="inputDescripDiagnostico" name="inputDescripDiagnostico">
+
                         <div id="smartwizard">
                             <ul class="nav">
                                 <li class="nav-item">
@@ -122,11 +127,6 @@
                                     </a>
                                 </li>
                             </ul>
-                            <input type="text" hidden id="id_diagnostico" name="id_diagnostico"
-                                value="{{ $empresa->id }}">
-                            <input type="text" hidden id="inputNombreDiagnostico">
-                            <input type="text" hidden id="inputDescripDiagnostico">
-
                             <div class="tab-content">
                                 @for ($i = 1; $i <= 13; $i++)
                                     <div id="step-{{ $i }}" class="tab-pane" role="tabpanel"
@@ -153,6 +153,7 @@
                                                                 <span
                                                                     class="text-primary opacity-8 display-4 d-inline txtNumeros">{{ $pregunta->id }}
                                                                 </span>
+                                                                <input type="text" hidden value="{{ $pregunta->id }}" name="preguntas_id{{ $pregunta->id }}">
                                                                 <label for="" class="d-inline txtPreguntas">
                                                                     {{ $pregunta->pregunta }}
                                                                 </label>
@@ -216,26 +217,23 @@
                 backButtonSupport: true, // Enable the back button support
                 enableUrlHash: true, // Enable selection of the step based on url hash
                 toolbar: {
-                    position: 'bottom', // none|top|bottom|both
+                    position: 'top', // none|top|bottom|both
                     showNextButton: true, // show/hide a Next button
                     showPreviousButton: true, // show/hide a Previous button
-                    extraHtml: `<button class="btn btn-success" onclick="onFinish()">Guardar</button>
-                <button class="btn btn-secondary" onclick="onCancel()">Cancelar</button>` // Extra html to show on toolbar
+                    extraHtml: `<button class="btn btn-success btn-sm" onclick="onFinish()">Guardar</button>
+                <button class="btn btn-secondary btn-sm " onclick="onCancel()">Cancelar</button>` // Extra html to show on toolbar
                 },
                 lang: { // Language variables for button
                     next: 'Siguiente',
                     previous: 'Anterior',
                 },
             });
-
-
         });
     </script>
     <script>
         function onFinish() {
             document.getElementById('myForm').submit();
         }
-
         function onCancel() {
             $('#smartwizard').smartWizard("reset");
         }
@@ -301,92 +299,15 @@
                     $("#inputNombreDiagnostico").val(result.value[0]);
                     $("#inputDescripDiagnostico").val(result.value[1]);
 
-                    console.log($("#inputNombreDiagnostico").val());
-                    console.log($("#inputDescripDiagnostico").val());
-                    if ($("#inputNombreDiagnostico").val().length > 0) {
-
-                        let idGrupoDiagnostico = getParameter('idGrupoDiagnostico');
-                        let idGrupoPreguntas = getParameter('idGrupoPreguntas');
-
-                        let formPreguntasData = new FormData();
-                        formPreguntasData.append("nombreDiagnostico", result.value[0]);
-                        formPreguntasData.append("descripcionDiagnostico", result.value[1]);
-
-                        var request = $.ajax({
-                            url: '/diagnosticos',
-                            method: "POST",
-                            data: formPreguntasData,
-                            contentType: false,
-                            processData: false,
-                            dataType: 'json',
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-
-                            beforeSend: function(xhr) {
-                                Swal.fire({
-                                    allowOutsideClick: false,
-                                    allowEscapeKey: false,
-                                    showConfirmButton: false,
-                                    html: '<span class="swal2-title" style="font-size: 1.3rem;">Estamos preparando todo... <i class="fas fa-sync fa-spin text-success"></i></span>'
-                                });
-                            }
-                        });
-
-                        request.done(function(response) {
-                            if (response.status == 'diagnosticoGuardado') {
-                                Swal.fire({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 8000,
-                                    timerProgressBar: true,
-                                    icon: 'success',
-                                    title: '¡Todo esta listo, puedes comenzar ahora!',
-                                    position: 'top-end',
-                                    didOpen: (toast) => {
-                                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                                        toast.addEventListener('mouseleave', Swal
-                                            .resumeTimer)
-                                    }
-                                });
-
-                            } else {
-                                Swal.fire({
-                                    allowOutsideClick: false,
-                                    allowEscapeKey: false,
-                                    customClass: {
-                                        confirmButton: 'btn btn-primary',
-                                        cancelButton: 'btn btn-neutral',
-                                    },
-                                    showConfirmButton: true,
-                                    confirmButtonText: 'Intentar con otro nombre',
-                                    icon: 'error',
-                                    title: 'Ya existe un diagnostico con el mismo nombre',
-                                    text: response.msj,
-
-                                }).then((result) => {
-
-                                    if (result.isConfirmed) {
-                                        location.reload();
-                                    }
-                                })
-                            }
-                        });
-                        request.fail(function(jqXHR, textStatus) {
-                            alert('Error al guardar como primera instancia el diagnostico');
-                        });
-
-                    }
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     window.location.href = "{{ route('auditorias.index') }}";
                 }
             });
         }
     </script>
-    {{-- <script>
+    <script>
         $(document).ready(function() {
             primerGuardadoDiagnostico();
         });
-    </script> --}}
+    </script>
 @endsection

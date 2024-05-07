@@ -32,16 +32,34 @@ class DiagnosticoController extends Controller
     {
 
         $data = $request->all();
-        
-        $nombreDiagnostico = $request->get('nombreDiagnostico');
-        $descripcionDiagnostico = $request->get('descripcionDiagnostico');
-        return response()->json([
-            'data' => $data,
-            'status' => 'diagnosticoGuardado',
-            'nombreDiagnostico' => $nombreDiagnostico,
-            'descripcionDiagnostico' => $descripcionDiagnostico
-        ]);
 
+        //dd($data);
+        // Prepara los datos para la inserción masiva
+        $diagnosticos = [];
+
+        $diagnosticos = [
+            'nombre' => $data['inputNombreDiagnostico'],
+            'objetivo' => $data['inputDescripDiagnostico'],
+            'grupodiagnosticos_id' => $data['id_diagnostico'],
+        ];
+
+        $cantidad = count(array_filter(array_keys($data), function($key) {
+            return strpos($key, 'preguntas_id') === 0;
+        }));
+
+        for ($i = 1; $i <= $cantidad ; $i++) {
+            $diagnosticos[] = [
+                'preguntas_id' => $data['preguntas_id' . $i],
+                'calificacion_id' => $data['cumplimineto' . $i],
+                'observacion' => $data['observaciones' . $i],
+            ];
+        }
+
+        dd($diagnosticos);
+        
+        diagnostico::insert($diagnosticos);
+
+        return redirect()->route('auditorias.index')->with('title','Exito')->with('icon','success')->with('success', 'Diagnóstico creado con éxito');
     }
 
 

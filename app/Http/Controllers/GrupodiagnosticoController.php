@@ -49,7 +49,6 @@ class GrupodiagnosticoController extends Controller
     public function edit(string $id)
     {
         $diagnostico = grupodiagnostico::findOrFail($id);
-
         return view('auditorias.edit', compact('diagnostico'));
     }
 
