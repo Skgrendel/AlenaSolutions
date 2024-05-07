@@ -62,7 +62,7 @@
                                                     class="avatar avatar-md bg-transparent "></td>
                                             <td>{{ $item->nombre }}</td>
                                             <td>{{ $item->areas?->nombre }}</td>
-                                            <td>{{ $item->fecha_estimada->format('d-m-Y') }}</td>
+                                            <td>{{ $item->fecha_estimada->format('Y-m-d') }}</td>
                                             <td>
                                                 <div class="progress text-dark " style="height:10px;">
                                                     <div class="progress-bar progress-bar-striped bg-success"
