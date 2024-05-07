@@ -37,5 +37,11 @@ class grupodiagnostico extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function diagnosticos()
+    {
+        return $this->hasMany(diagnostico::class);
+    }
+
+    
 
 }

@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class preguntas extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'pregunta',
+        'tipo',
+        'estado',
+    ];
+
+    public function diagnosticos()
+    {
+        return $this->hasMany(diagnostico::class);
+    }
+
+
 }

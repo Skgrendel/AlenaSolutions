@@ -124,68 +124,62 @@
                         <input type="text" hidden id="inputDescripDiagnostico">
 
                         <div class="tab-content">
-                            <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
-                                <div id="modulo1" class="tab-pane step-content" style="display: block;">
+                            @for ($i = 1; $i <= 13; $i++)
+                            <div id="step-{{$i}}" class="tab-pane" role="tabpanel" aria-labelledby="step-{{$i}}">
+                                <div id="modulo{{$i}}" class="tab-pane step-content" style="display: block;">
                                     <div class="col text-center py-4">
-                                        <h2 style="color: #525f7f;" class="mb-1">Ámbito de aplicación del régimen de
-                                            autocontrol y gestión del riesgo integral LA/FT/FPADM.</h2>
-                                        <p class="text-uppercase text-muted font-weight-500">Módulo 1</p>
+                                        @foreach ($encabezados as $encabezado)
+                                            @if ($encabezado->id == $i)
+                                                <h2 style="color: #525f7f;" class="mb-1">{{ $encabezado->nombre }}</h2>
+                                                <p class="text-uppercase text-muted font-weight-500">Módulo {{ $i }}</p>
+                                            @endif
+                                        @endforeach
                                     </div>
-                                    <div class="col-md-12 mb-3 px-2 px-md-4" id="contenedorPregunta51">
-                                        <div class="card border card-body px-3 px-md-4 shadow-none bg-cuadro"
-                                            id="cardPregunta51">
-                                            <div class="form-group fade show my-3 mb-0">
-                                                <div class="pregunta">
-                                                    <span class="text-primary opacity-8 display-4 d-inline txtNumeros">1.
-                                                    </span>
-                                                    <label for="" class="d-inline txtPreguntas">
-                                                        El Sagrlaft de la empresa tuvo en cuenta las 40 recomendaciones del
-                                                        GAFI?
-                                                    </label>
-                                                </div>
-
-                                                <div class="opcion-respuesta py-3 col-md-3">
-                                                    <div class="dropdown bootstrap-select show-tick bg-white form-control">
-                                                        <select class="selectpicker bg-white show-tick form-control"
-                                                            data-container="body" id="tipoDiagnostico"
-                                                            name="cumplimineto" title="Seleccione el Cumplimiento"
-                                                            data-style="btn-neutral font-weight-400" required=""
-                                                            tabindex="-98">
-                                                            <optgroup data-divider="false" label="Cumplimiento">
-                                                                @foreach ($calificaciones as $id => $nombre)
-                                                                    <option value="{{ $id }}"
-                                                                        data-content="<span> {{ $nombre }}</span> <small class='text-muted'>">
-                                                                    </option>
-                                                                @endforeach
-                                                        </select>
+                                    @foreach ($mods["mod{$i}"] as $pregunta )
+                                        <div class="col-md-12 mb-3 px-2 px-md-4" id="contenedorPregunta{{$pregunta->id}}">
+                                            <div class="card border card-body px-3 px-md-4 shadow-none bg-cuadro"
+                                                id="cardPregunta{{$pregunta->id}}">
+                                                <div class="form-group fade show my-3 mb-0">
+                                                    <div class="pregunta">
+                                                        <span class="text-primary opacity-8 display-4 d-inline txtNumeros">{{$pregunta->id}}
+                                                        </span>
+                                                        <label for="" class="d-inline txtPreguntas">
+                                                            {{$pregunta->pregunta}}
+                                                        </label>
                                                     </div>
-                                                </div>
 
-                                                <div class="campo-observaciones input-group input-group-alternative ">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="fas fa-pencil-alt"
-                                                                aria-hidden="true"></i></span>
+                                                    <div class="opcion-respuesta py-3 col-md-3">
+                                                        <div class="dropdown bootstrap-select show-tick bg-white form-control">
+                                                            <select class="selectpicker bg-white show-tick form-control"
+                                                                data-container="body" id="tipoDiagnostico"
+                                                                name="cumplimineto" title="Seleccione el Cumplimiento"
+                                                                data-style="btn-neutral font-weight-400" required=""
+                                                                tabindex="-98">
+                                                                <optgroup data-divider="false" label="Cumplimiento">
+                                                                    @foreach ($calificaciones as $id => $nombre)
+                                                                        <option value="{{ $id }}"
+                                                                            data-content="<span> {{ $nombre }}</span> <small class='text-muted'>">
+                                                                        </option>
+                                                                    @endforeach
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                    <textarea id="observaciones" data-id-checkbox="observaciones" name="observaciones"
-                                                        class="form-control form-control-alternative" rows="1" placeholder="Observaciones"></textarea>
+
+                                                    <div class="campo-observaciones input-group input-group-alternative ">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="fas fa-pencil-alt"
+                                                                    aria-hidden="true"></i></span>
+                                                        </div>
+                                                        <textarea id="observaciones" data-id-checkbox="observaciones" name="observaciones"
+                                                            class="form-control form-control-alternative" rows="1" placeholder="Observaciones"></textarea>
+                                                    </div>
                                                 </div>
                                             </div>
-
-
                                         </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-
                             </div>
-                            <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
-                                Step content
-                            </div>
-                            <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3">
-                                Step content
-                            </div>
-                            <div id="step-4" class="tab-pane" role="tabpanel" aria-labelledby="step-4">
-                                Step content
-                            </div>
+                        @endfor
                         </div>
                     </div>
                 </div>
@@ -412,13 +406,15 @@
                         });
 
                     }
-                }
+                }else if(result.dismiss === Swal.DismissReason.cancel){
+                    window.location.href = "{{ route('auditorias.index') }}";
+        }
             });
         }
     </script>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             primerGuardadoDiagnostico();
         });
-    </script>
+    </script> --}}
 @endsection

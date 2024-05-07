@@ -128,12 +128,14 @@
                         <form id="formTipoDiagnostico" method="POST">
                             <div class="form-group">
                                 <div class="dropdown bootstrap-select show-tick bg-white form-control">
-                                    <select
-                                        class="selectpicker bg-white show-tick form-control" data-container="body"
-                                         id="tipoDiagnostico" name="tipoDiagnostico" title="Seleccione el tipo de diagnostico"
-                                        data-style="btn-neutral font-weight-400" required="" tabindex="-98">
+                                    <select class="selectpicker bg-white show-tick form-control" data-container="body"
+                                        id="tipoDiagnostico" name="tipoDiagnostico"
+                                        title="Seleccione el tipo de diagnostico" data-style="btn-neutral font-weight-400"
+                                        required="" tabindex="-98">
                                         <optgroup data-divider="false" label="Diagnosticos">
-                                            <option value="1" data-content="<span> Auditoria Sagrilaf.</span> <small class='text-muted'>"></option>
+                                            <option value="1"
+                                                data-content="<span> Auditoria Sagrilaf.</span> <small class='text-muted'>">
+                                            </option>
                                         </optgroup>
                                     </select>
                                 </div>
@@ -190,7 +192,23 @@
             });
 
             if (form.valid() && $('#tipoDiagnostico').val() == "1") {
-                window.location.href = "{{ route('diagnosticos.create') }}";
+                $.ajax({
+                    url: "{{ route('diagnosticos.store') }}",
+                    type: 'POST',
+                    data: form.serialize(),
+                    headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                    success: function(response) {
+                        // Aquí puedes manejar la respuesta del servidor
+                        window.location.href = "{{ route('diagnosticos.create') }}";
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        // Aquí puedes manejar los errores
+                        console.log(textStatus, errorThrown);
+                    }
+                });
+
             }
         });
     </script>

@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('diagnosticos', function (Blueprint $table) {
+        Schema::create('encabezados_preguntas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('objetivo');
-            $table->foreignId('preguntas_id')->constrained();
-            $table->foreignId('grupodiagnosticos_id')->constrained();
-            $table->foreignId('calificacion_id')->constrained();
-            $table->string('observacion')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('diagnosticos');
+        Schema::dropIfExists('encabezados_preguntas');
     }
 };
