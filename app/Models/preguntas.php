@@ -11,8 +11,8 @@ class preguntas extends Model
 
     protected $fillable = [
         'pregunta',
-        'tipo',
-        'estado',
+        'grupo',
+        
     ];
 
     public function diagnosticos()

@@ -162,7 +162,7 @@
                                         <label class="form-control-label" for="nombre_oficial_cumplimiento">Oficial de Cumplimiento <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" id="nombre_oficial_cumplimiento" name="nombre_oficial_cumplimiento" class="form-control"
-                                            placeholder="Ingrese El Nombre del Oficial de Cumplimiento" required value="{{ old('nombre_oficial_cumplimiento') }}" >
+                                            placeholder="Ingrese El Nombre del Oficial de Cumplimiento"  value="{{ old('nombre_oficial_cumplimiento') }}" >
                                         @if ($errors->has('nombre_oficial_cumplimiento'))
                                             <span class="text-danger">{{ $errors->first('nombre_oficial_cumplimiento') }}</span>
                                         @endif

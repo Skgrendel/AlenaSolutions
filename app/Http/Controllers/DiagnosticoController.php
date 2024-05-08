@@ -33,33 +33,35 @@ class DiagnosticoController extends Controller
 
         $data = $request->all();
 
-        //dd($data);
         // Prepara los datos para la inserción masiva
         $diagnosticos = [];
 
-        $diagnosticos = [
-            'nombre' => $data['inputNombreDiagnostico'],
-            'objetivo' => $data['inputDescripDiagnostico'],
-            'grupodiagnosticos_id' => $data['id_diagnostico'],
-        ];
+        // Cuenta la cantidad de preguntas que se enviaron
 
-        $cantidad = count(array_filter(array_keys($data), function($key) {
+        $cantidad = count(array_filter(array_keys($data), function ($key) {
             return strpos($key, 'preguntas_id') === 0;
         }));
 
-        for ($i = 1; $i <= $cantidad ; $i++) {
+        for ($i = 1; $i <= $cantidad; $i++) {
             $diagnosticos[] = [
                 'preguntas_id' => $data['preguntas_id' . $i],
                 'calificacion_id' => $data['cumplimineto' . $i],
                 'observacion' => $data['observaciones' . $i],
             ];
         }
+        // Convertir el array a JSON
+        $diagnosticosJson = json_encode($diagnosticos);
 
-        dd($diagnosticos);
-        
-        diagnostico::insert($diagnosticos);
 
-        return redirect()->route('auditorias.index')->with('title','Exito')->with('icon','success')->with('success', 'Diagnóstico creado con éxito');
+        // Insertar el JSON en la tabla
+        diagnostico::create([
+            'nombre' => $data['inputNombreDiagnostico'],
+            'objetivo' => $data['inputDescripDiagnostico'],
+            'grupodiagnosticos_id' => $data['id_diagnostico'],
+            'resultados' => $diagnosticosJson,
+        ]);
+
+        return redirect()->route('auditorias.index')->with('title', 'Exito')->with('icon', 'success')->with('success', 'Diagnóstico creado con éxito');
     }
 
 

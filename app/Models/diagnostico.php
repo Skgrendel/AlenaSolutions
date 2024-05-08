@@ -12,10 +12,9 @@ class diagnostico extends Model
     protected $fillable = [
         'nombre',
         'objetivo',
-        'preguntas_id',
         'grupodiagnosticos_id',
-        'calificacion_id',
-        'observacion'
+        'observacion',
+        'resultados'
     ];
 
     public function preguntas()
