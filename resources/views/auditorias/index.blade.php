@@ -74,7 +74,7 @@
                                                         <i class="fas fa-folder-plus"></i>
                                                         <span>Crear Diagnostico</span>
                                                     </a>
-                                                    <a data-toggle="modal" data-target="#actividadesExistentes"
+                                                    <a data-toggle="modal" data-target="#diagnosticosexistentes"
                                                         class="dropdown-item font-dropdown-documento"
                                                         onclick="ModalDiagnostico('{{ $item->id }}')">
                                                         <i class="far fa-folder-open"></i>
@@ -146,6 +146,7 @@
                                     <button type="submit" id="btnComenzarDiagnostico"
                                         class="btn btn-info">Comenzar</button>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -160,14 +161,15 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="col-6">
-                        <h4 class="mb-0">Proyectos / Procesos</h4>
-                        <p class="text-sm mb-0">Actividades que pertenecen a este Proyecto / Proceso.</p>
+                        <h4 class="mb-0">Diagnosticos</h4>
+                        <p class="text-sm mb-0">Diagnosticos que pertenecen a esta Empresa</p>
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" id="diagnosticos">
+                <div class="modal-body" id="diagnosticostrue">
+
                 </div>
             </div>
         </div>
@@ -224,6 +226,43 @@
                 if (result.isConfirmed) {
                     $.ajax({
                         url: '/auditorias/' + id,
+                        type: 'DELETE',
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                        },
+                        success: function(result) {
+                            // Recarga la página o haz algo cuando la eliminación sea exitosa
+                            location.reload();
+                            Swal.fire({
+                                title: 'Éxito',
+                                text: result.success,
+                                icon: 'success'
+                            });
+                        },
+                        error: function(result) {
+                            // Muestra un mensaje de error si algo sale mal
+                            Swal.fire('Error!', 'No se pudo eliminar el registro.', 'error');
+                        }
+                    });
+                }
+            })
+        }
+    </script>
+     <script>
+        function diagnosticosDelete(id) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2DCE89',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, bórralo!',
+                cancelButtonText: 'No, cancelar!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/Grupodiagnosticos/' + id,
                         type: 'DELETE',
                         data: {
                             _token: "{{ csrf_token() }}",

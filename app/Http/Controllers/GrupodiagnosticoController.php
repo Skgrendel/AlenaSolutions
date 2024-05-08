@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\diagnostico;
 use App\Models\grupodiagnostico;
 use Illuminate\Http\Request;
 
@@ -38,9 +39,10 @@ class GrupodiagnosticoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(grupodiagnostico $grupodiagnostico)
+    public function show(string $id)
     {
-        //
+        $actividades = diagnostico::where('grupodiagnosticos_id', $id)->get();
+        return response()->json($actividades);
     }
 
     /**
@@ -76,4 +78,5 @@ class GrupodiagnosticoController extends Controller
             return response()->json(['error' => 'Error al eliminar el Grupo / Diagnostico.'], 500);
         }
     }
+
 }

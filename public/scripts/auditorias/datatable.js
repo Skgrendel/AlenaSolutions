@@ -31,50 +31,27 @@ $(document).ready(function () {
 function ModalDiagnostico(id) {
     if (id) {
         $.ajax({
-            url: "/proyectos/actividades/" + id,
+            url: "Grupodiagnosticos/" + id,
             type: "GET",
             success: function (response) {
                 let tableContent = "";
-                const editBaseUrl = "/actividades/";
+                const editBaseUrl = "/Grupodiagnosticos/";
                 const edit = "/edit";
+
+                console.log(response);
 
                 if (response.length > 0) {
                     response.forEach((element) => {
-                        let badge;
-                        let estado = Number(element.estado);
-                        switch (estado) {
-                            case 2:
-                                badge =
-                                    '<span class="badge badge-warning">En curso</span>';
-                                break;
-                            case 3:
-                                badge =
-                                    '<span class="badge badge-success">Finalizado</span>';
-                                break;
-                            default:
-                                badge =
-                                    '<span class="badge badge-danger">Pendiente</span>';
-                        }
-
+                        let fecha = new Date(element["created_at"]);
+                        let fechaFormateada = `${fecha.getDate()}-${
+                            fecha.getMonth() + 1
+                        }-${fecha.getFullYear()}`;
                         tableContent += `
             <tr>
                 <td><img src="../assets/img/images/grupo.png" class="avatar avatar-md bg-transparent "></td>
-                <td>${element.nombre}</td>
-                <td>${element.personal_asignado}</td>
-                <td>${element.fecha_estimada}</td>
-                <td>
-                    <div class="progress text-dark " style="height:10px;">
-                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
-                            style="width:${element.avance}%;"
-                            aria-valuenow="${
-                                element.avance
-                            }" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>${element.avance}%
-                </td>
-                <td>${element.prioridades.nombre}</td>
-                <td>
-                    ${badge}
-                </td>
+                <td>${element["nombre"]}</td>
+                <td>${element["objetivo"]}</td>
+                <td>${fechaFormateada}</td>
                 <td>
                     <a class="nav-link pr-0" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
@@ -83,13 +60,13 @@ function ModalDiagnostico(id) {
                     <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
                         <h6 class="dropdown-header" style="color: rgba(0,0,0,.72) !important;">Gestionar</h6>
                         <a href="${
-                            editBaseUrl + element.id + edit
+                            editBaseUrl + element["id"] + edit
                         }" class="dropdown-item text-dark ">
                             <i class="far fa-folder-open"></i>
-                            <span>Modificar</span>
+                            <span>Ver Informe</span>
                         </a>
-                        <a href="#" onclick="$('#actividadesExistentes').modal('hide'); AlertActividades(${
-                            element.id
+                        <a href="#" onclick="$('#diagnosticosexistentes').modal('hide'); diagnosticosDelete(${
+                            element["id"]
                         });" class="dropdown-item font-dropdown-documento">
                             <i class="fas fa-trash-alt"></i>
                             <span>Eliminar</span>
@@ -99,31 +76,29 @@ function ModalDiagnostico(id) {
         `;
                     });
                 } else {
-                    tableContent = '<td colspan="8">No hay registros</td>';
+                    tableContent = '<td colspan="5">No hay registros</td>';
                 }
-                $("#actividades").html(`
+
+                $("#diagnosticostrue").html(`
     <div class="table-responsive py-2">
-        <table class="table table-striped align-items-center table-hover w-100" id="myTableActividades">
+        <table class="table table-striped align-items-center table-hover w-100" id="diagnosticosexistentestabla">
             <thead class="thead-light">
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Personal Asignado</th>
-                    <th scope="col">Fecha Estimada</th>
-                    <th scope="col">Avance</th>
-                    <th scope="col">Prioridad</th>
-                    <th scope="col">Estado</th>
+                    <th scope="col">objetivo</th>
+                    <th scope="col">Fecha Creacion</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                ${tableContent}
+                 ${tableContent}
             </tbody>
         </table>
     </div>
 `);
                 // Inicializar DataTables
-                $("#diagnosticosexistentes").DataTable({
+                $("#diagnosticosexistentestabla").DataTable({
                     responsive: true,
                     language: {
                         processing: "Procesando...",

@@ -52,4 +52,5 @@ Route::get('/proyectos/actividades/{proyecto}',[ProyectosController::class,'acti
 Route::resource('/actividades',ActividadesController::class)->names('actividades');
 Route::resource('/auditorias',GrupodiagnosticoController::class)->names('auditorias');
 Route::resource('/diagnosticos',DiagnosticoController::class)->names('diagnosticos');
+Route::resource('/Grupodiagnosticos',GrupodiagnosticoController::class)->names('Grupodiagnosticos');
 });
