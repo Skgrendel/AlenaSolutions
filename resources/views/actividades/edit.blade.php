@@ -145,7 +145,7 @@
                                     <div class="form-group">
                                         <label class="form-control-label" for="descripcion">Observaciones</label>
                                         <textarea type="text" id="observaciones" name="observaciones" class="form-control"
-                                            placeholder="Observacion de actividad" rows="5" required>{{ $actividades->observaciones }}</textarea>
+                                            placeholder="Observacion de actividad" rows="5">{{ $actividades->observaciones }}</textarea>
                                         @if ($errors->has('observaciones'))
                                             <span class="text-danger">{{ $errors->first('observaciones') }}</span>
                                         @endif
