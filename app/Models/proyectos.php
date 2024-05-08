@@ -52,4 +52,6 @@ class proyectos extends Model
     {
         return $this->hasOne(vs_estados::class,'id','estado');
     }
+
+    
 }
