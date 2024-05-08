@@ -59,14 +59,12 @@ function ModalDiagnostico(id) {
                     </a>
                     <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
                         <h6 class="dropdown-header" style="color: rgba(0,0,0,.72) !important;">Gestionar</h6>
-                        <a href="${
-                            editBaseUrl + element["id"] + edit
+                        <a href="${editBaseUrl + element["id"] + edit
                         }" class="dropdown-item text-dark ">
                             <i class="far fa-folder-open"></i>
                             <span>Ver Informe</span>
                         </a>
-                        <a href="#" onclick="$('#diagnosticosexistentes').modal('hide'); diagnosticosDelete(${
-                            element["id"]
+                        <a href="#" onclick="$('#diagnosticosexistentes').modal('hide'); diagnosticosDelete(${element["id"]
                         });" class="dropdown-item font-dropdown-documento">
                             <i class="fas fa-trash-alt"></i>
                             <span>Eliminar</span>

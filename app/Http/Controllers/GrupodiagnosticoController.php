@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\diagnostico;
 use App\Models\grupodiagnostico;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GrupodiagnosticoController extends Controller
 {
@@ -14,7 +15,10 @@ class GrupodiagnosticoController extends Controller
     public function index()
     {
         $datatable = grupodiagnostico::all();
-        return view('auditorias.index', compact('datatable'));
+        $conteo = diagnostico::select('grupodiagnosticos_id', DB::raw('count(*) as total'))
+        ->groupBy('grupodiagnosticos_id')
+        ->get();
+        return view('auditorias.index', compact('datatable', 'conteo'));
     }
 
     /**
@@ -50,8 +54,9 @@ class GrupodiagnosticoController extends Controller
      */
     public function edit(string $id)
     {
-        $diagnostico = grupodiagnostico::findOrFail($id);
-        return view('auditorias.edit', compact('diagnostico'));
+        $diagnostico = diagnostico::where('grupodiagnosticos_id', $id)->get();
+
+        return view('diagnosticos.informe', compact('diagnostico'));
     }
 
     /**
