@@ -89,7 +89,11 @@ class DiagnosticoController extends Controller
      */
     public function edit(string $id)
     {
+        $Grupodiagnostico = grupodiagnostico::findOrFail($id);
 
+        $diagnostico = diagnostico::where('grupodiagnosticos_id', $id)->get();
+//dd($diagnostico);
+        return view('diagnosticos.informe', compact('diagnostico', 'Grupodiagnostico'));
     }
 
     /**

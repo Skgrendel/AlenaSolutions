@@ -35,7 +35,7 @@ function ModalDiagnostico(id) {
             type: "GET",
             success: function (response) {
                 let tableContent = "";
-                const editBaseUrl = "/Grupodiagnosticos/";
+                const editBaseUrl = "/diagnosticos/";
                 const edit = "/edit";
 
                 console.log(response);
