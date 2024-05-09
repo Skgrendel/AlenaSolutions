@@ -183,7 +183,7 @@
                                         <div class="card-body">
                                             <div id="moduloHallazgos" class="d-block-inline mb-2">
                                                 <h3 class="mb-4">Modulo: {{ substr($key, 5) }} </h3>
-                                                <h4 class="mb-4 text-sm">{{ $encabezadosArray[$key] ?? 'No disponible' }} </h4>
+                                                <h4 class="mb-4 text-xs">{{ $encabezadosArray[$key] ?? 'No disponible' }} </h4>
                                                 <div class="row ml-md-3">
                                                     <div class="col-12">
                                                         <h4 class="mb-1">Calificacion:</h4>
@@ -212,7 +212,7 @@
                                                                 @default
                                                                     <span class="badge badge-success">No Aplica</span>
                                                             @endswitch
-                                                      
+
                                                     </div>
                                                 </div>
                                                 <hr class="my-4">
