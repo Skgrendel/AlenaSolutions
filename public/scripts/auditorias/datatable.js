@@ -59,12 +59,12 @@ function ModalDiagnostico(id) {
                     </a>
                     <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
                         <h6 class="dropdown-header" style="color: rgba(0,0,0,.72) !important;">Gestionar</h6>
-                        <a href="${editBaseUrl + element["id"] + edit
-                        }" class="dropdown-item text-dark ">
+                        <a href="${editBaseUrl + element["id"] + edit}" class="dropdown-item text-dark ">
                             <i class="far fa-folder-open"></i>
                             <span>Ver Informe</span>
                         </a>
-                        <a href="#" onclick="$('#diagnosticosexistentes').modal('hide'); diagnosticosDelete(${element["id"]
+                        <a href="#" onclick="$('#diagnosticosexistentes').modal('hide'); diagnosticosDelete(${
+                            element["id"]
                         });" class="dropdown-item font-dropdown-documento">
                             <i class="fas fa-trash-alt"></i>
                             <span>Eliminar</span>
@@ -139,6 +139,39 @@ function ModalDiagnostico(id) {
             icon: "error",
             title: "Oops...",
             text: "Ingrese un numero de contrato",
+        });
+    }
+}
+
+function ModalCrear(id) {
+    if (id) {
+        $("#btnComenzarDiagnostico").on("click", function (e) {
+            e.preventDefault();
+            var btn = $(this);
+            var form = $("#formTipoDiagnostico");
+            form.validate({
+                rules: {
+                    tipoDiagnostico: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    tipoDiagnostico: "Este campo es obligatorio.",
+                },
+            });
+
+            if (form.valid() && $("#tipoDiagnostico").val() == "1") {
+                var id_diagnostico = id;
+                if (id_diagnostico) {
+                    window.location.href ="diagnosticos/" + id_diagnostico;
+                } else {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "No se pudo obtener el id del diagnostico.",
+                        icon: "error",
+                    });
+                }
+            }
         });
     }
 }

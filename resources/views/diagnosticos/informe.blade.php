@@ -9,7 +9,8 @@
                     <div class="col-8">
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                                <li class="breadcrumb-item"><a href="{{ route('auditorias.index') }}"><i class="fas fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('auditorias.index') }}"><i
+                                            class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="?view=diagnostico">Informacion de Diagnosticos</a></li>
                                 <li class="breadcrumb-item text-dark active" aria-current="page">Informes Consolidados
                                 </li>
@@ -119,7 +120,7 @@
                         <div class="row align-items-center">
                             <div class="col-8">
                                 <h3 class="mb-0 h4">Nombre del Diagnostico</h3>
-                                <p class="text-sm ">{{ $diagnostico[0]['nombre'] }}</p>
+                                <p class="text-sm ">{{ $diagnostico->nombre }}</p>
                             </div>
                             <div class="col-4 text-right">
                                 <!-- <a href="#!" class="btn btn-sm btn-primary"></a> -->
@@ -131,9 +132,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <h3 class="mb-0 h4">Objetivos</h3>
-                                @if ($diagnostico[0]['objetivo'] != null)
+                                @if ($diagnostico->objetivo != null)
                                     <span class="descripcionDiagnostico mb-0"
-                                        style="font-size: .8625rem;">{{ $diagnostico[0]['objetivo'] }}</span>
+                                        style="font-size: .8625rem;">{{ $diagnostico->objetivo }}</span>
                                 @else
                                     <span class="descripcionDiagnostico mb-0" style="font-size: .8625rem;">No se
                                         especificó un
@@ -155,107 +156,56 @@
                         <div class="row align-items-center">
                             <div class="col-8">
                                 <h3 class="mb-0 h4">Informe Consolidado</h3>
-                                <h5 class="heading-md text-muted mb-4">El Informe es generados teniendo en cuenta las preguntas que
+                                <h5 class="heading-md text-muted mb-4">El Informe es generados teniendo en cuenta las
+                                    preguntas que
                                     fueron respondidas.</h5>
                             </div>
                             <div class="col-4">
                                 <div class="row">
-                                    <a href="#!" class="btn btn-sm btn-secondary" data-toggle="tooltip"  data-original-title="Descargar Informe"><i class="fas fa-download"></i></a>
-                                    <a href="#!" class="btn btn-sm btn-secondary text-danger " data-toggle="tooltip"  data-original-title="Descargar PDF"><i class="fas fa-file-pdf"></i></a>
-                                    <a href="#!" class="btn btn-sm btn-secondary text-success " data-toggle="tooltip"  data-original-title="Descargar Excel"><i class="fas fa-file-excel"></i></i></a>
+                                    <a href="#!" class="btn btn-sm btn-secondary" data-toggle="tooltip"
+                                        data-original-title="Descargar Informe"><i class="fas fa-download"></i></a>
+                                    <a href="#!" class="btn btn-sm btn-secondary text-danger " data-toggle="tooltip"
+                                        data-original-title="Descargar PDF"><i class="fas fa-file-pdf"></i></a>
+                                    <a href="#!" class="btn btn-sm btn-secondary text-success "
+                                        data-toggle="tooltip" data-original-title="Descargar Excel"><i
+                                            class="fas fa-file-excel"></i></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <!-- Hallazgos -->
+
                         <div class="row">
-                            <div class="col-md-6">
-                                <!-- Aqui se generan los hallazgos -->
-                                <div class="contentHallazgos">
-                                    <div id="moduloHallazgos" class="d-block-inline mb-2">
-                                        <h3 class="mb-4">Módulo 1 </h3>
-                                        <div class="row ml-md-3">
-                                            <div class="col-12 mb-3">
-                                                <h4 class="mb-0">Descripcion: </h4>
-                                                <span class="text-sm mb-0">La cantidad de cámaras no es adecuada para
-                                                    cumplir su tarea principal enfocada a la prevención de incidentes</span>
-                                            </div>
-                                            <div class="col-12">
-                                                <h4 class="mb-1">Calificacion</h4>
-                                                <div id="container-images-328" class="grid-container">
+                            @for ($i = 1; $i <= 13; $i++)
+                                <div class="col-md-6">
+                                    <!-- Aqui se generan los hallazgos -->
+                                    <div class="contentHallazgos">
+                                        <div id="moduloHallazgos" class="d-block-inline mb-2">
+                                            <h3 class="mb-4">Módulo {{ $i }} </h3>
+                                            <div class="row ml-md-3">
+                                                <div class="col-12 mb-3">
+                                                    <h4 class="mb-0">Observaciones: </h4>
+                                                    @isset($resultados['grupo_' . $i]['observaciones_' . $i])
+                                                        <span
+                                                            class="text-sm mb-0">{{ $resultados['grupo_' . $i]['observaciones_' . $i] }}
+                                                        </span>
+                                                    @endisset
+                                                </div>
+                                                <div class="col-12">
+                                                    <h4 class="mb-1">Calificacion:</h4>
+                                                    <div id="container-images-328" class="grid-container">
+                                                        @isset($resultados['grupo_' . $i]['resultado_' . $i])
+                                                            <span>{{ $resultados['grupo_' . $i]['resultado_' . $i] }}</span>
+                                                        @endisset
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <hr class="my-4">
                                         </div>
-                                        <hr class="my-4">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <!-- Aqui se generan los hallazgos -->
-                                <div class="contentHallazgos">
-                                    <div id="moduloHallazgos" class="d-block-inline mb-2">
-                                        <h3 class="mb-4">Módulo 1 </h3>
-                                        <div class="row ml-md-3">
-                                            <div class="col-12 mb-3">
-                                                <h4 class="mb-0">Descripcion: </h4>
-                                                <span class="text-sm mb-0">La cantidad de cámaras no es adecuada para
-                                                    cumplir su tarea principal enfocada a la prevención de incidentes</span>
-                                            </div>
-                                            <div class="col-12">
-                                                <h4 class="mb-1">Calificacion</h4>
-                                                <div id="container-images-328" class="grid-container">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr class="my-4">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <!-- Aqui se generan los hallazgos -->
-                                <div class="contentHallazgos">
-                                    <div id="moduloHallazgos" class="d-block-inline mb-2">
-                                        <h3 class="mb-4">Módulo 1 </h3>
-                                        <div class="row ml-md-3">
-                                            <div class="col-12 mb-3">
-                                                <h4 class="mb-0">Descripcion: </h4>
-                                                <span class="text-sm mb-0">La cantidad de cámaras no es adecuada para
-                                                    cumplir su tarea principal enfocada a la prevención de incidentes</span>
-                                            </div>
-                                            <div class="col-12">
-                                                <h4 class="mb-1">Calificacion</h4>
-                                                <div id="container-images-328" class="grid-container">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr class="my-4">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <!-- Aqui se generan los hallazgos -->
-                                <div class="contentHallazgos">
-                                    <div id="moduloHallazgos" class="d-block-inline mb-2">
-                                        <h3 class="mb-4">Módulo 1 </h3>
-                                        <div class="row ml-md-3">
-                                            <div class="col-12 mb-3">
-                                                <h4 class="mb-0">Descripcion: </h4>
-                                                <span class="text-sm mb-0">La cantidad de cámaras no es adecuada para
-                                                    cumplir su tarea principal enfocada a la prevención de incidentes</span>
-                                            </div>
-                                            <div class="col-12">
-                                                <h4 class="mb-1">Calificacion</h4>
-                                                <div id="container-images-328" class="grid-container">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr class="my-4">
-                                    </div>
-                                </div>
-                            </div>
+                            @endfor
                         </div>
                         <!-- Fin de los hallazgos -->
                     </div>

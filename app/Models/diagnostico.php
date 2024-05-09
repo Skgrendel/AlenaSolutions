@@ -22,10 +22,10 @@ class diagnostico extends Model
         return $this->belongsTo(preguntas::class);
     }
 
-    public function grupodiagnosticos()
-    {
-        return $this->belongsTo(grupodiagnostico::class);
-    }
+    public function grupodiagnostico()
+{
+    return $this->belongsTo(grupodiagnostico::class, 'grupodiagnosticos_id');
+}
 
     public function calificacion()
     {

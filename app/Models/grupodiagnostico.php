@@ -29,19 +29,16 @@ class grupodiagnostico extends Model
         'nombre_empresa'=>'required',
         'nit_empresa'=>'required',
         'correo_empresa'=>'required',
-        'nombre_oficial_cumplimiento'=>'required',
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,);
     }
 
     public function diagnosticos()
     {
-        return $this->hasMany(diagnostico::class);
+        return $this->hasMany(diagnostico::class, 'grupodiagnosticos_id');
     }
-
-    
 
 }

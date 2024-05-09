@@ -33,27 +33,8 @@ class DiagnosticoController extends Controller
 
         $data = $request->all();
 
-        // Prepara los datos para la inserción masiva
-        $diagnosticos = [];
-
-        // Cuenta la cantidad de preguntas que se enviaron
-
-        $cantidad = count(array_filter(array_keys($data), function ($key) {
-            return strpos($key, 'preguntas_id') === 0;
-        }));
-
-        for ($i = 1; $i <= $cantidad; $i++) {
-            $diagnosticos[] = [
-                'preguntas_id' => $data['preguntas_id' . $i],
-                'calificacion_id' => $data['cumplimineto' . $i],
-                'observacion' => $data['observaciones' . $i],
-                'grupo' => $data['grupo'],
-            ];
-        }
-
-        dd($diagnosticos);
-        // Convertir el array a JSON
-        $diagnosticosJson = json_encode($diagnosticos);
+        $datas = array_slice($data, 4);
+        $grupopreguntas = $this->agruparPreguntas($datas);
 
 
         // Insertar el JSON en la tabla
@@ -61,10 +42,34 @@ class DiagnosticoController extends Controller
             'nombre' => $data['inputNombreDiagnostico'],
             'objetivo' => $data['inputDescripDiagnostico'],
             'grupodiagnosticos_id' => $data['id_diagnostico'],
-            'resultados' => $diagnosticosJson,
+            'resultados' => json_encode($grupopreguntas),
         ]);
 
         return redirect()->route('auditorias.index')->with('title', 'Exito')->with('icon', 'success')->with('success', 'Diagnóstico creado con éxito');
+    }
+
+    private function agruparPreguntas($data)
+    {
+        $grupo = [];
+        $grupo_actual = 1;
+
+        foreach ($data as $key => $value) {
+            if (strpos($key, "grupo") !== false) {
+                $grupo_actual = "grupo" . $value;
+                $grupo[$grupo_actual] = [];
+            } else {
+                if (strpos($key, "preguntas_id") === false) continue;
+                if (preg_match("/(\d+)$/", $key, $matches)) {
+                    $num = $matches[0];
+                    $grupo[$grupo_actual][] = [
+                        "pregunta" => $data["preguntas_id{$num}"],
+                        "resultado" => $data["resultado{$num}"],
+                        "observaciones" => $data["observaciones{$num}"],
+                    ];
+                }
+            }
+        }
+        return $grupo;
     }
 
 
@@ -79,7 +84,7 @@ class DiagnosticoController extends Controller
         for ($i = 1; $i <= 13; $i++) {
             $mods["mod{$i}"] = preguntas::where('grupo', (string)$i)->get();
         }
-        $calificaciones = calificaciones::pluck('nombre', 'id');
+        $calificaciones = calificaciones::pluck('nombre', 'calificacion');
         $encabezados = encabezados_preguntas::all();
         return view('diagnosticos.create', compact('calificaciones', 'mods', 'encabezados', 'empresa'));
     }
@@ -89,11 +94,22 @@ class DiagnosticoController extends Controller
      */
     public function edit(string $id)
     {
-        $Grupodiagnostico = grupodiagnostico::findOrFail($id);
+        $diagnostico = diagnostico::find($id);
+        $resultados = json_decode($diagnostico->resultados, true);
+        $suma = 0;
+        $totalresultado = 0;
+        // dd($resultados);
+        foreach ($resultados as $key => $value) {
 
-        $diagnostico = diagnostico::where('grupodiagnosticos_id', $id)->get();
-//dd($diagnostico);
-        return view('diagnosticos.informe', compact('diagnostico', 'Grupodiagnostico'));
+            foreach ($value as $item) {
+                $suma += $item['resultado'];
+                $totalresultado++;
+            }
+            $promedio[$key]["promedio"] = round( $suma / $totalresultado,0);
+
+        }
+        $Grupodiagnostico = grupodiagnostico::with('user')->where('id', $diagnostico->grupodiagnosticos_id)->first();
+        return view('diagnosticos.informe', compact('diagnostico', 'Grupodiagnostico', 'promedio'));
     }
 
     /**

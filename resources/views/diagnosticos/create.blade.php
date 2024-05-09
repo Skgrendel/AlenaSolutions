@@ -136,13 +136,16 @@
                                             <div class="col text-center py-4">
                                                 @foreach ($encabezados as $encabezado)
                                                     @if ($encabezado->id == $i)
-                                                        <h2 style="color: #525f7f;" class="mb-1">{{ $encabezado->nombre }}</h2>
-                                                        <p class="text-uppercase text-muted font-weight-500">Módulo{{ $i }}</p>
-                                                        <input type="text" name="grupo{{$i}}" value="{{$i}}" hidden>
+                                                        <h2 style="color: #525f7f;" class="mb-1">
+                                                            {{ $encabezado->nombre }}</h2>
+                                                        <p class="text-uppercase text-muted font-weight-500">
+                                                            Módulo{{ $i }}</p>
                                                     @endif
                                                 @endforeach
                                             </div>
+
                                             @foreach ($mods["mod{$i}"] as $pregunta)
+                                                <input type="text" name="grupo{{ $pregunta->grupo }}" value="{{ $pregunta->grupo }}" hidden>
                                                 <div class="col-md-12 mb-3 px-2 px-md-4"
                                                     id="contenedorPregunta{{ $pregunta->id }}">
                                                     <div class="card border card-body px-3 px-md-4 shadow-none bg-cuadro"
@@ -150,12 +153,11 @@
                                                         <div class="form-group fade show my-3 mb-0">
                                                             <div class="pregunta">
                                                                 <span
-                                                                    class="text-primary opacity-8 display-4 d-inline txtNumeros">{{ $pregunta->id }}
-                                                                </span>
-                                                                <input type="text" hidden value="{{ $pregunta->id }}" name="preguntas_id{{ $pregunta->id }}">
-                                                                <label for="" class="d-inline txtPreguntas">
-                                                                    {{ $pregunta->pregunta }}
-                                                                </label>
+                                                                    class="text-primary opacity-8 display-4 d-inline txtNumeros">{{ $pregunta->id }}</span>
+                                                                <input type="text" hidden value="{{ $pregunta->id }}"
+                                                                    name="preguntas_id{{ $pregunta->id }}">
+                                                                <label for=""
+                                                                    class="d-inline txtPreguntas">{{ $pregunta->pregunta }}</label>
                                                             </div>
                                                             <div class="opcion-respuesta py-3 col-md-3">
                                                                 <div
@@ -164,7 +166,7 @@
                                                                         class="selectpicker bg-white show-tick form-control"
                                                                         data-container="body"
                                                                         id="tipoDiagnostico{{ $pregunta->id }}"
-                                                                        name="cumplimineto{{ $pregunta->id }}"
+                                                                        name="resultado{{ $pregunta->id }}"
                                                                         title="Seleccione el Cumplimiento"
                                                                         data-style="btn-neutral font-weight-400"
                                                                         tabindex="-98">
@@ -233,6 +235,7 @@
         function onFinish() {
             document.getElementById('myForm').submit();
         }
+
         function onCancel() {
             $('#smartwizard').smartWizard("reset");
         }

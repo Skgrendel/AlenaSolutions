@@ -51,4 +51,9 @@ class User extends Authenticatable
     public function proyectos(){
         return $this->hasMany(proyectos::class);
     }
+
+    public function grupodiagnosticos()
+    {
+        return $this->hasMany(grupodiagnostico::class,'user_id');
+    }
 }

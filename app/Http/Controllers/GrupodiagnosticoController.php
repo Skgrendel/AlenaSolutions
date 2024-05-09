@@ -14,10 +14,12 @@ class GrupodiagnosticoController extends Controller
      */
     public function index()
     {
-        $datatable = grupodiagnostico::all();
+        $datatable = grupodiagnostico::with('diagnosticos')->get();
+
         $conteo = diagnostico::select('grupodiagnosticos_id', DB::raw('count(*) as total'))
         ->groupBy('grupodiagnosticos_id')
         ->get();
+
         return view('auditorias.index', compact('datatable', 'conteo'));
     }
 

@@ -55,12 +55,11 @@
                                 @if (isset($datatable))
                                     @foreach ($datatable as $item)
                                         <tr>
-                                            <input type="text" hidden id="id_diagnostico" value="{{ $item->id }}">
                                             <td><img src="../assets/img/images/grupo.png"
                                                     class="avatar avatar-md bg-transparent "></td>
                                             <td>{{ $item->nombre_empresa }}</td>
                                             <td>{{ $item->created_at->format('d-m-Y') }}</td>
-                                            <td></td>
+                                            <td> <span>Diagnosticos:</span> {{$item->diagnosticos->count()}}</td>
                                             <td>
                                                 <a class="nav-link pr-0" role="button" data-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false">
@@ -70,6 +69,7 @@
                                                     <h6 class="dropdown-header" style="color: rgba(0,0,0,.72) !important;">
                                                         Gestionar</h6>
                                                     <a data-toggle="modal" data-target="#crearDiagnostico"
+                                                    onclick="ModalCrear('{{ $item->id }}')"
                                                         class="dropdown-item font-dropdown-documento">
                                                         <i class="fas fa-folder-plus"></i>
                                                         <span>Crear Diagnostico</span>
@@ -178,39 +178,6 @@
 
 @section('js')
     <script src="../scripts/auditorias/datatable.js"></script>
-    <script>
-        $('#btnComenzarDiagnostico').on("click", function(e) {
-            e.preventDefault();
-            var btn = $(this);
-            var form = $('#formTipoDiagnostico');
-            form.validate({
-                rules: {
-                    tipoDiagnostico: {
-                        required: true
-                    },
-                },
-                messages: {
-                    tipoDiagnostico: 'Este campo es obligatorio.',
-                }
-            });
-
-            if (form.valid() && $('#tipoDiagnostico').val() == "1") {
-                var id_diagnostico = $('#id_diagnostico').val();
-                if (id_diagnostico) {
-                    var url = "{{ route('diagnosticos.show', ['diagnostico' => ':id']) }}";
-                    url = url.replace(':id', id_diagnostico);
-                    window.location.href = url;
-                } else {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'No se pudo obtener el id del diagnostico.',
-                        icon: 'error'
-                    });
-                }
-
-            }
-        });
-    </script>
     <script>
         function Grupos(id) {
             Swal.fire({
