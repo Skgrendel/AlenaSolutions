@@ -47,8 +47,11 @@ class DiagnosticoController extends Controller
                 'preguntas_id' => $data['preguntas_id' . $i],
                 'calificacion_id' => $data['cumplimineto' . $i],
                 'observacion' => $data['observaciones' . $i],
+                'grupo' => $data['grupo'],
             ];
         }
+
+        dd($diagnosticos);
         // Convertir el array a JSON
         $diagnosticosJson = json_encode($diagnosticos);
 

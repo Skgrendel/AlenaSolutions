@@ -136,10 +136,9 @@
                                             <div class="col text-center py-4">
                                                 @foreach ($encabezados as $encabezado)
                                                     @if ($encabezado->id == $i)
-                                                        <h2 style="color: #525f7f;" class="mb-1">
-                                                            {{ $encabezado->nombre }}</h2>
-                                                        <p class="text-uppercase text-muted font-weight-500">Módulo
-                                                            {{ $i }}</p>
+                                                        <h2 style="color: #525f7f;" class="mb-1">{{ $encabezado->nombre }}</h2>
+                                                        <p class="text-uppercase text-muted font-weight-500">Módulo{{ $i }}</p>
+                                                        <input type="text" name="grupo{{$i}}" value="{{$i}}" hidden>
                                                     @endif
                                                 @endforeach
                                             </div>
