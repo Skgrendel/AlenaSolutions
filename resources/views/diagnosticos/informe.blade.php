@@ -175,37 +175,29 @@
                     </div>
                     <div class="card-body">
                         <!-- Hallazgos -->
-
                         <div class="row">
-                            @for ($i = 1; $i <= 13; $i++)
-                                <div class="col-md-6">
-                                    <!-- Aqui se generan los hallazgos -->
-                                    <div class="contentHallazgos">
-                                        <div id="moduloHallazgos" class="d-block-inline mb-2">
-                                            <h3 class="mb-4">Módulo {{ $i }} </h3>
-                                            <div class="row ml-md-3">
-                                                <div class="col-12 mb-3">
-                                                    <h4 class="mb-0">Observaciones: </h4>
-                                                    @isset($resultados['grupo_' . $i]['observaciones_' . $i])
-                                                        <span
-                                                            class="text-sm mb-0">{{ $resultados['grupo_' . $i]['observaciones_' . $i] }}
-                                                        </span>
-                                                    @endisset
-                                                </div>
-                                                <div class="col-12">
-                                                    <h4 class="mb-1">Calificacion:</h4>
-                                                    <div id="container-images-328" class="grid-container">
-                                                        @isset($resultados['grupo_' . $i]['resultado_' . $i])
-                                                            <span>{{ $resultados['grupo_' . $i]['resultado_' . $i] }}</span>
-                                                        @endisset
-                                                    </div>
+                            @foreach ($promedios as $key => $promedio)
+                            <div class="col-md-6">
+                                <!-- Aqui se generan los hallazgos -->
+                                <div class="contentHallazgos">
+                                    <div id="moduloHallazgos" class="d-block-inline mb-2">
+                                        <h3 class="mb-4">Modulo: {{ substr($key, 5) }} </h3>
+                                        <div class="row ml-md-3">
+                                            <div class="col-12 mb-3">
+                                                <h4 class="mb-0">Observaciones: </h4>
+                                            </div>
+                                            <div class="col-12">
+                                                <h4 class="mb-1">Calificacion:</h4>
+                                                <div id="container-images-328" class="grid-container">
+                                                    <Span>{{$promedio['promedio']}}</Span>
                                                 </div>
                                             </div>
-                                            <hr class="my-4">
                                         </div>
+                                        <hr class="my-4">
                                     </div>
                                 </div>
-                            @endfor
+                            </div>
+                        @endforeach
                         </div>
                         <!-- Fin de los hallazgos -->
                     </div>

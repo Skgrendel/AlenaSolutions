@@ -105,11 +105,10 @@ class DiagnosticoController extends Controller
                 $suma += $item['resultado'];
                 $totalresultado++;
             }
-            $promedio[$key]["promedio"] = round( $suma / $totalresultado,0);
-
+            $promedios[$key]["promedio"] = round( $suma / $totalresultado,0);
         }
         $Grupodiagnostico = grupodiagnostico::with('user')->where('id', $diagnostico->grupodiagnosticos_id)->first();
-        return view('diagnosticos.informe', compact('diagnostico', 'Grupodiagnostico', 'promedio'));
+        return view('diagnosticos.informe', compact('diagnostico', 'Grupodiagnostico', 'promedios'));
     }
 
     /**
