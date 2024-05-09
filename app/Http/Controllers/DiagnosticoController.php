@@ -105,10 +105,17 @@ class DiagnosticoController extends Controller
                 $suma += $item['resultado'];
                 $totalresultado++;
             }
-            $promedios[$key]["promedio"] = round( $suma / $totalresultado,0);
+            $promedios[$key]["promedio"] = round($suma / $totalresultado, 0);
         }
+        $encabezados = encabezados_preguntas::all();
+
+        $encabezadosArray = [];
+        foreach ($encabezados as $encabezado) {
+            $encabezadosArray['grupo' . $encabezado->id] = $encabezado->nombre;
+        }
+
         $Grupodiagnostico = grupodiagnostico::with('user')->where('id', $diagnostico->grupodiagnosticos_id)->first();
-        return view('diagnosticos.informe', compact('diagnostico', 'Grupodiagnostico', 'promedios'));
+        return view('diagnosticos.informe', compact('diagnostico', 'Grupodiagnostico', 'promedios', 'encabezadosArray'));
     }
 
     /**

@@ -177,27 +177,51 @@
                         <!-- Hallazgos -->
                         <div class="row">
                             @foreach ($promedios as $key => $promedio)
-                            <div class="col-md-6">
-                                <!-- Aqui se generan los hallazgos -->
-                                <div class="contentHallazgos">
-                                    <div id="moduloHallazgos" class="d-block-inline mb-2">
-                                        <h3 class="mb-4">Modulo: {{ substr($key, 5) }} </h3>
-                                        <div class="row ml-md-3">
-                                            <div class="col-12 mb-3">
-                                                <h4 class="mb-0">Observaciones: </h4>
-                                            </div>
-                                            <div class="col-12">
-                                                <h4 class="mb-1">Calificacion:</h4>
-                                                <div id="container-images-328" class="grid-container">
-                                                    <Span>{{$promedio['promedio']}}</Span>
+                                <div class="col-md-6">
+                                    <!-- Aqui se generan los hallazgos -->
+                                    <div class="card shadow-lg ">
+                                        <div class="card-body">
+                                            <div id="moduloHallazgos" class="d-block-inline mb-2">
+                                                <h3 class="mb-4">Modulo: {{ substr($key, 5) }} </h3>
+                                                <h4 class="mb-4 text-sm">{{ $encabezadosArray[$key] ?? 'No disponible' }} </h4>
+                                                <div class="row ml-md-3">
+                                                    <div class="col-12">
+                                                        <h4 class="mb-1">Calificacion:</h4>
+
+                                                            @switch($promedio['promedio'])
+                                                                @case(0)
+                                                                    <span class="badge badge-secondary">NO APLICA</span>
+                                                                @break
+
+                                                                @case(1)
+                                                                    <span class="badge badge-success">CUMPLIDO</span>
+                                                                @break
+
+                                                                @case(2)
+                                                                    <span class="badge badge-success">MAYORITARIAMENTE CUMPLIDO</span>
+                                                                @break
+
+                                                                @case(3)
+                                                                    <span class="badge badge-warning">PARCIALMENTE CUMPLIDO</span>
+                                                                @break
+
+                                                                @case(4)
+                                                                    <span class="badge badge-danger">NO CUMPLIDO</span>
+                                                                @break
+
+                                                                @default
+                                                                    <span class="badge badge-success">No Aplica</span>
+                                                            @endswitch
+                                                      
+                                                    </div>
                                                 </div>
+                                                <hr class="my-4">
                                             </div>
                                         </div>
-                                        <hr class="my-4">
+
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
                         </div>
                         <!-- Fin de los hallazgos -->
                     </div>
