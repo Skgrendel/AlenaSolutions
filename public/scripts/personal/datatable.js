@@ -1,6 +1,9 @@
 $(document).ready(function() {
     $('#personal').DataTable({
         responsive: true,
+        pageLength: 5,
+        lengthMenu: [5, 10, 15, 20],
+        order: [ 0, "desc" ],
         language: {
             processing: "Procesando...",
             search: "Buscar:",
