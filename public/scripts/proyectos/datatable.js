@@ -128,8 +128,6 @@ function ModalActividad(id) {
                 // Inicializar DataTables
                 $("#myTableActividades").DataTable({
                     responsive: true,
-                    scrollCollapse: true,
-                    scrollY: '200px',
                     pageLength: 5,
                     lengthMenu:  [5, 10, 15, 20],
                     order: [ 0, "desc" ],
