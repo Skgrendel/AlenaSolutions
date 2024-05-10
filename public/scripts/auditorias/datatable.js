@@ -41,8 +41,6 @@ function ModalDiagnostico(id) {
                 const editBaseUrl = "/diagnosticos/";
                 const edit = "/edit";
 
-                console.log(response);
-
                 if (response.length > 0) {
                     response.forEach((element) => {
                         let fecha = new Date(element["created_at"]);
