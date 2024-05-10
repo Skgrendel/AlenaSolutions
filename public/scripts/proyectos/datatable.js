@@ -2,8 +2,8 @@ $(document).ready(function () {
     $("#proyecto").DataTable({
         responsive: true,
         pageLength: 5,
-        lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
-        order: [[ 0, "desc" ]],
+        lengthMenu: [5, 10, 15, 20],
+        order: [ 0, "desc" ],
         language: {
             processing: "Procesando...",
             search: "Buscar:",
@@ -131,8 +131,8 @@ function ModalActividad(id) {
                     scrollCollapse: true,
                     scrollY: '200px',
                     pageLength: 5,
-                    lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
-                    order: [[ 0, "desc" ]],
+                    lengthMenu:  [5, 10, 15, 20],
+                    order: [ 0, "desc" ],
                     language: {
                         processing: "Procesando...",
                         search: "Buscar:",
