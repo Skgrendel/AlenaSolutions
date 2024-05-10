@@ -1,6 +1,9 @@
 $(document).ready(function () {
     $("#grupodiagnostico").DataTable({
         responsive: true,
+        pageLength: 5,
+        lengthMenu: [5, 10, 15, 20],
+        order: [0, "desc"],
         language: {
             processing: "Procesando...",
             search: "Buscar:",
@@ -59,7 +62,9 @@ function ModalDiagnostico(id) {
                     </a>
                     <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
                         <h6 class="dropdown-header" style="color: rgba(0,0,0,.72) !important;">Gestionar</h6>
-                        <a href="${editBaseUrl + element["id"] + edit}" class="dropdown-item text-dark ">
+                        <a href="${
+                            editBaseUrl + element["id"] + edit
+                        }" class="dropdown-item text-dark ">
                             <i class="far fa-folder-open"></i>
                             <span>Ver Informe</span>
                         </a>
@@ -98,6 +103,9 @@ function ModalDiagnostico(id) {
                 // Inicializar DataTables
                 $("#diagnosticosexistentestabla").DataTable({
                     responsive: true,
+                    pageLength: 5,
+                    lengthMenu: [5, 10, 15, 20],
+                    order: [0, "desc"],
                     language: {
                         processing: "Procesando...",
                         search: "Buscar:",
@@ -163,7 +171,7 @@ function ModalCrear(id) {
             if (form.valid() && $("#tipoDiagnostico").val() == "1") {
                 var id_diagnostico = id;
                 if (id_diagnostico) {
-                    window.location.href ="diagnosticos/" + id_diagnostico;
+                    window.location.href = "diagnosticos/" + id_diagnostico;
                 } else {
                     Swal.fire({
                         title: "Error!",
