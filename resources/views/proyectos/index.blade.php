@@ -48,7 +48,9 @@
                                     <th scope="col"></th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Area</th>
-                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Fecha estimada</th>
+                                    <th scope="col">Fecha inicio</th>
+                                    <th scope="col">Fecha final</th>
                                     <th scope="col">Avance</th>
                                     <th scope="col">Prioridad</th>
                                     <th scope="col">Estado</th>
@@ -63,69 +65,76 @@
                                                     class="avatar avatar-md bg-transparent "></td>
                                             <td>{{ $item->nombre }}</td>
                                             <td>{{ $item->areas?->nombre }}</td>
-                                            @if ($item->estado == 3)
+                                            <td>{{ $item->fecha_estimada  ?  $item->fecha_estimada : 'Sin fecha'}}</td>
 
-                                                <td>{{ $item->fecha_final }}</td>
+                                                @if ($item->fecha_inicio)
+                                                <td> {{ $item->fecha_inicio }} </td>
                                             @else
-                                                <td>{{ $item->fecha_estimada }}</td>
+                                               <td>{{ $item->created_at->format('d-m-Y') }}</td>
                                             @endif
-                                            <td>
-                                                <div class="progress text-dark " style="height:10px;">
-                                                    <div class="progress-bar progress-bar-striped bg-success"
-                                                        role="progressbar"
-                                                        style="width:{{ is_null($item->avance) ? 0 : $item->avance }}%;"
-                                                        aria-valuenow="{{ is_null($item->avance) ? 0 : $item->avance }}"
-                                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>{{ is_null($item->avance) ? 0 : $item->avance }}%
-                                            </td>
-                                            <td>{{ $item->prioridades?->nombre }}</td>
-                                            <td>
-                                                @switch($item->estado)
-                                                    @case(2)
-                                                        <span class="badge badge-warning">En curso</span>
-                                                    @break
 
-                                                    @case(3)
-                                                        <span class="badge badge-success">Finalizado</span>
-                                                    @break
+                                    @if ($item->estado == 3)
+                                        <td>{{ $item->fecha_final }}</td>
+                                    @else
+                                        <td></td>
+                                    @endif
 
-                                                    @default
-                                                        <span class="badge badge-danger">Pendiente</span>
-                                                @endswitch
-                                            </td>
-                                            <td>
-                                                <a class="nav-link pr-0" role="button" data-toggle="dropdown"
-                                                    aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
-                                                    <h6 class="dropdown-header" style="color: rgba(0,0,0,.72) !important;">
-                                                        Gestionar</h6>
-                                                    <a href="{{ route('actividades.show', $item->id) }}"
-                                                        class="dropdown-item font-dropdown-documento">
-                                                        <i class="fas fa-folder-plus"></i>
-                                                        <span>Crear Actividad</span>
-                                                    </a>
-                                                    <a data-toggle="modal" data-target="#actividadesExistentes"
-                                                        class="dropdown-item text-dark "
-                                                        onclick="ModalActividad('{{ $item->id }}')">
-                                                        <i class="far fa-folder-open"></i>
-                                                        <span> Ver Actividades</span>
-                                                    </a>
-                                                    <a href="{{ route('proyectos.edit', $item->id) }}"
-                                                        class="dropdown-item font-dropdown-documento">
-                                                        <i class="far fa-edit"></i>
-                                                        <span>Editar</span>
-                                                    </a>
-                                                    <a href="#" class="dropdown-item font-dropdown-documento"
-                                                        onclick="AlertRegistro('{{ $item->id }}')">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                        <span>Eliminar</span>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    <td>
+                                        <div class="progress text-dark " style="height:10px;">
+                                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                                                style="width:{{ is_null($item->avance) ? 0 : $item->avance }}%;"
+                                                aria-valuenow="{{ is_null($item->avance) ? 0 : $item->avance }}"
+                                                aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>{{ is_null($item->avance) ? 0 : $item->avance }}%
+                                    </td>
+                                    <td>{{ $item->prioridades?->nombre }}</td>
+                                    <td>
+                                        @switch($item->estado)
+                                            @case(2)
+                                                <span class="badge badge-warning">En curso</span>
+                                            @break
+
+                                            @case(3)
+                                                <span class="badge badge-success">Finalizado</span>
+                                            @break
+
+                                            @default
+                                                <span class="badge badge-danger">Pendiente</span>
+                                        @endswitch
+                                    </td>
+                                    <td>
+                                        <a class="nav-link pr-0" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
+                                            <h6 class="dropdown-header" style="color: rgba(0,0,0,.72) !important;">
+                                                Gestionar</h6>
+                                            <a href="{{ route('actividades.show', $item->id) }}"
+                                                class="dropdown-item font-dropdown-documento">
+                                                <i class="fas fa-folder-plus"></i>
+                                                <span>Crear Actividad</span>
+                                            </a>
+                                            <a data-toggle="modal" data-target="#actividadesExistentes"
+                                                class="dropdown-item text-dark "
+                                                onclick="ModalActividad('{{ $item->id }}')">
+                                                <i class="far fa-folder-open"></i>
+                                                <span> Ver Actividades</span>
+                                            </a>
+                                            <a href="{{ route('proyectos.edit', $item->id) }}"
+                                                class="dropdown-item font-dropdown-documento">
+                                                <i class="far fa-edit"></i>
+                                                <span>Editar</span>
+                                            </a>
+                                            <a href="#" class="dropdown-item font-dropdown-documento"
+                                                onclick="AlertRegistro('{{ $item->id }}')">
+                                                <i class="fas fa-trash-alt"></i>
+                                                <span>Eliminar</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    </tr>
+                                @endforeach
                                 @endif
                             </tbody>
                         </table>

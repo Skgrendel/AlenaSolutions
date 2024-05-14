@@ -59,12 +59,16 @@ function ModalActividad(id) {
                                     '<span class="badge badge-danger">Pendiente</span>';
                         }
 
+
+
                         tableContent += `
             <tr>
                 <td><img src="../assets/img/images/grupo.png" class="avatar avatar-md bg-transparent "></td>
                 <td>${element.nombre}</td>
                 <td>${element.personal_asignado}</td>
-                <td>${element.fecha_estimada}</td>
+                <td>${element.fecha_estimada ? element.fecha_estimada : 'Sin Fecha'}</td>
+                <td>${element.fecha_inicio ? element.fecha_inicio : 'sin Fecha'}</td>
+                <td>${element.fecha_final ? element.fecha_final : 'sin Fecha'}</td>
                 <td>
                     <div class="progress text-dark " style="height:10px;">
                         <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
@@ -113,6 +117,8 @@ function ModalActividad(id) {
                     <th scope="col">Nombre</th>
                     <th scope="col">Personal Asignado</th>
                     <th scope="col">Fecha Estimada</th>
+                    <th scope="col">Fecha Inicio</th>
+                    <th scope="col">Fecha Final</th>
                     <th scope="col">Avance</th>
                     <th scope="col">Prioridad</th>
                     <th scope="col">Estado</th>

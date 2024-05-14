@@ -111,8 +111,7 @@
                                         <label class="form-control-label" for="avance">Avance de Actividad</label>
                                         <input type="number" id="avance" name="avance" class="form-control"
                                             placeholder="Ingrese El Numero de  Avance de Su Actividad" min="0"
-                                            max="100" required value="{{ old('avance') }}"
-                                            oninput="validity.valid||(value='');">
+                                            max="100" required value="{{ $actividades->avance }}" oninput="validity.valid||(value='0');">
                                         @if ($errors->has('avance'))
                                             <span class="text-danger">{{ $errors->first('avance') }}</span>
                                         @endif

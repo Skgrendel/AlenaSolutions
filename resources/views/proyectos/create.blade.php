@@ -90,7 +90,7 @@
                                             <span class="text-danger">{{ $errors->first('fecha_estimada') }}</span>
                                         @endif
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="finalizado">
+                                            <input class="form-check-input" type="checkbox" value="1" id="finalizado" name="finalizado">
                                             <label class="form-check-label" for="defaultCheck1">
                                                Finalizado
                                             </label>

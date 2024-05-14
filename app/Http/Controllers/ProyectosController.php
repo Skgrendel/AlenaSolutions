@@ -41,6 +41,23 @@ class ProyectosController extends Controller
     {
 
         request()->validate(proyectos::$rules);
+
+        if ($request->finalizado == 1) {
+            $proyecto = new proyectos();
+            $proyecto->nombre = request('nombre');
+            $proyecto->descripcion = request('descripcion');
+            $proyecto->area = request('area');
+            $proyecto->prioridad = request('prioridad');
+            $proyecto->user_id = auth()->id();
+            $proyecto->estado = 3;
+            $proyecto->fecha_final = request('fecha_final');
+            $proyecto->fecha_inicio = request('fecha_inicio');
+            $proyecto->avance = 100;
+            $proyecto->save();
+            return redirect()->route('proyectos.index')->with('success', 'Proyecto Finalizado exitosamente.')
+            ->with('icon', 'success')->with('title', '¡Éxito!');
+        }
+
         $proyecto = new proyectos();
         $proyecto->user_id = auth()->id();
         $proyecto->fill($request->all());

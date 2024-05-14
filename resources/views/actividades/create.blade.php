@@ -68,7 +68,8 @@
                                             Asignada <span class="text-danger">*</span></label>
                                         <input type="text" id="personal_asignado" name="personal_asignado"
                                             class="form-control" placeholder="Ingrese El Nombre de la Persona Asignada"
-                                            required value="{{ Auth::user()->personal->nombres. ' ' .Auth::user()->personal->apellidos  }}">
+                                            required
+                                            value="{{ Auth::user()->personal->nombres . ' ' . Auth::user()->personal->apellidos }}">
                                         @if ($errors->has('nombre'))
                                             <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                         @endif
@@ -78,12 +79,21 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="fecha_estimada">Fecha Estimada de Finalizacion</label>
-                                        <input type="date" id="fecha_estimada" name="fecha_estimada" class="form-control"
-                                            placeholder="Dirección" value="{{ old('fecha_estimada') }}">
+                                        <label class="form-control-label" for="fecha_estimada">Fecha Estimada de
+                                            Finalizacion</label>
+                                        <input type="date" id="fecha_estimada" name="fecha_estimada"
+                                            class="form-control mb-2" placeholder="Dirección"
+                                            value="{{ old('fecha_estimada') }}">
                                         @if ($errors->has('fecha_estimada'))
                                             <span class="text-danger">{{ $errors->first('fecha_estimada') }}</span>
                                         @endif
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="1" id="finalizado"
+                                                name="finalizado">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                Finalizado
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -104,14 +114,42 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row d-none" id="fechas">
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="fecha_estimada">Fecha
+                                                    Inicial</label>
+                                                <input type="date" id="fecha_inicio" name="fecha_inicio"
+                                                    class="form-control mb-2" placeholder="Dirección"
+                                                    value="{{ old('fecha_estimada') }}">
+                                                @if ($errors->has('fecha_inicio'))
+                                                    <span class="text-danger">{{ $errors->first('fecha_inicio') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="fecha_estimada">Fecha Final</label>
+                                                <input type="date" id="fecha_final" name="fecha_final"
+                                                    class="form-control mb-2" placeholder="Dirección"
+                                                    value="{{ old('fecha_estimada') }}">
+                                                @if ($errors->has('fecha_inicio'))
+                                                    <span class="text-danger">{{ $errors->first('fecha_final') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="avance">Avance de Actividad</label>
                                         <input type="number" id="avance" name="avance" class="form-control"
                                             placeholder="Ingrese El Numero de  Avance de Su Actividad" min="0"
-                                            max="100" required value="{{ old('avance') }}"
-                                            oninput="validity.valid||(value='');">
+                                            max="100" required value="" oninput="validity.valid||(value='');">
                                         @if ($errors->has('avance'))
                                             <span class="text-danger">{{ $errors->first('avance') }}</span>
                                         @endif
@@ -163,6 +201,31 @@
 @endsection
 
 @section('js')
+    <script>
+        document.getElementById('finalizado').addEventListener('change', function(e) {
+            var fecha = document.getElementById('fecha_estimada');
+            var fechas = document.getElementById('fechas');
+            var fecha_inicio = document.getElementById('fecha_inicio');
+            var fecha_final = document.getElementById('fecha_final');
+            var avance = document.getElementById('avance');
+
+            if (e.target.checked) {
+                fecha.disabled = true;
+                fecha.value = '';
+                fechas.classList.remove('d-none');
+                avance.value = 100;
+                avance.dispatchEvent(new Event('input'));
+            } else {
+                fecha.disabled = false;
+                fechas.classList.add('d-none');
+                fecha_inicio.value = '';
+                fecha_final.value = '';
+                avance.value = 0;
+                avance.dispatchEvent(new Event('input'));
+            }
+        });
+    </script>
+
     <script>
         document.getElementById('avance').addEventListener('input', function() {
             if (this.value > 100) {

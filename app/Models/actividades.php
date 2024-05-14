@@ -19,6 +19,8 @@ class actividades extends Model
         'avance',
         'prioridad',
         'estado',
+        'fecha_inicio',
+        'fecha_final',
     ];
 
 

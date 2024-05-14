@@ -121,7 +121,7 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="fecha_estimada">Fecha Inicial</label>
                                                 <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control mb-2"
-                                                    placeholder="Dirección" value="{{ $proyecto->fecha_inicio }}">
+                                                    placeholder="Dirección" value="@if($proyecto->fecha_inicio){{ $proyecto->fecha_inicio }}@else {{ $proyecto->created_at }} @endif">
                                                 @if ($errors->has('fecha_inicio'))
                                                     <span class="text-danger">{{ $errors->first('fecha_inicio') }}</span>
                                                 @endif
