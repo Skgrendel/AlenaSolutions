@@ -91,7 +91,7 @@
                                         @endif
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="1" id="finalizado" name="finalizado">
-                                            <label class="form-check-label" for="defaultCheck1">
+                                            <label class="form-check-label" for="finalizado">
                                                Finalizado
                                             </label>
                                         </div>
@@ -185,17 +185,4 @@
         }
     });
 </script>
-
-    <script>
-        document.getElementById('avance').addEventListener('input', function(e) {
-            var value = e.target.value;
-            if (value === '') {
-                value = 0;
-            }
-            var progressBar = document.querySelector('.progress-bar');
-            progressBar.style.width = value + '%';
-            progressBar.setAttribute('aria-valuenow', value);
-            progressBar.textContent = value + '%';
-        });
-    </script>
 @endsection
