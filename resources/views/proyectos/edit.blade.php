@@ -80,28 +80,63 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-6" id="estimada">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="fecha_estimada">Fecha Estimada</label>
-                                        <input type="date" id="fecha_estimada" name="fecha_estimada" class="form-control"
+                                        <label class="form-control-label" for="fecha_estimada">Fecha Estimada de Finalizacion</label>
+                                        <input type="date" id="fecha_estimada" name="fecha_estimada" class="form-control mb-2"
                                             placeholder="Dirección" value="{{ $proyecto->fecha_estimada }}">
                                         @if ($errors->has('fecha_estimada'))
                                             <span class="text-danger">{{ $errors->first('fecha_estimada') }}</span>
                                         @endif
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="1" id="finalizado" name="finalizado" @if($proyecto->fecha_final) checked @endif>
+                                            <label class="form-check-label" for="defaultCheck1">
+                                               Finalizado
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="prioridad">Prioridad<span class="text-danger">*</span></label>
+                                        <label class="form-control-label" for="prioridad">Prioridad<span
+                                                class="text-danger">*</span></label>
                                         <select name="prioridad" id="prioridad" class="form-control" required>
                                             <option value="" disabled selected>Seleccione su Prioridad</option>
                                             @foreach ($prioridades as $id => $nombre)
-                                                <option value="{{ $id }}" {{ $proyecto->prioridad == $id ? 'selected' : '' }}>{{ $nombre }}</option>
+                                                <option value="{{ $id }}"
+                                                    {{ $proyecto->prioridad == $id ? 'selected' : '' }}>{{ $nombre }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         @if ($errors->has('prioridad'))
                                             <span class="text-danger">{{ $errors->first('prioridad') }}</span>
                                         @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row d-none" id="fechas">
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="fecha_estimada">Fecha Inicial</label>
+                                                <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control mb-2"
+                                                    placeholder="Dirección" value="{{ $proyecto->fecha_inicio }}">
+                                                @if ($errors->has('fecha_inicio'))
+                                                    <span class="text-danger">{{ $errors->first('fecha_inicio') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="form-control-label" for="fecha_estimada">Fecha Final</label>
+                                                <input type="date" id="fecha_final" name="fecha_final" class="form-control mb-2"
+                                                    placeholder="Dirección" value="{{ $proyecto->fecha_final }}">
+                                                @if ($errors->has('fecha_inicio'))
+                                                    <span class="text-danger">{{ $errors->first('fecha_final') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -129,6 +164,35 @@
 @endsection
 
 @section('js')
+<script>
+    window.onload = function() {
+        var fecha = document.getElementById('fecha_estimada');
+        var fechas = document.getElementById('fechas');
+        var finalizado = document.getElementById('finalizado');
+
+        if (finalizado.checked) {
+            fecha.disabled = true;
+            fecha.value = '';
+            fechas.disabled = true;
+            fechas.value = '';
+            fechas.classList.remove('d-none');
+        }
+
+        finalizado.addEventListener('change', function(e) {
+            if (e.target.checked) {
+                fecha.disabled = true;
+                fecha.value = '';
+                fechas.disabled = true;
+                fechas.value = '';
+                fechas.classList.remove('d-none');
+            } else {
+                fecha.disabled = false;
+                fechas.disabled = false;
+                fechas.classList.add('d-none');
+            }
+        });
+    };
+</script>
 <script>
     document.getElementById('avance').addEventListener('input', function(e) {
         var value = e.target.value;

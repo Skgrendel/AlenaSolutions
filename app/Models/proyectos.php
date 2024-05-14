@@ -18,12 +18,13 @@ class proyectos extends Model
         'avance',
         'prioridad',
         'estado',
+        'fecha_inicio',
+        'fecha_final',
     ];
 
     static $rules = [
         'nombre' => 'required',
         'descripcion' => 'required',
-        'fecha_estimada'=> 'required',
         'area' => 'required',
         'prioridad' => 'required',
     ];
@@ -53,5 +54,5 @@ class proyectos extends Model
         return $this->hasOne(vs_estados::class,'id','estado');
     }
 
-    
+
 }

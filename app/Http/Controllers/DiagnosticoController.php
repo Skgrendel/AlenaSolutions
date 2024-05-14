@@ -78,7 +78,6 @@ class DiagnosticoController extends Controller
      */
     public function show(string $id)
     {
-
         $empresa = grupodiagnostico::findOrFail($id);
         $mods = [];
         for ($i = 1; $i <= 13; $i++) {
@@ -108,14 +107,23 @@ class DiagnosticoController extends Controller
             $promedios[$key]["promedio"] = round($suma / $totalresultado, 0);
         }
         $encabezados = encabezados_preguntas::all();
-
+        $numeral = ["4","5.1.1.","5.1.2.","5.1.3.","5.1.4.","5.2.1.","5.2.2.","5.2.3.","5.2.4.","5.3.","5.4.","5.5.","5.6."];
         $encabezadosArray = [];
+        $numeralArray = [];
+        $contador = 0;
+        foreach ($encabezados as $encabezado) {
+            if ($contador < count($numeral)) { // Verifica que el contador no exceda el tamaño del array $numeral
+                $numeralArray['grupo' . $encabezado->id] = $numeral[$contador]; // Asigna el numeral correspondiente al grupo
+                $contador++; // Incrementa el contador
+            }
+        }
         foreach ($encabezados as $encabezado) {
             $encabezadosArray['grupo' . $encabezado->id] = $encabezado->nombre;
         }
-
         $Grupodiagnostico = grupodiagnostico::with('user')->where('id', $diagnostico->grupodiagnosticos_id)->first();
-        return view('diagnosticos.informe', compact('diagnostico', 'Grupodiagnostico', 'promedios', 'encabezadosArray'));
+
+
+        return view('diagnosticos.informe', compact('diagnostico', 'Grupodiagnostico', 'promedios', 'encabezadosArray', 'numeralArray'));
     }
 
     /**

@@ -46,7 +46,6 @@ class ProyectosController extends Controller
         $proyecto->fill($request->all());
         $proyecto->save();
 
-
         return redirect()->route('proyectos.index')->with('success', 'Proyecto creado exitosamente.')
             ->with('icon', 'success')->with('title', '¡Éxito!');
     }
@@ -77,10 +76,21 @@ class ProyectosController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         request()->validate(proyectos::$rules);
         $proyecto = proyectos::findOrFail($id);
-        $proyecto->update($request->all());
 
+        if ($request->finalizado == 1) {
+            $proyecto->estado = 3;
+            $proyecto->fecha_final = request('fecha_final');
+            $proyecto->fecha_inicio = request('fecha_inicio');
+            $proyecto->avance = 100;
+            $proyecto->update();
+            return redirect()->route('proyectos.index')->with('success', 'Proyecto Finalizado exitosamente.')
+            ->with('icon', 'success')->with('title', '¡Éxito!');
+        }
+
+        $proyecto->update($request->all());
         return redirect()->route('proyectos.index')->with('success', 'Proyecto actualizado exitosamente.')
             ->with('icon', 'success')->with('title', '¡Éxito!');
     }

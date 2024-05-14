@@ -115,38 +115,47 @@
         <div class="row">
             <!-- Card de la descripcion -->
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row align-items-center">
-                            <div class="col-8">
-                                <h3 class="mb-0 h4">Nombre del Diagnostico</h3>
-                                <p class="text-sm ">{{ $diagnostico->nombre }}</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <h3 class="mb-0 h4">Nombre del Diagnostico</h3>
+                                        <p class="text-sm ">{{ $diagnostico->nombre }}</p>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <!-- <a href="#!" class="btn btn-sm btn-primary"></a> -->
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-4 text-right">
-                                <!-- <a href="#!" class="btn btn-sm btn-primary"></a> -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 class="mb-0 h4">Objetivos</h3>
+                                        @if ($diagnostico->objetivo != null)
+                                            <span class="descripcionDiagnostico mb-0"
+                                                style="font-size: .8625rem;">{{ $diagnostico->objetivo }}</span>
+                                        @else
+                                            <span class="descripcionDiagnostico mb-0" style="font-size: .8625rem;">No se
+                                                especificó un
+                                                objetivo para este diagnostico.</span>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3 class="mb-0 h4">Objetivos</h3>
-                                @if ($diagnostico->objetivo != null)
-                                    <span class="descripcionDiagnostico mb-0"
-                                        style="font-size: .8625rem;">{{ $diagnostico->objetivo }}</span>
-                                @else
-                                    <span class="descripcionDiagnostico mb-0" style="font-size: .8625rem;">No se
-                                        especificó un
-                                        objetivo para este diagnostico.</span>
-                                @endif
-
-
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                               
                             </div>
                         </div>
-
                     </div>
+
                 </div>
+
             </div>
 
             <!-- Card de los hallazgos -->
@@ -176,8 +185,7 @@
                     <div class="card-body">
                         <!-- Hallazgos -->
                         <div class="row">
-                            @foreach ($promedios as $key => $promedio)
-                                <div class="col-md-6">
+                            {{-- @foreach ($promedios as $key => $promedio) <div class="col-md-6">
                                     <!-- Aqui se generan los hallazgos -->
                                     <div class="card shadow-lg ">
                                         <div class="card-body">
@@ -220,8 +228,69 @@
                                         </div>
 
                                     </div>
-                                </div>
-                            @endforeach
+                                </div>   @endforeach --}}
+                            <div class="table-responsive py-2">
+                                <table id="resultados"
+                                    class="table table-striped align-items-center table-hover table-bordered  w-100">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col"><strong>numeral</strong></th>
+                                            </th>
+                                            <th scope="col"><strong>Numero</strong></th>
+                                            <th scope="col"><strong>Requisito</strong></th>
+                                            <th scope="col"><strong>Cumplimineto tecnico</strong></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (isset($promedios))
+                                            @foreach ($promedios as $key => $promedio)
+                                                <tr>
+                                                    <td><strong>{{ $numeralArray[$key] ?? 'No disponible' }}</strong></td>
+                                                    <td><strong>{{ substr($key, 5) }}</strong></td>
+                                                    <td>{{ $encabezadosArray[$key] ?? 'No disponible' }}</td>
+                                                    <td>
+                                                        @switch($promedio['promedio'])
+                                                            @case(0)
+                                                                <span class="alert alert-secondary text-xs">No Aplica</span>
+                                                            @break
+
+                                                            @case(1)
+                                                                <span class="alert alert-success text-xs">Cumplido</span>
+                                                            @break
+
+                                                            @case(2)
+                                                                <span class="alert text-xs"
+                                                                    style="background-color: #17a847; color: #000000;"
+                                                                    role="alert">
+                                                                    Mayoritariamente Cumplido
+                                                                </span>
+                                                                {{-- <span class="badge badge-success">MAYORITARIAMENTE CUMPLIDO</span> --}}
+                                                            @break
+
+                                                            @case(3)
+                                                                <span class="alert text-xs"
+                                                                    style="background-color: #ffc107; color: #000000;">Parcialmente
+                                                                    Cumplido</span>
+                                                            @break
+
+                                                            @case(4)
+                                                                <span class="alert text-xs"
+                                                                    style="background-color: #d42a13e5; color: #000000;">No
+                                                                    Cumplido</span>
+                                                            @break
+
+                                                            @default
+                                                                <span class="alert alert-success">No Aplica</span>
+                                                        @endswitch
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+
+
                         </div>
                         <!-- Fin de los hallazgos -->
                     </div>
@@ -232,4 +301,35 @@
 @endsection
 
 @section('js')
+    <script>
+        $(document).ready(function() {
+            $("#resultados").DataTable({
+                responsive: true,
+                pageLength: 13,
+                lengthMenu: [13, 26, 52],
+                language: {
+                    processing: "Procesando...",
+                    search: "Buscar:",
+                    lengthMenu: "Mostrar _MENU_ elementos",
+                    info: "Mostrando de _START_ a _END_ de _TOTAL_ elementos",
+                    infoEmpty: "Mostrando 0 a 0 de 0 elementos",
+                    infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                    infoPostFix: "",
+                    loadingRecords: "Cargando registros...",
+                    zeroRecords: "No se encontraron registros",
+                    emptyTable: "No hay datos disponibles en la tabla",
+                    paginate: {
+                        first: "Primero",
+                        previous: "<<",
+                        next: ">>",
+                        last: "Último",
+                    },
+                    aria: {
+                        sortAscending: ": activar para ordenar la columna de manera ascendente",
+                        sortDescending: ": activar para ordenar la columna de manera descendente",
+                    },
+                },
+            });
+        });
+    </script>
 @endsection

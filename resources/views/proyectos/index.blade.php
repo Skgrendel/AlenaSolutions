@@ -10,7 +10,8 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="?view=diagnostico">Informacion de Proyectos / Procesos</a></li>
+                                <li class="breadcrumb-item"><a href="?view=diagnostico">Informacion de Proyectos /
+                                        Procesos</a></li>
                                 <li class="breadcrumb-item text-dark active" aria-current="page">Home
                                 </li>
                             </ol>
@@ -47,7 +48,7 @@
                                     <th scope="col"></th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Area</th>
-                                    <th scope="col">Fecha Estimada</th>
+                                    <th scope="col">Fecha</th>
                                     <th scope="col">Avance</th>
                                     <th scope="col">Prioridad</th>
                                     <th scope="col">Estado</th>
@@ -62,7 +63,12 @@
                                                     class="avatar avatar-md bg-transparent "></td>
                                             <td>{{ $item->nombre }}</td>
                                             <td>{{ $item->areas?->nombre }}</td>
-                                            <td>{{ $item->fecha_estimada}}</td>
+                                            @if ($item->estado == 3)
+
+                                                <td>{{ $item->fecha_final }}</td>
+                                            @else
+                                                <td>{{ $item->fecha_estimada }}</td>
+                                            @endif
                                             <td>
                                                 <div class="progress text-dark " style="height:10px;">
                                                     <div class="progress-bar progress-bar-striped bg-success"
