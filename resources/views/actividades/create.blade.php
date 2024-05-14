@@ -82,8 +82,7 @@
                                         <label class="form-control-label" for="fecha_estimada">Fecha Estimada de
                                             Finalizacion</label>
                                         <input type="date" id="fecha_estimada" name="fecha_estimada"
-                                            class="form-control mb-2" placeholder="Dirección"
-                                            value="{{ old('fecha_estimada') }}">
+                                            class="form-control mb-2" value="{{ old('fecha_estimada') }}">
                                         @if ($errors->has('fecha_estimada'))
                                             <span class="text-danger">{{ $errors->first('fecha_estimada') }}</span>
                                         @endif
