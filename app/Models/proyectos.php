@@ -20,6 +20,7 @@ class proyectos extends Model
         'estado',
         'fecha_inicio',
         'fecha_final',
+        'imagenes'
     ];
 
     static $rules = [
@@ -27,6 +28,7 @@ class proyectos extends Model
         'descripcion' => 'required',
         'area' => 'required',
         'prioridad' => 'required',
+        'imagenes.*' => 'image|max:3072', // 3MB
     ];
 
     public function actividades()

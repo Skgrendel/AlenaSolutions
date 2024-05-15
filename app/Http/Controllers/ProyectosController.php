@@ -17,7 +17,7 @@ class ProyectosController extends Controller
     public function index()
     {
 
-        $datatable = proyectos::where('user_id',auth()->id())->get();
+        $datatable = proyectos::where('user_id', auth()->id())->get();
 
         return view('proyectos.index', compact('datatable'));
     }
@@ -40,10 +40,24 @@ class ProyectosController extends Controller
     public function store(Request $request)
     {
 
+
         request()->validate(proyectos::$rules);
 
         if ($request->finalizado == 1) {
+
             $proyecto = new proyectos();
+            $imagenes = [];
+            if ($request->hasFile('responseFiles')) {
+                foreach ($request->file('responseFiles') as $imagen) {
+                    $path = 'imagen/';
+                    $nombre = rand(1000, 9999) . "_" . date('YmdHis') . "." . $imagen->getClientOriginalExtension();
+                    $imagen->move($path, $nombre);
+                    // Añade el nombre del archivo al array
+                    $imagenes[] = $nombre;
+                }
+
+            }
+            $proyecto->imagenes = json_encode($imagenes);
             $proyecto->nombre = request('nombre');
             $proyecto->descripcion = request('descripcion');
             $proyecto->area = request('area');
@@ -55,16 +69,31 @@ class ProyectosController extends Controller
             $proyecto->avance = 100;
             $proyecto->save();
             return redirect()->route('proyectos.index')->with('success', 'Proyecto Finalizado exitosamente.')
-            ->with('icon', 'success')->with('title', '¡Éxito!');
+                ->with('icon', 'success')->with('title', '¡Éxito!');
+        }else{
+            $proyecto = new proyectos();
+            $imagenes = [];
+
+            if ($request->hasFile('responseFiles')) {
+                foreach ($request->file('responseFiles') as $imagen) {
+                    $path = 'imagen/';
+                    $nombre = rand(1000, 9999) . "_" . date('YmdHis') . "." . $imagen->getClientOriginalExtension();
+                    $imagen->move($path, $nombre);
+                    // Añade el nombre del archivo al array
+                    $imagenes[] = $nombre;
+                }
+
+            }
+            $proyecto->imagenes = json_encode($imagenes);
+            $proyecto->user_id = auth()->id();
+            $proyecto->fill($request->all());
+            $proyecto->save();
+
+            return redirect()->route('proyectos.index')->with('success', 'Proyecto creado exitosamente.')
+                ->with('icon', 'success')->with('title', '¡Éxito!');
         }
 
-        $proyecto = new proyectos();
-        $proyecto->user_id = auth()->id();
-        $proyecto->fill($request->all());
-        $proyecto->save();
 
-        return redirect()->route('proyectos.index')->with('success', 'Proyecto creado exitosamente.')
-            ->with('icon', 'success')->with('title', '¡Éxito!');
     }
 
     /**
@@ -104,7 +133,7 @@ class ProyectosController extends Controller
             $proyecto->avance = 100;
             $proyecto->update();
             return redirect()->route('proyectos.index')->with('success', 'Proyecto Finalizado exitosamente.')
-            ->with('icon', 'success')->with('title', '¡Éxito!');
+                ->with('icon', 'success')->with('title', '¡Éxito!');
         }
 
         $proyecto->update($request->all());
@@ -133,5 +162,4 @@ class ProyectosController extends Controller
         $actividades = actividades::where('proyecto_id', $id)->with('prioridades')->get();
         return response()->json($actividades);
     }
-
 }
