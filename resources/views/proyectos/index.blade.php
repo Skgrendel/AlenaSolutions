@@ -110,6 +110,11 @@
                                         <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow">
                                             <h6 class="dropdown-header" style="color: rgba(0,0,0,.72) !important;">
                                                 Gestionar</h6>
+                                                <a href="{{ route('proyectos.show', $item->id) }}"
+                                                    class="dropdown-item font-dropdown-documento">
+                                                    <i class="fas fa-eye"></i>
+                                                    <span>Ver Proyecto</span>
+                                                </a>
                                             <a href="{{ route('actividades.show', $item->id) }}"
                                                 class="dropdown-item font-dropdown-documento">
                                                 <i class="fas fa-folder-plus"></i>

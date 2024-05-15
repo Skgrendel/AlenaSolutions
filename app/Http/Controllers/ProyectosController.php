@@ -99,9 +99,11 @@ class ProyectosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(proyectos $proyectos)
+    public function show(string $id)
     {
-        //
+        $proyecto = proyectos::findOrFail($id);
+        $proyecto->imagenes = json_decode($proyecto->imagenes);
+        return view('proyectos.show', compact('proyecto'));
     }
 
     /**

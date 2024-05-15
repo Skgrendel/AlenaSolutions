@@ -31,6 +31,7 @@
 
     <!-- SmartWizard - V. 4.3.1 ya que la version mas actual 5.1 genera error, habria que actualizar codigo -->
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/glightbox/glightbox.min.css')}}">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/argon.min.css?v=1.1.0')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/css/mystyle.css')}}">
@@ -90,6 +91,8 @@
     <!-- Argon JS -->
     <script src="{{asset('/assets/js/argon.min.js?v=1.1.0')}}"></script>
     {{-- Personalize js --}}
+    <script src="{{ asset('assets/vendor/glightbox/glightbox.min.js')}}"></script>
+    <script src="{{ asset('assets/vendor/glightbox/custom-glightbox.min.js')}}"></script>
     <script src="{{asset('assets/libs/stepper/bsStepper.min.js')}}"></script>
     @yield('js')
 </body>
