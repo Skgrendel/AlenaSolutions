@@ -38,6 +38,7 @@ Route::get('/vixor',[ReportController::class,'vixor'])->name('Rerpotevixor');
 Route::get('/reportes',[ReportController::class,'index'])->name('Rerpoteindex');
 Route::get('/operaciones',[ReportController::class,'operacion'])->name('ReportOperaciones');
 Route::get('/qanalytic',[ReportController::class,'qanalytic'])->name('ReportQanalytic');
+Route::get('/ventas',[ReportController::class,'ventas'])->name('Reportventas');
 Route::get('/proderi',[ReportController::class,'proderiIndex'])->name('proderiIndex');
 Route::get('/proderi/gestion',[ReportController::class,'proderiGestion'])->name('proderiGestion');
 Route::get('/proderi/debidadiligencia',[ReportController::class,'debidadiligencia'])->name('proderidebidadiligencia');

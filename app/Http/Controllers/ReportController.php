@@ -55,4 +55,7 @@ class ReportController extends Controller
     public function proderidepartamentoitsoporte(){
         return view('reportes.proderi.it.solicitudsoporte');
     }
+    public function ventas(){
+        return view('reportes.proderi.ventas');
+    }
 }
