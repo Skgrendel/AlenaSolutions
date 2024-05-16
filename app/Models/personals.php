@@ -30,6 +30,11 @@ class personals extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function areas()
+    {
+        return $this->hasOne(vs_areas::class,'id','area');
+    }
 
 
 }

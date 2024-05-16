@@ -20,7 +20,8 @@ class proyectos extends Model
         'estado',
         'fecha_inicio',
         'fecha_final',
-        'imagenes'
+        'imagenes',
+        'personal_asignado'
     ];
 
     static $rules = [
