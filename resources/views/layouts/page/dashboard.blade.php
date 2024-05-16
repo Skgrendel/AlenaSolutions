@@ -41,6 +41,7 @@
 </head>
 
 <body class="body-page">
+ 
     @include('layouts.page.sidebar')
     <!-- Main content -->
     <div class="main-content" id="panel">
