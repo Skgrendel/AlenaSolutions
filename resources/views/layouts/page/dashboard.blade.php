@@ -41,7 +41,7 @@
 </head>
 
 <body class="body-page">
- 
+
     @include('layouts.page.sidebar')
     <!-- Main content -->
     <div class="main-content" id="panel">
@@ -53,7 +53,37 @@
             @include('layouts.page.footer')
         </div>
     </div>
-
+    <div class="modal fade" id="soporteModal" tabindex="-1" aria-labelledby="soporteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="soporteModalLabel">Soporte técnico</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="soporte-form" action="{{ route('enviar-correo-soporte') }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo electrónico:</label>
+                            <input type="email" class="form-control" id="correo" name="correo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje:</label>
+                            <textarea class="form-control" id="mensaje" name="mensaje" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Argon Scripts -->
     <!-- Core Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
