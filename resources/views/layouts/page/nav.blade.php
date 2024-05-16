@@ -39,7 +39,7 @@
                              <h6 class="text-overflow m-0">Bienvenido!</h6>
                          </div>
 
-                         <a href="#" class="dropdown-item" onclick="event.preventDefault(); $('#soporteModal').modal('show');">
+                         <a href="#" class="dropdown-item d-none ">
                             <i class="ni ni-support-16"></i>
                             <span>Soporte técnico</span>
                           </a>
