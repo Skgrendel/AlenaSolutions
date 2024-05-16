@@ -140,6 +140,20 @@
                                     </div>
                                 </div>
                             </div>
+                            @if (Auth::user()->personal->areas->nombre == "Consultores")
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="personal_asignado">Nombre de la persona Asignada <span class="text-danger">*</span></label>
+                                        <input type="text" id="personal_asignado" name="personal_asignado"
+                                            class="form-control" placeholder="Ingrese El Nombre de la Persona Asignada" value="{{Auth::user()->personal->areas->nombre == "Consultores" ? Auth::user()->personal->nombres . ' ' . Auth::user()->personal->apellidos : ''}}">
+                                        @if ($errors->has('personal_asignado'))
+                                            <span class="text-danger">{{ $errors->first('personal_asignado') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="row">
                                 <div class="col-lg">
                                     <div class="form-group">
