@@ -129,6 +129,18 @@ class ProyectosController extends Controller
         $proyecto = proyectos::findOrFail($id);
 
         if ($request->finalizado == 1) {
+            $imagenes = [];
+            if ($request->hasFile('responseFiles')) {
+                foreach ($request->file('responseFiles') as $imagen) {
+                    $path = 'imagen/';
+                    $nombre = rand(1000, 9999) . "_" . date('YmdHis') . "." . $imagen->getClientOriginalExtension();
+                    $imagen->move($path, $nombre);
+                    // Añade el nombre del archivo al array
+                    $imagenes[] = $nombre;
+                }
+
+            }
+            $proyecto->imagenes = json_encode($imagenes);
             $proyecto->estado = 3;
             $proyecto->fecha_final = request('fecha_final');
             $proyecto->fecha_inicio = request('fecha_inicio');
@@ -138,6 +150,18 @@ class ProyectosController extends Controller
                 ->with('icon', 'success')->with('title', '¡Éxito!');
         }
 
+        $imagenes = [];
+        if ($request->hasFile('responseFiles')) {
+            foreach ($request->file('responseFiles') as $imagen) {
+                $path = 'imagen/';
+                $nombre = rand(1000, 9999) . "_" . date('YmdHis') . "." . $imagen->getClientOriginalExtension();
+                $imagen->move($path, $nombre);
+                // Añade el nombre del archivo al array
+                $imagenes[] = $nombre;
+            }
+
+        }
+        $proyecto->imagenes = json_encode($imagenes);
         $proyecto->update($request->all());
         return redirect()->route('proyectos.index')->with('success', 'Proyecto actualizado exitosamente.')
             ->with('icon', 'success')->with('title', '¡Éxito!');
