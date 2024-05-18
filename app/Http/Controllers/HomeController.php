@@ -12,9 +12,9 @@ class HomeController extends Controller
     {
 
         if (auth()->user()->hasRole('Administrador')) {
-            return view('dashboard.home');
+            return view('reportes.index');
         } elseif (auth()->user()->hasRole('Cliente')) {
-            return view('dashboard.home');
+            return view('reportes.index');
         } elseif (auth()->user()->hasRole('Empleado')) {
             return redirect()->route('proyectos.index');
         } else {
