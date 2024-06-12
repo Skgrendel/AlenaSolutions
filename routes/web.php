@@ -46,6 +46,7 @@ Route::get('/proderi/administrativo',[ReportController::class,'proderiAdministra
 Route::get('/proderi/administrativo/compras',[ReportController::class,'proderiAdministrativocompras'])->name('prodericompras');
 Route::get('/proderi/administrativo/permisos',[ReportController::class,'proderiAdministrativopermisos'])->name('proderipermisos');
 Route::get('/proderi/departamentoit',[ReportController::class,'proderidepartamentoit'])->name('departamentoit');
+Route::get('/acoficum',[ReportController::class,'acoficum'])->name('acoficum');
 Route::get('/proderi/departamentoit/soporte',[ReportController::class,'proderidepartamentoitsoporte'])->name('itsoporte');
 Route::resource('/personals', PersonalsController::class)->names('personals');
 Route::resource('/proyectos', ProyectosController::class)->names('proyectos');

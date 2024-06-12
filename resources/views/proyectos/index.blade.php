@@ -147,7 +147,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <!-- Modal de Actividades -->
     <div class="modal fade" id="actividadesExistentes" tabindex="-1" aria-labelledby="exampleModalLabel"

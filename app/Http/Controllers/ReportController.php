@@ -58,4 +58,7 @@ class ReportController extends Controller
     public function ventas(){
         return view('reportes.proderi.ventas');
     }
+    public function acoficum(){
+        return view('reportes.acoficum');
+    }
 }
