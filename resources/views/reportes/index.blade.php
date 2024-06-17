@@ -57,34 +57,30 @@
                                             </div>
                                         </div>
                                     @endcan
-                                    <div class="col-md-2">
-                                        <div class="card border mr-1 ">
-                                            <div class="card-body text-center">
-                                                <div class=" d-flex justify-content-center ">
-                                                    <img alt="" src="{{ asset('/assets/img/images/proderi.svg') }}"
-                                                        class="avatar avatar-xl rounded m-2 bg-transparent ">
-                                                    <a type="button" href="{{ route('proderiIndex') }}" class="btn">
-                                                        <div class="d-block text-center">
-                                                            <br> <span class="text-sm">Reportes</span>
-                                                        </div>
-                                                    </a>
-                                                </div>
+                                    <div class="card border mr-1 ">
+                                        <div class="card-body text-center">
+                                            <div class=" d-flex justify-content-center ">
+                                                <img alt="" src="{{ asset('/assets/img/images/proderi.svg') }}"
+                                                    class="avatar avatar-xl rounded m-2 bg-transparent ">
+                                                <a type="button" href="{{ route('proderiIndex') }}" class="btn">
+                                                    <div class="d-block text-center">
+                                                        <br> <span class="text-sm">Reportes</span>
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <div class="card border mr-1 ">
-                                            <div class="card-body text-center">
-                                                <div class=" d-flex justify-content-center ">
-                                                    <img alt=""
-                                                        src="{{ asset('/assets/img/images/Logo_Acoficum.svg') }}"
-                                                        class="avatar avatar-xl rounded m-2 bg-transparent">
-                                                    <a type="button" href="{{ route('acoficum') }}" class="btn">
-                                                        <div class="d-block text-center">
-                                                            <br> <span class="text-sm">Reportes</span>
-                                                        </div>
-                                                    </a>
-                                                </div>
+                                    <div class="card border mr-1 ">
+                                        <div class="card-body text-center">
+                                            <div class=" d-flex justify-content-center ">
+                                                <img alt=""
+                                                    src="{{ asset('/assets/img/images/Logo_Acoficum.svg') }}"
+                                                    class="avatar avatar-xl rounded m-2 bg-transparent">
+                                                <a type="button" href="{{route('acoficum')}}" class="btn">
+                                                    <div class="d-block text-center">
+                                                        <br> <span class="text-sm">Reportes</span>
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -137,8 +133,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endcan
+                                    @endcan
                                 </div>
                             </div>
                         </div>
