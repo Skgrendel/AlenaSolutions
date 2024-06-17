@@ -15,12 +15,16 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('nombre');
-            $table->string('descripcion');
             $table->string('area');
+            $table->string('personal_asignado')->nullable();
+            $table->string('descripcion');
             $table->string('fecha_estimada')->nullable();
+            $table->string('fecha_inicio')->nullable();
+            $table->string('fecha_final')->nullable();
             $table->integer('avance')->nullable();
             $table->string('prioridad');
             $table->string('estado')->default('1');
+            $table->string('imagenes')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

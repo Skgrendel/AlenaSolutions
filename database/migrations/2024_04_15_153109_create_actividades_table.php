@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('prioridad');
             $table->string('estado')->default('1');
             $table->foreign('proyecto_id')->references('id')->on('proyectos');
+            $table->string('fecha_inicio')->nullable();
+            $table->string('fecha_final')->nullable();
             $table->timestamps();
         });
     }

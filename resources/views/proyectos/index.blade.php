@@ -41,7 +41,7 @@
             <div class="col-xl-12 bg-white rounded mb-4 card ">
                 <div class="mt-4 p-2 mr-2">
                     <a href="{{ route('proyectos.create') }}" class="btn btn-info mb-2 ">Crear Nuevo</a>
-                    <div class="table-responsive py-2">
+                    {{-- <div class="table-responsive py-2">
                         <table id="proyecto" class="table table-striped align-items-center table-hover w-100">
                             <thead class="thead-light">
                                 <tr>
@@ -143,7 +143,8 @@
                                 @endif
                             </tbody>
                         </table>
-                    </div>
+                    </div> --}}
+                    @livewire('proyectos-datatable')
                 </div>
             </div>
         </div>
