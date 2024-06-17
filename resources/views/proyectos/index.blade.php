@@ -149,6 +149,8 @@
             </div>
         </div>
     </div>
+
+
     <!-- Modal de Actividades -->
     <div class="modal fade" id="actividadesExistentes" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -168,6 +170,10 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('css')
+
 @endsection
 @section('js')
     <script src="../scripts/proyectos/datatable.js"></script>

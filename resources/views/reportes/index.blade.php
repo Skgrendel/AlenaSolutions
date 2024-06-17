@@ -3,7 +3,6 @@
 @section('content')
     <div class="row">
         <div class="col-xl-12">
-
             <!-- Encabezado -->
             <div class="header bg-gradient-info rounded  pb-6">
                 <div class="container-fluid">
@@ -41,7 +40,7 @@
                             <div class="card-body">
                                 <div class="row ">
                                     @can('administrador')
-                                        <div class="col-md-4">
+                                        <div class="col-md-2">
                                             <div class="card border mr-1 ">
                                                 <div class="card-body text-center">
                                                     <div class=" d-flex justify-content-center ">
@@ -58,7 +57,7 @@
                                             </div>
                                         </div>
                                     @endcan
-                                    <div class="col-md-4">
+                                    <div class="col-md-2">
                                         <div class="card border mr-1 ">
                                             <div class="card-body text-center">
                                                 <div class=" d-flex justify-content-center ">
@@ -73,7 +72,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-2">
                                         <div class="card border mr-1 ">
                                             <div class="card-body text-center">
                                                 <div class=" d-flex justify-content-center ">
@@ -89,66 +88,63 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     @can('administrador')
-                                        <div class="col-md-4">
-                                            <div class="card border mr-1 ">
-                                                <div class="card-body text-center">
-                                                    <div class=" d-flex justify-content-center ">
-                                                        <img alt=""
-                                                            src="{{ asset('/assets/img/images/LogoAlena.svg') }}"
-                                                            class="avatar avatar-xl rounded m-2 bg-transparent ">
-                                                        <a type="button" href="{{ route('ReportOperaciones') }}"
-                                                            class="btn">
-                                                            <div class="d-block text-center">
-                                                                <br> <span class="text-sm">Reportes</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="card border mr-1 ">
+                                            <div class="card-body text-center">
+                                                <div class=" d-flex justify-content-center ">
+                                                    <img alt=""
+                                                        src="{{ asset('/assets/img/images/LogoAlena.svg') }}"
+                                                        class="avatar avatar-xl rounded m-2 bg-transparent ">
+                                                    <a type="button" href="{{ route('ReportOperaciones') }}"
+                                                        class="btn">
+                                                        <div class="d-block text-center">
+                                                            <br> <span class="text-sm">Reportes</span>
+                                                        </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="card border mr-1 ">
-                                                <div class="card-body text-center">
-                                                    <div class=" d-flex justify-content-center ">
-                                                        <img alt=""
-                                                            src="{{ asset('/assets/img/images/LogoAlenaQanalyticData.svg') }}"
-                                                            class="avatar avatar-xl rounded m-2 bg-transparent">
-                                                        <a type="button" href="{{ route('ReportQanalytic') }}" class="btn">
-                                                            <div class="d-block text-center">
-                                                                <br> <span class="text-sm">Reportes</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="card border mr-1 ">
+                                            <div class="card-body text-center">
+                                                <div class=" d-flex justify-content-center ">
+                                                    <img alt=""
+                                                        src="{{ asset('/assets/img/images/LogoAlenaQanalyticData.svg') }}"
+                                                        class="avatar avatar-xl rounded m-2 bg-transparent">
+                                                    <a type="button" href="{{ route('ReportQanalytic') }}" class="btn">
+                                                        <div class="d-block text-center">
+                                                            <br> <span class="text-sm">Reportes</span>
+                                                        </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="card border mr-1 ">
-                                                <div class="card-body text-center">
-                                                    <div class=" d-flex justify-content-center ">
-                                                        <img alt=""
-                                                            src="{{ asset('/assets/img/images/logo_caplaft.svg') }}"
-                                                            class="avatar avatar-xl rounded m-2 bg-transparent">
-                                                        <a type="button" href="#!" class="btn">
-                                                            <div class="d-block text-center">
-                                                                <br> <span class="text-sm">Reportes</span>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="card border mr-1 ">
+                                            <div class="card-body text-center">
+                                                <div class=" d-flex justify-content-center ">
+                                                    <img alt=""
+                                                        src="{{ asset('/assets/img/images/logo_caplaft.svg') }}"
+                                                        class="avatar avatar-xl rounded m-2 bg-transparent">
+                                                    <a type="button" href="#!" class="btn">
+                                                        <div class="d-block text-center">
+                                                            <br> <span class="text-sm">Reportes</span>
+                                                        </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
-                                    @endcan
+                                    </div>
+                                @endcan
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

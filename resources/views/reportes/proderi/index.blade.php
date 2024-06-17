@@ -38,73 +38,85 @@
                     <div class="col-xl-12 bg-white rounded mb-4 card ">
                         <div class="mt-4 p-2 mr-2">
                             <div class="card-body">
-                                <div class="row d-flex justify-content-center ">
-                                    <div class="card border mr-1 ">
-                                        <div class="card-body text-center">
-                                            <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="{{asset('/assets/img/images/proderi.svg')}}"
-                                                    class="avatar avatar-xl rounded m-2 bg-transparent ">
-                                                <a type="button" href="{{route('proderiGestion')}}" class="btn">
-                                                    <div class="d-block text-center">
-                                                        <br> <span class="text-sm">Informes de Gestion</span>
-                                                    </div>
-                                                </a>
+                                <div class="row ">
+                                    <div class="col-md-3">
+                                        <div class="card border mr-1 ">
+                                            <div class="card-body text-center">
+                                                <div class=" d-flex justify-content-center ">
+                                                    <img alt="" src="{{ asset('/assets/img/images/proderi.svg') }}"
+                                                        class="avatar avatar-xl rounded m-2 bg-transparent ">
+                                                    <a type="button" href="{{ route('proderiGestion') }}" class="btn">
+                                                        <div class="d-block text-center">
+                                                            <br> <span class="text-sm">Informes de Gestion</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     @can('administrador')
-                                    <div class="card border mr-1 ">
-                                        <div class="card-body text-center">
-                                            <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="{{asset('/assets/img/images/proderi.svg')}}"
-                                                    class="avatar avatar-xl rounded m-2 bg-transparent ">
-                                                <a type="button" href="{{route('departamentoit')}}" class="btn">
-                                                    <div class="d-block text-center">
-                                                        <br> <span class="text-sm">Tecnologia Informacion</span>
+                                        <div class="col-md-3">
+                                            <div class="card border mr-1 ">
+                                                <div class="card-body text-center">
+                                                    <div class=" d-flex justify-content-center ">
+                                                        <img alt="" src="{{ asset('/assets/img/images/proderi.svg') }}"
+                                                            class="avatar avatar-xl rounded m-2 bg-transparent ">
+                                                        <a type="button" href="{{ route('departamentoit') }}" class="btn">
+                                                            <div class="d-block text-center">
+                                                                <br> <span class="text-sm">Tecnologia Informacion</span>
+                                                            </div>
+                                                        </a>
                                                     </div>
-                                                </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card border mr-1 ">
-                                        <div class="card-body text-center">
-                                            <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="{{asset('/assets/img/images/proderi.svg')}}"
-                                                    class="avatar avatar-xl rounded m-2 bg-transparent ">
-                                                <a type="button" href="{{route('proderiAdmi')}}" class="btn">
-                                                    <div class="d-block text-center">
-                                                        <br> <span class="text-sm">Administrativo</span>
+                                        <div class="col-md-3">
+                                            <div class="card border mr-1 ">
+                                                <div class="card-body text-center">
+                                                    <div class=" d-flex justify-content-center ">
+                                                        <img alt="" src="{{ asset('/assets/img/images/proderi.svg') }}"
+                                                            class="avatar avatar-xl rounded m-2 bg-transparent ">
+                                                        <a type="button" href="{{ route('proderiAdmi') }}" class="btn">
+                                                            <div class="d-block text-center">
+                                                                <br> <span class="text-sm">Administrativo</span>
+                                                            </div>
+                                                        </a>
                                                     </div>
-                                                </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card border mr-1 ">
-                                        <div class="card-body text-center">
-                                            <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="{{asset('/assets/img/images/proderi.svg')}}"
-                                                    class="avatar avatar-xl rounded m-2 bg-transparent ">
-                                                <a type="button" href="{{route('proderidebidadiligencia')}}" class="btn">
-                                                    <div class="d-block text-center">
-                                                        <br> <span class="text-sm">Debida Diligencia</span>
+                                        <div class="col-md-3">
+                                            <div class="card border mr-1 ">
+                                                <div class="card-body text-center">
+                                                    <div class=" d-flex justify-content-center ">
+                                                        <img alt="" src="{{ asset('/assets/img/images/proderi.svg') }}"
+                                                            class="avatar avatar-xl rounded m-2 bg-transparent ">
+                                                        <a type="button" href="{{ route('proderidebidadiligencia') }}"
+                                                            class="btn">
+                                                            <div class="d-block text-center">
+                                                                <br> <span class="text-sm">Debida Diligencia</span>
+                                                            </div>
+                                                        </a>
                                                     </div>
-                                                </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card border mr-1 ">
-                                        <div class="card-body text-center">
-                                            <div class=" d-flex justify-content-center ">
-                                                <img alt="" src="{{asset('/assets/img/images/proderi.svg')}}"
-                                                    class="avatar avatar-xl rounded m-2 bg-transparent ">
-                                                <a type="button" href="{{route('Reportventas')}}" class="btn">
-                                                    <div class="d-block text-center">
-                                                        <br> <span class="text-sm">Ventas</span>
+                                        <div class="col-md-3">
+                                            <div class="card border mr-1 ">
+                                                <div class="card-body text-center">
+                                                    <div class=" d-flex justify-content-center ">
+                                                        <img alt="" src="{{ asset('/assets/img/images/proderi.svg') }}"
+                                                            class="avatar avatar-xl rounded m-2 bg-transparent ">
+                                                        <a type="button" href="{{ route('Reportventas') }}" class="btn">
+                                                            <div class="d-block text-center">
+                                                                <br> <span class="text-sm">Ventas</span>
+                                                            </div>
+                                                        </a>
                                                     </div>
-                                                </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="col-md-2"></div>
                                     @endcan
                                 </div>
                             </div>

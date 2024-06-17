@@ -1507,7 +1507,7 @@ pre code {
 .table {
     width: 100%;
     margin-bottom: 1rem;
-    color: #525f7f;
+    color: #000000;
     background-color: transparent
 }
 
@@ -1547,7 +1547,7 @@ pre code {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(246,249,252,.3)
+    background-color: transparent !important; /* O el color que prefieras */
 }
 
 .table-hover tbody tr:hover {
@@ -1785,7 +1785,7 @@ pre code {
 }
 
 .table-dark.table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(255,255,255,.05)
+    background-color: transparent !important; /* O el color que prefieras */
 }
 
 .table-dark.table-hover tbody tr:hover {
@@ -24008,7 +24008,7 @@ pre>code.highlight {
 
 .img-login{
     position: absolute;
-    bottom: -6rem; 
+    bottom: -6rem;
     right: 0;
 }
 
@@ -24020,5 +24020,5 @@ pre>code.highlight {
     background-position: center;
     background-size: cover;
     /* opacity: .8; */
-  
+
 }
