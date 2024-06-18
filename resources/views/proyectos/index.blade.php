@@ -40,7 +40,7 @@
         <div class="row">
             <div class="col-xl-12 bg-white rounded mb-4 card ">
                 <div class="mt-4 p-2 mr-2">
-                    <a href="{{ route('proyectos.create') }}" class="btn btn-info mb-2 ">Crear Nuevo</a>
+                    <a href="{{ route('proyectos.create') }}" class="btn btn-info mb-2 ">Crear Proyecto / Proceso</a>
                     <livewire:proyectos-datatable />
                 </div>
             </div>

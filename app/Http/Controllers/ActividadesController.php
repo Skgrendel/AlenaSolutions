@@ -146,9 +146,11 @@ class ActividadesController extends Controller
                 proyectos::where('id', $proyecto_id)->update(['prioridad' => '4']);
             }
 
-            return response()->json(['success' => 'Actividad eliminada correctamente.'], 200);
+            return redirect()->route('proyectos.actividades',$proyecto_id )
+            ->with('success', 'Actividad Borrada Exitosamente.')->with('icon', 'success')->with('title', '¡Éxito!');
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Error al eliminar la Actividad.'], 500);
+            return redirect()->route('proyectos.actividades',$proyecto_id )
+            ->with('success', 'Actividad No se Pudo Borrar.')->with('icon', 'error')->with('title', 'ERROR!');
         }
     }
 

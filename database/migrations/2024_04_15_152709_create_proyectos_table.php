@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('fecha_estimada')->nullable();
             $table->string('fecha_inicio')->nullable();
             $table->string('fecha_final')->nullable();
-            $table->integer('avance')->nullable();
+            $table->integer('avance')->nullable()->default('0');
             $table->string('prioridad');
             $table->string('estado')->default('1');
             $table->string('imagenes')->nullable();

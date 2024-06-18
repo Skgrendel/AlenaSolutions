@@ -71,6 +71,7 @@ class ProyectosDatatable extends DataTableComponent
             ->html()
             ->collapseOnMobile(),
                 Column::make('Acciones', 'id')
+                ->unclickable()
                 ->format(
                     fn ($value, $row, Column $column) => view('proyectos.actions', compact('value'))
                 ),
@@ -78,10 +79,10 @@ class ProyectosDatatable extends DataTableComponent
         ];
     }
 
-    // public function builder(): Builder
-    // {
-    //     return Proyectos::query()->where('user_id', auth()->id());
-    // }
+    public function builder(): Builder
+    {
+        return Proyectos::query()->where('user_id', auth()->id());
+    }
 
 
 }

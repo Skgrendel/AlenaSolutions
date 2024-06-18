@@ -39,8 +39,6 @@ class ProyectosController extends Controller
      */
     public function store(Request $request)
     {
-
-
         request()->validate(proyectos::$rules);
 
         if ($request->finalizado == 1) {
@@ -71,9 +69,9 @@ class ProyectosController extends Controller
             return redirect()->route('proyectos.index')->with('success', 'Proyecto Finalizado exitosamente.')
                 ->with('icon', 'success')->with('title', '¡Éxito!');
         }else{
+
             $proyecto = new proyectos();
             $imagenes = [];
-
             if ($request->hasFile('responseFiles')) {
                 foreach ($request->file('responseFiles') as $imagen) {
                     $path = 'imagen/';
@@ -88,7 +86,6 @@ class ProyectosController extends Controller
             $proyecto->user_id = auth()->id();
             $proyecto->fill($request->all());
             $proyecto->save();
-
             return redirect()->route('proyectos.index')->with('success', 'Proyecto creado exitosamente.')
                 ->with('icon', 'success')->with('title', '¡Éxito!');
         }
@@ -176,9 +173,11 @@ class ProyectosController extends Controller
             $proyecto = proyectos::findOrFail($id);
             actividades::where('proyecto_id', $id)->delete();
             $proyecto->delete();
-            return response()->json(['success' => 'Proyecto eliminado correctamente.'], 200);
+            return redirect()->route('proyectos.index' )
+            ->with('success', 'Proyecto Borrado Exitosamente.')->with('icon', 'success')->with('title', '¡Éxito!');
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Error al eliminar el proyecto.'], 500);
+            return redirect()->route('proyectos.index' )
+            ->with('success', 'el Proyecto No se Pudo Borrar.')->with('icon', 'error')->with('title', '¡Error!');
         }
     }
 

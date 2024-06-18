@@ -77,7 +77,11 @@ class ActividadesDatatable extends DataTableComponent
             Column::make("Fecha final", "fecha_final")
                 ->collapseAlways()
                 ->sortable(),
-
+                Column::make('Acciones', 'id')
+                ->unclickable()
+                ->format(
+                    fn ($value, $row, Column $column) => view('actividades.actions', compact('value'))
+                ),
         ];
     }
 
