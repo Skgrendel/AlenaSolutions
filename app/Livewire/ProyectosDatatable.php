@@ -5,11 +5,11 @@ namespace App\Livewire;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Illuminate\Database\Eloquent\Builder;
-use App\Models\Proyectos;
+use App\Models\proyectos;
 
 class ProyectosDatatable extends DataTableComponent
 {
-    protected $model = Proyectos::class;
+    protected $model = proyectos::class;
 
     public function configure(): void
     {

@@ -5,11 +5,11 @@ namespace App\Livewire;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Illuminate\Database\Eloquent\Builder;
-use App\Models\Actividades;
+use App\Models\actividades;
 
 class ActividadesDatatable extends DataTableComponent
 {
-    protected $model = Actividades::class;
+    protected $model = actividades::class;
     public $idProyecto;
 
     public function mount($idProyecto)
