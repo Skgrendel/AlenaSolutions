@@ -15,7 +15,7 @@ class ProyectosDatatable extends DataTableComponent
     {
         $this->setPrimaryKey('id')
         ->setTableRowUrl(function($row) {
-            return route('proyectos.edit', $row);
+            return route('proyectos.actividades', $row);
         });
 
         $this->setTableAttributes([
