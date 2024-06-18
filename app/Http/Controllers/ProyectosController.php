@@ -7,6 +7,7 @@ use App\Models\proyectos;
 use App\Models\vs_estados;
 use App\Models\vs_areas;
 use App\Models\vs_prioridades;
+use App\Services\SagrilaftServices;
 use Illuminate\Http\Request;
 
 class ProyectosController extends Controller
@@ -53,7 +54,6 @@ class ProyectosController extends Controller
                     // Añade el nombre del archivo al array
                     $imagenes[] = $nombre;
                 }
-
             }
             $proyecto->imagenes = json_encode($imagenes);
             $proyecto->nombre = request('nombre');
@@ -68,7 +68,7 @@ class ProyectosController extends Controller
             $proyecto->save();
             return redirect()->route('proyectos.index')->with('success', 'Proyecto Finalizado exitosamente.')
                 ->with('icon', 'success')->with('title', '¡Éxito!');
-        }else{
+        } else {
 
             $proyecto = new proyectos();
             $imagenes = [];
@@ -80,17 +80,24 @@ class ProyectosController extends Controller
                     // Añade el nombre del archivo al array
                     $imagenes[] = $nombre;
                 }
-
             }
             $proyecto->imagenes = json_encode($imagenes);
             $proyecto->user_id = auth()->id();
             $proyecto->fill($request->all());
             $proyecto->save();
+
+            if ($request->input('sistema') == "1") {
+                try {
+                    $sagrilaft = new SagrilaftServices;
+                    $sagrilaft->SistemaSagrilaft($proyecto->id);
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+
+            }
             return redirect()->route('proyectos.index')->with('success', 'Proyecto creado exitosamente.')
                 ->with('icon', 'success')->with('title', '¡Éxito!');
         }
-
-
     }
 
     /**
@@ -135,7 +142,6 @@ class ProyectosController extends Controller
                     // Añade el nombre del archivo al array
                     $imagenes[] = $nombre;
                 }
-
             }
             $proyecto->imagenes = json_encode($imagenes);
             $proyecto->estado = 3;
@@ -156,7 +162,6 @@ class ProyectosController extends Controller
                 // Añade el nombre del archivo al array
                 $imagenes[] = $nombre;
             }
-
         }
         $proyecto->imagenes = json_encode($imagenes);
         $proyecto->update($request->all());
@@ -173,11 +178,11 @@ class ProyectosController extends Controller
             $proyecto = proyectos::findOrFail($id);
             actividades::where('proyecto_id', $id)->delete();
             $proyecto->delete();
-            return redirect()->route('proyectos.index' )
-            ->with('success', 'Proyecto Borrado Exitosamente.')->with('icon', 'success')->with('title', '¡Éxito!');
+            return redirect()->route('proyectos.index')
+                ->with('success', 'Proyecto Borrado Exitosamente.')->with('icon', 'success')->with('title', '¡Éxito!');
         } catch (\Exception $e) {
-            return redirect()->route('proyectos.index' )
-            ->with('success', 'el Proyecto No se Pudo Borrar.')->with('icon', 'error')->with('title', '¡Error!');
+            return redirect()->route('proyectos.index')
+                ->with('success', 'el Proyecto No se Pudo Borrar.')->with('icon', 'error')->with('title', '¡Error!');
         }
     }
 
@@ -186,6 +191,6 @@ class ProyectosController extends Controller
     {
         $proyecto = proyectos::find($id);
         $actividades = actividades::where('proyecto_id', $id)->with('prioridades')->get();
-        return view('actividades.index',compact('actividades','proyecto'));
+        return view('actividades.index', compact('actividades', 'proyecto'));
     }
 }

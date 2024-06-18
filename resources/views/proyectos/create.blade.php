@@ -48,6 +48,19 @@
                             campos requeridos marcados con <span class="text-danger">*</span> y verificar la información
                             antes de enviar el formulario.</p>
                         <div class="pl-lg-4">
+                            @if (Auth::user()->personal->areas->nombre == "Consultores")
+                            <div class="row mb-3">
+                                <div class="col-lg-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="1" id="sistema"
+                                            name="sistema">
+                                        <label class="form-check-label" for="sistema">
+                                            Habilitar Sistema Sagrilaft
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
@@ -86,7 +99,7 @@
                                         <label class="form-control-label" for="fecha_estimada">Fecha Estimada de
                                             Finalizacion</label>
                                         <input type="date" id="fecha_estimada" name="fecha_estimada"
-                                            class="form-control mb-2" placeholder=""
+                                            class="form-control mb-2" required
                                             value="{{ old('fecha_estimada') }}">
                                         @if ($errors->has('fecha_estimada'))
                                             <span class="text-danger">{{ $errors->first('fecha_estimada') }}</span>
