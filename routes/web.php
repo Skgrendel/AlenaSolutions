@@ -50,7 +50,7 @@ Route::get('/acoficum',[ReportController::class,'acoficum'])->name('acoficum');
 Route::get('/proderi/departamentoit/soporte',[ReportController::class,'proderidepartamentoitsoporte'])->name('itsoporte');
 Route::resource('/personals', PersonalsController::class)->names('personals');
 Route::resource('/proyectos', ProyectosController::class)->names('proyectos');
-Route::get('/proyectos/actividades/{proyecto}',[ProyectosController::class,'actividades'])->name('proyectos.actividades');
+Route::get('/proyectos/{proyecto}/actividades',[ProyectosController::class,'actividades'])->name('proyectos.actividades');
 Route::resource('/actividades',ActividadesController::class)->names('actividades');
 Route::resource('/auditorias',GrupodiagnosticoController::class)->names('auditorias');
 Route::resource('/diagnosticos',DiagnosticoController::class)->names('diagnosticos');

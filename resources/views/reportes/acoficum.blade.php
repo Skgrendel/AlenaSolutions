@@ -11,7 +11,7 @@
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('Rerpoteindex') }}"><i class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="?view=diagnostico">Reportes</a></li>
-                                <li class="breadcrumb-item text-dark active" aria-current="page">Vixor</li>
+                                <li class="breadcrumb-item text-dark active" aria-current="page">Acoficum</li>
                             </ol>
                         </nav>
 

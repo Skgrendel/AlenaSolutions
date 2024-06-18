@@ -33,6 +33,7 @@ class ActividadesController extends Controller
 
         $request->validate(actividades::$rules);
         $actividades = actividades::create($request->all());
+        $proyecto_id = $request->proyecto_id;
         $totalActividades = actividades::where('proyecto_id', $request->proyecto_id);
         $promedio = round($totalActividades->avg('avance'));
         proyectos::where('id', $request->proyecto_id)->update(['avance' => $promedio]);
@@ -57,7 +58,7 @@ class ActividadesController extends Controller
         }
 
 
-        return redirect()->route('proyectos.index')
+        return redirect()->route('proyectos.actividades',$proyecto_id )
             ->with('success', 'Actividad creada correctamente.')->with('icon', 'success')->with('title', '¡Éxito!');
     }
 
@@ -117,7 +118,7 @@ class ActividadesController extends Controller
             actividades::where('id', $id)->update(['estado' => '3']);
         }
 
-        return redirect()->route('proyectos.index')
+        return redirect()->route('proyectos.actividades',$proyecto_id )
             ->with('success', 'Actividad actualizada correctamente.')->with('icon', 'success')->with('title', '¡Éxito!');
     }
     /**

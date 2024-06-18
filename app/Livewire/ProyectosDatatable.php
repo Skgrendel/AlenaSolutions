@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Illuminate\Database\Eloquent\Builder;
 use App\Models\Proyectos;
 
 class ProyectosDatatable extends DataTableComponent
@@ -12,10 +13,17 @@ class ProyectosDatatable extends DataTableComponent
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('id')
+        ->setTableRowUrl(function($row) {
+            return route('proyectos.edit', $row);
+        });
+
+        $this->setTableAttributes([
+            'class' => 'table custom-table',
+        ]);
     }
 
-    public function columns(): array
+      public function columns(): array
     {
         return [
             Column::make("Nombre", "nombre")
@@ -69,4 +77,11 @@ class ProyectosDatatable extends DataTableComponent
 
         ];
     }
+
+    // public function builder(): Builder
+    // {
+    //     return Proyectos::query()->where('user_id', auth()->id());
+    // }
+
+
 }

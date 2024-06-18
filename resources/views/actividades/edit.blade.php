@@ -9,7 +9,7 @@
                     <div class="col-8">
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                                <li class="breadcrumb-item"><a href="{{ route('proyectos.index') }}"><i
+                                <li class="breadcrumb-item"><a href="javascript:void(0);" onclick="window.history.back();"><i
                                             class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="">Registro de Actividades</a></li>
                                 <li class="breadcrumb-item text-dark active" aria-current="page">Editar Actividad</li>
@@ -20,7 +20,7 @@
                     <div class="col-4">
                         <ul class="nav nav-pills justify-content-end">
                             <li class="nav-item mr-2 mr-md-0">
-                                <a href="{{ route('proyectos.index') }}" class="btn btn-transparent py-2 px-3">
+                                <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-transparent py-2 px-3">
                                     <span class="d-none d-md-block">Volver</span>
                                     <span class="d-md-none"><i class="fas fa-arrow-left"></i></span>
                                 </a>

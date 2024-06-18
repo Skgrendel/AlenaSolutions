@@ -185,7 +185,8 @@ class ProyectosController extends Controller
 
     public function actividades($id)
     {
+        $proyecto = proyectos::find($id);
         $actividades = actividades::where('proyecto_id', $id)->with('prioridades')->get();
-        return response()->json($actividades);
+        return view('actividades.index',compact('actividades','proyecto'));
     }
 }

@@ -38,6 +38,7 @@
     {{-- Personalize CSS --}}
     @yield('css')
     @livewireStyles
+   
 </head>
 
 <body class="body-page">
