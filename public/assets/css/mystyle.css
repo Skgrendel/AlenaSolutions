@@ -22,12 +22,12 @@ label.error{
 /* Tabla modificada*/
 
 .table:not(.custom-table) {
-    background-color: initial; /* Resetear el color de fondo */
+    background-color: initial !important; /* Resetear el color de fondo */
 }
 
 .custom-table {
-    border-radius: 3px; /* Bordes redondeados para toda la tabla */
-    overflow: hidden; /* Asegura que el contenido no se salga de los bordes redondeados */
+    border-radius: 3px !important; /* Bordes redondeados para toda la tabla */
+    overflow: hidden !important; /* Asegura que el contenido no se salga de los bordes redondeados */
 }
 
 .custom-table tbody tr:nth-of-type(odd) {
