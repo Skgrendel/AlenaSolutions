@@ -88,7 +88,7 @@ class ActividadesDatatable extends DataTableComponent
 
     public function builder(): Builder
     {
-        return Actividades::query()->where('proyecto_id', $this->idProyecto);
+        return actividades::query()->where('proyecto_id', $this->idProyecto);
     }
 
 }

@@ -81,7 +81,7 @@ class ProyectosDatatable extends DataTableComponent
 
     public function builder(): Builder
     {
-        return Proyectos::query()->where('user_id', auth()->id());
+        return proyectos::query()->where('user_id', auth()->id());
     }
 
 
