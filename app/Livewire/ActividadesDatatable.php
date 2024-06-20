@@ -31,7 +31,7 @@ class ActividadesDatatable extends DataTableComponent
     public function columns(): array
     {
         return [
-            column::make('id','id')
+            column::make('id')
             ->setColumnLabelStatusDisabled(),
             Column::make("Nombre", "nombre")
                 ->sortable(),
