@@ -42,7 +42,7 @@
                     <div class="card-body">
                         <div class="row ">
                             @can('administrador')
-                                <div class="col-md-2">
+                                <div class="col-sm-6 col-lg-4">
                                     <div class="card border mr-1 ">
                                         <div class="card-body text-center">
                                             <div class=" d-flex justify-content-center ">
@@ -58,34 +58,39 @@
                                     </div>
                                 </div>
                             @endcan
-                            <div class="card border mr-1 ">
-                                <div class="card-body text-center">
-                                    <div class=" d-flex justify-content-center ">
-                                        <img alt="" src="{{ asset('/assets/img/images/proderi.svg') }}"
-                                            class="avatar avatar-xl rounded m-2 bg-transparent ">
-                                        <a type="button" href="{{ route('proderiIndex') }}" class="btn">
-                                            <div class="d-block text-center">
-                                                <br> <span class="text-sm">Reportes</span>
-                                            </div>
-                                        </a>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="card border mr-1 ">
+                                    <div class="card-body text-center">
+                                        <div class=" d-flex justify-content-center ">
+                                            <img alt="" src="{{ asset('/assets/img/images/proderi.svg') }}"
+                                                class="avatar avatar-xl rounded m-2 bg-transparent ">
+                                            <a type="button" href="{{ route('proderiIndex') }}" class="btn">
+                                                <div class="d-block text-center">
+                                                    <br> <span class="text-sm">Reportes</span>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card border mr-1 ">
-                                <div class="card-body text-center">
-                                    <div class=" d-flex justify-content-center ">
-                                        <img alt="" src="{{ asset('/assets/img/images/Logo_Acoficum.svg') }}"
-                                            class="avatar avatar-xl rounded m-2 bg-transparent">
-                                        <a type="button" href="{{ route('acoficum') }}" class="btn">
-                                            <div class="d-block text-center">
-                                                <br> <span class="text-sm">Reportes</span>
-                                            </div>
-                                        </a>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="card border mr-1 ">
+                                    <div class="card-body text-center">
+                                        <div class=" d-flex justify-content-center ">
+                                            <img alt="" src="{{ asset('/assets/img/images/Logo_Acoficum.svg') }}"
+                                                class="avatar avatar-xl rounded m-2 bg-transparent">
+                                            <a type="button" href="{{ route('acoficum') }}" class="btn">
+                                                <div class="d-block text-center">
+                                                    <br> <span class="text-sm">Reportes</span>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                             @can('administrador')
-                                <div class="col-md-2">
+                                <div class="col-sm-6 col-lg-4">
                                     <div class="card border mr-1 ">
                                         <div class="card-body text-center">
                                             <div class=" d-flex justify-content-center ">
@@ -100,7 +105,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-sm-6 col-lg-4">
                                     <div class="card border mr-1 ">
                                         <div class="card-body text-center">
                                             <div class=" d-flex justify-content-center ">
@@ -116,7 +121,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-sm-6 col-lg-4">
                                     <div class="card border mr-1 ">
                                         <div class="card-body text-center">
                                             <div class=" d-flex justify-content-center ">
@@ -137,7 +142,8 @@
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
 
-    @section('js')
-    @endsection
+@section('js')
+@endsection
