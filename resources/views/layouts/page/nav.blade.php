@@ -38,17 +38,15 @@
                          <div class="dropdown-header noti-title">
                              <h6 class="text-overflow m-0">Bienvenido!</h6>
                          </div>
-
-                         <a href="#" class="dropdown-item d-none ">
-                            <i class="ni ni-support-16"></i>
-                            <span>Soporte técnico</span>
+                         <a href="#" class="dropdown-item">
+                            <i class="fas fa-user-cog"></i>
+                            <span>Mi Perfil</span>
                           </a>
-
                          <div class="dropdown-divider"></div>
                          <form action="{{ route('logout') }}" method="post">
                              @csrf
                              <button type="submit" class="dropdown-item">
-                                 <i class="ni ni-user-run"></i>
+                                <i class="fas fa-sign-out-alt"></i>
                                  <span>Cerrar sesión</span>
                              </button>
                          </form>
