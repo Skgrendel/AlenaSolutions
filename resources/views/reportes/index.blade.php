@@ -125,6 +125,22 @@
                                     <div class="card border mr-1 ">
                                         <div class="card-body text-center">
                                             <div class=" d-flex justify-content-center ">
+                                                <img alt=""
+                                                    src="{{ asset('/assets/img/images/LogoAlenaQanalyticData.svg') }}"
+                                                    class="avatar avatar-xl rounded m-2 bg-transparent">
+                                                <a type="button" href="{{ route('ReportQanalyticsincelejo') }}" class="btn">
+                                                    <div class="d-block text-center">
+                                                        <br> <span class="text-sm">Reportes - Sincelejo</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="card border mr-1 ">
+                                        <div class="card-body text-center">
+                                            <div class=" d-flex justify-content-center ">
                                                 <img alt="" src="{{ asset('/assets/img/images/logo_caplaft.svg') }}"
                                                     class="avatar avatar-xl rounded m-2 bg-transparent">
                                                 <a type="button" href="#!" class="btn">

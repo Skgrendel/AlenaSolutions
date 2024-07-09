@@ -28,6 +28,9 @@ class ReportController extends Controller
     public function qanalytic(){
         return view('reportes.qdata');
     }
+    public function qanalyticsincelejo(){
+        return view('reportes.qdatasincelejo');
+    }
 
 
     public function proderiIndex(){
