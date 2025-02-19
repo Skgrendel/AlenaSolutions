@@ -83,6 +83,7 @@ class ActividadesDatatable extends DataTableComponent
                 ->sortable()
                 ->format(fn($value) => \Carbon\Carbon::parse($value)->format('d/m/Y h:i A')),
             Column::make("Fecha final", "fecha_final")
+            ->format(fn($value) => \Carbon\Carbon::parse($value)->format('d/m/Y h:i A'))
                 ->collapseAlways()
                 ->sortable(),
                 Column::make('Acciones', 'id')
