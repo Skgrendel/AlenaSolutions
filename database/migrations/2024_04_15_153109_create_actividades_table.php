@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('fecha_estimada')->nullable();
             $table->integer('avance')->nullable()->default('0');
             $table->string('prioridad');
+            $table->json('evidencias')->nullable();
             $table->string('estado')->default('1');
             $table->foreign('proyecto_id')->references('id')->on('proyectos');
             $table->string('fecha_inicio')->nullable();

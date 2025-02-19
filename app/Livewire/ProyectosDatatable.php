@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\proyectos;
 
@@ -29,6 +30,8 @@ class ProyectosDatatable extends DataTableComponent
             Column::make("Nombre", "nombre")
                 ->sortable(),
             Column::make("Area", "areas.nombre")
+                ->sortable(),
+                Column::make("Fecha Creacion", "Created_at")
                 ->sortable(),
             Column::make("Fecha estimada", "fecha_estimada")
                 ->sortable(),
@@ -81,8 +84,13 @@ class ProyectosDatatable extends DataTableComponent
 
     public function builder(): Builder
     {
-        return proyectos::query()->where('user_id', auth()->id());
-    }
+        $query = proyectos::query();
 
+        if (!Auth::user()->hasRole('Administrador')) {
+            $query->where('user_id', auth()->id());
+        }
+
+        return $query;
+    }
 
 }

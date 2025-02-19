@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\actividades;
 
@@ -11,6 +12,7 @@ class ActividadesDatatable extends DataTableComponent
 {
     protected $model = actividades::class;
     public $idProyecto;
+    public string $defaultSortDirection = 'desc';
 
     public function mount($idProyecto)
     {
@@ -37,6 +39,8 @@ class ActividadesDatatable extends DataTableComponent
             Column::make("Nombre", "nombre")
                 ->sortable(),
             Column::make("Personal asignado", "personal_asignado")
+                ->sortable(),
+            Column::make("Fecha Creacion", "Created_at")
                 ->sortable(),
             Column::make("Fecha estimada", "fecha_estimada")
                 ->sortable(),
@@ -88,8 +92,14 @@ class ActividadesDatatable extends DataTableComponent
 
 
     public function builder(): Builder
-    {
-        return actividades::query()->where('proyecto_id', $this->idProyecto);
+{
+    $query = actividades::query();
+
+    if (!Auth::user()->hasRole('Administrador')) {
+        $query->where('proyecto_id', $this->idProyecto);
     }
+
+    return $query;
+}
 
 }

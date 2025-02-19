@@ -40,7 +40,7 @@
         <div class="row">
             <div class="col-xl-12 bg-white rounded mb-4 card ">
                 <div class="mt-4 p-2 mr-2">
-                    <a href="{{ route('actividades.show', $proyecto->id) }}" class="btn btn-info mb-2 ">Crear Actividad</a>
+                    <a href="{{ route('proyectos.create_activi', $proyecto->id) }}" class="btn btn-info mb-2 ">Crear Actividad</a>
                     <livewire:actividades-datatable :idProyecto="$proyecto->id"/>
                 </div>
             </div>

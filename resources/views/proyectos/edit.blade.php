@@ -40,7 +40,8 @@
         <div class="row">
             <div class="col-xl-12 bg-white rounded mb-4 card ">
                 <div class="mt-4 p-2 mr-2">
-                    <form id="proyectosForm" action="{{ route('proyectos.update', $proyecto->id) }}" method="POST" enctype="multipart/form-data">
+                    <form id="proyectosForm" action="{{ route('proyectos.update', $proyecto->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <input type="hidden" name="id" value="{{ $proyecto->id }}">
@@ -57,7 +58,8 @@
                                         <label class="form-control-label" for="nombres">Nombre del Proyecto <span
                                                 class="text-danger">*</span></label>
                                         <input type="text" id="nombres" name="nombre" class="form-control"
-                                            placeholder="Ingrese El Nombre de Su Proyecto" required value="{{ $proyecto->nombre}}" >
+                                            placeholder="Ingrese El Nombre de Su Proyecto" required
+                                            value="{{ $proyecto->nombre }}">
                                         @if ($errors->has('nombre'))
                                             <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                         @endif
@@ -70,7 +72,9 @@
                                         <select name="area" id="area" class="form-control" required>
                                             <option value=""selected disabled>Seleccione su Area</option>
                                             @foreach ($areas as $id => $nombre)
-                                            <option value="{{ $id }}" {{ $proyecto->area == $id ? 'selected' : '' }}>{{ $nombre }}</option>
+                                                <option value="{{ $id }}"
+                                                    {{ $proyecto->area == $id ? 'selected' : '' }}>{{ $nombre }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         @if ($errors->has('area'))
@@ -82,16 +86,19 @@
                             <div class="row">
                                 <div class="col-lg-6" id="estimada">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="fecha_estimada">Fecha Estimada de Finalizacion</label>
-                                        <input type="date" id="fecha_estimada" name="fecha_estimada" class="form-control mb-2"
-                                            placeholder="Dirección" value="{{ $proyecto->fecha_estimada }}">
+                                        <label class="form-control-label" for="fecha_estimada">Fecha Estimada de
+                                            Finalizacion</label>
+                                        <input type="date" id="fecha_estimada" name="fecha_estimada"
+                                            class="form-control mb-2" placeholder="Dirección"
+                                            value="{{ $proyecto->fecha_estimada }}">
                                         @if ($errors->has('fecha_estimada'))
                                             <span class="text-danger">{{ $errors->first('fecha_estimada') }}</span>
                                         @endif
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="1" id="finalizado" name="finalizado" @if($proyecto->fecha_final) checked @endif>
+                                            <input class="form-check-input" type="checkbox" value="1" id="finalizado"
+                                                name="finalizado" @if ($proyecto->fecha_final) checked @endif>
                                             <label class="form-check-label" for="defaultCheck1">
-                                               Finalizado
+                                                Finalizado
                                             </label>
                                         </div>
                                     </div>
@@ -104,7 +111,8 @@
                                             <option value="" disabled selected>Seleccione su Prioridad</option>
                                             @foreach ($prioridades as $id => $nombre)
                                                 <option value="{{ $id }}"
-                                                    {{ $proyecto->prioridad == $id ? 'selected' : '' }}>{{ $nombre }}
+                                                    {{ $proyecto->prioridad == $id ? 'selected' : '' }}>
+                                                    {{ $nombre }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -119,9 +127,11 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label class="form-control-label" for="fecha_estimada">Fecha Inicial</label>
-                                                <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control mb-2"
-                                                    placeholder="Dirección" value="@if($proyecto->fecha_inicio){{ $proyecto->fecha_inicio }}@else {{ $proyecto->created_at }} @endif">
+                                                <label class="form-control-label" for="fecha_estimada">Fecha
+                                                    Inicial</label>
+                                                <input type="date" id="fecha_inicio" name="fecha_inicio"
+                                                    class="form-control mb-2" placeholder="Dirección"
+                                                    value="@if ($proyecto->fecha_inicio) {{ $proyecto->fecha_inicio }}@else {{ $proyecto->created_at }} @endif">
                                                 @if ($errors->has('fecha_inicio'))
                                                     <span class="text-danger">{{ $errors->first('fecha_inicio') }}</span>
                                                 @endif
@@ -130,8 +140,9 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="fecha_estimada">Fecha Final</label>
-                                                <input type="date" id="fecha_final" name="fecha_final" class="form-control mb-2"
-                                                    placeholder="Dirección" value="{{ $proyecto->fecha_final }}">
+                                                <input type="date" id="fecha_final" name="fecha_final"
+                                                    class="form-control mb-2" placeholder="Dirección"
+                                                    value="{{ $proyecto->fecha_final }}">
                                                 @if ($errors->has('fecha_inicio'))
                                                     <span class="text-danger">{{ $errors->first('fecha_final') }}</span>
                                                 @endif
@@ -140,56 +151,89 @@
                                     </div>
                                 </div>
                             </div>
-                            @if (Auth::user()->personal->areas->nombre == "Consultores")
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="personal_asignado">Nombre de la persona Asignada <span class="text-danger">*</span></label>
-                                        <input type="text" id="personal_asignado" name="personal_asignado"
-                                            class="form-control" placeholder="Ingrese El Nombre de la Persona Asignada" value="{{Auth::user()->personal->areas->nombre == "Consultores" ? Auth::user()->personal->nombres . ' ' . Auth::user()->personal->apellidos : ''}}">
-                                        @if ($errors->has('personal_asignado'))
-                                            <span class="text-danger">{{ $errors->first('personal_asignado') }}</span>
-                                        @endif
+                            @if (Auth::user()->personal->areas->nombre == 'Consultores')
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="personal_asignado">Nombre de la persona
+                                                Asignada <span class="text-danger">*</span></label>
+                                            <input type="text" id="personal_asignado" name="personal_asignado"
+                                                class="form-control"
+                                                placeholder="Ingrese El Nombre de la Persona Asignada"
+                                                value="{{ Auth::user()->personal->areas->nombre == 'Consultores' ? Auth::user()->personal->nombres . ' ' . Auth::user()->personal->apellidos : '' }}">
+                                            @if ($errors->has('personal_asignado'))
+                                                <span class="text-danger">{{ $errors->first('personal_asignado') }}</span>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endif
                             <div class="row">
                                 <div class="col-lg">
                                     <div class="form-group">
                                         <label class="form-control-label" for="descripcion">Descripcion<span
                                                 class="text-danger"> *</span></label>
-                                        <textarea type="text" id="descripcion" name="descripcion" class="form-control"
-                                            rows="5" required>{{ $proyecto->descripcion }}</textarea>
+                                        <textarea type="text" id="descripcion" name="descripcion" class="form-control" rows="5" required>{{ $proyecto->descripcion }}</textarea>
                                         @if ($errors->has('descripcion'))
                                             <span class="text-danger">{{ $errors->first('descripcion') }}</span>
                                         @endif
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-lg-12">
                                     <ul class="nav" id="input">
                                         <li class="nav-item mr-2">
                                             <label class="input-file-pregunta icon icon-sm icon-shape"
                                                 data-toggle="tooltip" title=""
-                                                data-original-title="Cargar imagenes">
+                                                data-original-title="Cargar Evidencias">
                                                 <input type="file" class="inputResponseFiles custom-file-input"
-                                                    data-id-inputrespuesta="images" id="images" name="responseFiles[]"
-                                                    aria-describedby="inputResponseFilesimages" accept="image/*"
-                                                    multiple="true" aria-invalid="false" multiple>
+                                                    data-id-inputrespuesta="images" id="documentos"
+                                                    name="responseFiles[]" aria-describedby="inputResponseFilesimages"
+                                                    accept="*" multiple="true" aria-invalid="false" multiple>
                                                 <i class="fas fa-upload" aria-hidden="true"></i>
                                             </label>
                                         </li>
                                         <span id="fileError" class="text-danger"></span>
                                         <li class="nav-item">
-                                            <a type="button" class="btn btn-success d-none" href="#" id="buttonId"></a>
+                                            <a type="button" class="btn btn-success d-none" href="#"
+                                                id="buttonId"></a>
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
                             <hr class="my-4">
-                            <button type="submit" id="btnCrearActividad" class="btn btn-info mb-2">Guardar Proyecto</button>
+                            <!-- Mostrar archivos actuales -->
+                            <h6 class="heading-small text-muted mb-3">Archivos Adjuntos</h6>
+                            <div class="form-group">
+                                @php
+                                    // Decodificar la lista de evidencias (archivos adjuntos) desde JSON
+                                    $evidencias = json_decode($proyecto->evidencias, true) ?? [];
+                                @endphp
+
+                                @if (!empty($evidencias))
+                                    <ul class="list-group">
+                                        @foreach ($evidencias as $index => $archivo)
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <a href="{{ asset('storage/' . $archivo) }}" target="_blank">
+                                                    📄 {{ basename($archivo) }}
+                                                </a>
+                                                <button type="button" class="btn btn-danger btn-sm"
+                                                    onclick="eliminarArchivo({{ $index }})">
+                                                    Eliminar
+                                                </button>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                    <input type="hidden" id="archivos_a_eliminar" name="archivos_a_eliminar"
+                                        value="">
+                                @else
+                                    <p>No hay archivos adjuntos.</p>
+                                @endif
+                            </div>
+
+                            <button type="submit" id="btnCrearActividad" class="btn btn-info mb-2">Guardar
+                                Proyecto</button>
                         </div>
                     </form>
                 </div>
@@ -199,87 +243,88 @@
 @endsection
 
 @section('js')
-<script>
-    // Selecciona el input de archivo y el botón
-    var inputFile = document.getElementById('images');
-    var button = document.getElementById('buttonId'); // Reemplaza 'buttonId' con el id de tu botón
+    <script>
+        // Selecciona el input de archivo y el botón
+        var inputFile = document.getElementById('documentos');
+        var button = document.getElementById('buttonId'); // Reemplaza 'buttonId' con el id de tu botón
 
-    // Agrega un evento de escucha de cambio al input de archivo
-    inputFile.addEventListener('change', function() {
-        // Obtiene la cantidad de archivos seleccionados
-        var fileCount = this.files.length;
+        // Agrega un evento de escucha de cambio al input de archivo
+        inputFile.addEventListener('change', function() {
+            // Obtiene la cantidad de archivos seleccionados
+            var fileCount = this.files.length;
 
-        if (fileCount > 3) {
-            button.classList.remove('d-none');
-            button.classList.add('btn-danger');
-            button.textContent = 'Solo se permiten 3 archivos';
-            return;
-        } else if (fileCount === 0) {
-            button.classList.add('d-none');
-        } else {
-            // Actualiza el texto del botón con la cantidad de archivos seleccionados
-            button.classList.remove('btn-danger');
-            button.classList.add('btn-success');
-            button.classList.remove('d-none');
-            button.textContent = fileCount + ' archivos seleccionados';
-        }
+            if (fileCount > 3) {
+                button.classList.remove('d-none');
+                button.classList.add('btn-danger');
+                button.textContent = 'Solo se permiten 3 archivos';
+                return;
+            } else if (fileCount === 0) {
+                button.classList.add('d-none');
+            } else {
+                // Actualiza el texto del botón con la cantidad de archivos seleccionados
+                button.classList.remove('btn-danger');
+                button.classList.add('btn-success');
+                button.classList.remove('d-none');
+                button.textContent = fileCount + ' archivos seleccionados';
+            }
 
-    });
-</script>
-<script>
-    window.onload = function() {
-        var fecha = document.getElementById('fecha_estimada');
-        var fechas = document.getElementById('fechas');
-        var finalizado = document.getElementById('finalizado');
+        });
+    </script>
+    <script>
+        window.onload = function() {
+            var fecha = document.getElementById('fecha_estimada');
+            var fechas = document.getElementById('fechas');
+            var finalizado = document.getElementById('finalizado');
 
-        if (finalizado.checked) {
-            fecha.disabled = true;
-            fecha.value = '';
-            fechas.disabled = true;
-            fechas.value = '';
-            fechas.classList.remove('d-none');
-        }
-
-        finalizado.addEventListener('change', function(e) {
-            if (e.target.checked) {
+            if (finalizado.checked) {
                 fecha.disabled = true;
                 fecha.value = '';
                 fechas.disabled = true;
                 fechas.value = '';
                 fechas.classList.remove('d-none');
-            } else {
-                fecha.disabled = false;
-                fechas.disabled = false;
-                fechas.classList.add('d-none');
             }
-        });
-    };
-</script>
-<script>
-    document.getElementById('avance').addEventListener('input', function(e) {
-        var value = e.target.value;
-        if (value === '') {
-            value = 0;
-        }
-        var progressBar = document.querySelector('.progress-bar');
-        progressBar.style.width = value + '%';
-        progressBar.setAttribute('aria-valuenow', value);
-        progressBar.textContent = value + '%';
-    });
-</script>
-<script>
-    document.getElementById('images').addEventListener('change', function() {
-        var files = this.files;
-        var errorElement = document.getElementById('fileError');
-        errorElement.textContent = ''; // Borra cualquier mensaje de error anterior
-        for (var i = 0; i < files.length; i++) {
-            if (files[i].size > 3 * 1024 * 1024) { // 3 MB
-                errorElement.textContent = 'El archivo ' + files[i].name + ' es demasiado grande. No puede ser mayor de 3 MB.';
-                this.value = '';
-                break;
-            }
-        }
 
-    });
-</script>
+            finalizado.addEventListener('change', function(e) {
+                if (e.target.checked) {
+                    fecha.disabled = true;
+                    fecha.value = '';
+                    fechas.disabled = true;
+                    fechas.value = '';
+                    fechas.classList.remove('d-none');
+                } else {
+                    fecha.disabled = false;
+                    fechas.disabled = false;
+                    fechas.classList.add('d-none');
+                }
+            });
+        };
+    </script>
+    <script>
+        document.getElementById('avance').addEventListener('input', function(e) {
+            var value = e.target.value;
+            if (value === '') {
+                value = 0;
+            }
+            var progressBar = document.querySelector('.progress-bar');
+            progressBar.style.width = value + '%';
+            progressBar.setAttribute('aria-valuenow', value);
+            progressBar.textContent = value + '%';
+        });
+    </script>
+    <script>
+        document.getElementById('images').addEventListener('change', function() {
+            var files = this.files;
+            var errorElement = document.getElementById('fileError');
+            errorElement.textContent = ''; // Borra cualquier mensaje de error anterior
+            for (var i = 0; i < files.length; i++) {
+                if (files[i].size > 5 * 1024 * 1024) { // 5 MB
+                    errorElement.textContent = 'El archivo ' + files[i].name +
+                        ' es demasiado grande. No puede ser mayor de 5 MB.';
+                    this.value = '';
+                    break;
+                }
+            }
+
+        });
+    </script>
 @endsection

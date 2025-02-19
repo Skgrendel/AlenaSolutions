@@ -40,7 +40,8 @@
         <div class="row">
             <div class="col-xl-12 bg-white rounded mb-4 card ">
                 <div class="mt-4 p-2 mr-2">
-                    <form id="proyectosForm" action="{{ route('proyectos.store') }}" method="POST" enctype="multipart/form-data">
+                    <form id="proyectosForm" action="{{ route('proyectos.store') }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <h6 class="heading-small text-muted mb-0">Información del Nuevo Proyecto que Desea Registrar
                         </h6>
@@ -48,18 +49,18 @@
                             campos requeridos marcados con <span class="text-danger">*</span> y verificar la información
                             antes de enviar el formulario.</p>
                         <div class="pl-lg-4">
-                            @if (Auth::user()->personal->areas->nombre == "Consultores")
-                            <div class="row mb-3">
-                                <div class="col-lg-6">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="1" id="sistema"
-                                            name="sistema">
-                                        <label class="form-check-label" for="sistema">
-                                            Habilitar Sistema Sagrilaft
-                                        </label>
+                            @if (Auth::user()->personal->areas->nombre == 'Consultores')
+                                <div class="row mb-3">
+                                    <div class="col-lg-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="1" id="sistema"
+                                                name="sistema">
+                                            <label class="form-check-label" for="sistema">
+                                                Habilitar Sistema Sagrilaft
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endif
                             <div class="row">
                                 <div class="col-lg-6">
@@ -99,8 +100,7 @@
                                         <label class="form-control-label" for="fecha_estimada">Fecha Estimada de
                                             Finalizacion</label>
                                         <input type="date" id="fecha_estimada" name="fecha_estimada"
-                                            class="form-control mb-2" required
-                                            value="{{ old('fecha_estimada') }}">
+                                            class="form-control mb-2" required value="{{ old('fecha_estimada') }}">
                                         @if ($errors->has('fecha_estimada'))
                                             <span class="text-danger">{{ $errors->first('fecha_estimada') }}</span>
                                         @endif
@@ -138,8 +138,7 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="fecha_inicio">Fecha Inicial</label>
                                                 <input type="date" id="fecha_inicio" name="fecha_inicio"
-                                                    class="form-control mb-2"
-                                                    value="{{ old('fecha_estimada') }}">
+                                                    class="form-control mb-2" value="{{ old('fecha_estimada') }}">
                                                 @if ($errors->has('fecha_inicio'))
                                                     <span class="text-danger">{{ $errors->first('fecha_inicio') }}</span>
                                                 @endif
@@ -149,8 +148,7 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="fecha_final">Fecha Final</label>
                                                 <input type="date" id="fecha_final" name="fecha_final"
-                                                    class="form-control mb-2"
-                                                    value="{{ old('fecha_estimada') }}">
+                                                    class="form-control mb-2" value="{{ old('fecha_estimada') }}">
                                                 @if ($errors->has('fecha_inicio'))
                                                     <span class="text-danger">{{ $errors->first('fecha_final') }}</span>
                                                 @endif
@@ -159,21 +157,23 @@
                                     </div>
                                 </div>
                             </div>
-                            @if (Auth::user()->personal->areas->nombre == "Consultores")
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="personal_asignado">Nombre de la persona Asignada <span class="text-danger">*</span></label>
-                                        <input type="text" id="personal_asignado" name="personal_asignado"
-                                            class="form-control" placeholder="Ingrese El Nombre de la Persona Asignada" value="{{Auth::user()->personal->areas->nombre == "Consultores" ? Auth::user()->personal->nombres . ' ' . Auth::user()->personal->apellidos : ''}}">
-                                        @if ($errors->has('personal_asignado'))
-                                            <span class="text-danger">{{ $errors->first('personal_asignado') }}</span>
-                                        @endif
+                            @if (Auth::user()->personal->areas->nombre == 'Consultores')
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="personal_asignado">Nombre de la persona
+                                                Asignada <span class="text-danger">*</span></label>
+                                            <input type="text" id="personal_asignado" name="personal_asignado"
+                                                class="form-control"
+                                                placeholder="Ingrese El Nombre de la Persona Asignada"
+                                                value="{{ Auth::user()->personal->areas->nombre == 'Consultores' ? Auth::user()->personal->nombres . ' ' . Auth::user()->personal->apellidos : '' }}">
+                                            @if ($errors->has('personal_asignado'))
+                                                <span class="text-danger">{{ $errors->first('personal_asignado') }}</span>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endif
-
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
@@ -187,27 +187,28 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-lg-12">
                                     <ul class="nav" id="input">
                                         <li class="nav-item mr-2">
                                             <label class="input-file-pregunta icon icon-sm icon-shape"
                                                 data-toggle="tooltip" title=""
-                                                data-original-title="Cargar imagenes">
+                                                data-original-title="Cargar Evidencias">
                                                 <input type="file" class="inputResponseFiles custom-file-input"
-                                                    data-id-inputrespuesta="images" id="images" name="responseFiles[]"
-                                                    aria-describedby="inputResponseFilesimages" accept="image/*"
+                                                    data-id-inputrespuesta="images" id="documentos" name="responseFiles[]"
+                                                    aria-describedby="inputResponseFilesimages" accept="*"
                                                     multiple="true" aria-invalid="false" multiple>
                                                 <i class="fas fa-upload" aria-hidden="true"></i>
                                             </label>
                                         </li>
                                         <span id="fileError" class="text-danger"></span>
                                         <li class="nav-item">
-                                            <a type="button" class="btn btn-success d-none" href="#" id="buttonId"></a>
+                                            <a type="button" class="btn btn-success d-none" href="#"
+                                                id="buttonId"></a>
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
                             <hr class="my-4">
                             <button type="submit" id="btnCrearActividad" class="btn btn-info mb-2">Crear
                                 Proyecto</button>
@@ -220,24 +221,25 @@
 @endsection
 
 @section('js')
-<script>
-    document.getElementById('images').addEventListener('change', function() {
-        var files = this.files;
-        var errorElement = document.getElementById('fileError');
-        errorElement.textContent = ''; // Borra cualquier mensaje de error anterior
-        for (var i = 0; i < files.length; i++) {
-            if (files[i].size > 3 * 1024 * 1024) { // 3 MB
-                errorElement.textContent = 'El archivo ' + files[i].name + ' es demasiado grande. No puede ser mayor de 3 MB.';
-                this.value = '';
-                break;
+    <script>
+        document.getElementById('images').addEventListener('change', function() {
+            var files = this.files;
+            var errorElement = document.getElementById('fileError');
+            errorElement.textContent = ''; // Borra cualquier mensaje de error anterior
+            for (var i = 0; i < files.length; i++) {
+                if (files[i].size > 5 * 1024 * 1024) { // 5 MB
+                    errorElement.textContent = 'El archivo ' + files[i].name +
+                        ' es demasiado grande. No puede ser mayor de 5 MB.';
+                    this.value = '';
+                    break;
+                }
             }
-        }
 
-    });
-</script>
+        });
+    </script>
     <script>
         // Selecciona el input de archivo y el botón
-        var inputFile = document.getElementById('images');
+        var inputFile = document.getElementById('documentos');
         var button = document.getElementById('buttonId'); // Reemplaza 'buttonId' con el id de tu botón
 
         // Agrega un evento de escucha de cambio al input de archivo

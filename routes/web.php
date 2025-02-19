@@ -52,8 +52,10 @@ Route::get('/proderi/departamentoit/soporte',[ReportController::class,'proderide
 Route::resource('/personals', PersonalsController::class)->names('personals');
 Route::resource('/proyectos', ProyectosController::class)->names('proyectos');
 Route::get('/proyectos/{proyecto}/actividades',[ProyectosController::class,'actividades'])->name('proyectos.actividades');
+Route::get('/actividades/create/{id}',[ActividadesController::class,'create_activi'])->name('proyectos.create_activi');
 Route::resource('/actividades',ActividadesController::class)->names('actividades');
 Route::resource('/auditorias',GrupodiagnosticoController::class)->names('auditorias');
 Route::resource('/diagnosticos',DiagnosticoController::class)->names('diagnosticos');
 Route::resource('/Grupodiagnosticos',GrupodiagnosticoController::class)->names('Grupodiagnosticos');
+
 });

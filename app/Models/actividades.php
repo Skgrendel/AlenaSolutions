@@ -28,6 +28,7 @@ class actividades extends Model
         'nombre' => 'required',
         'descripcion' => 'required',
         'prioridad' => 'required',
+
     ];
 
     public function proyectos()

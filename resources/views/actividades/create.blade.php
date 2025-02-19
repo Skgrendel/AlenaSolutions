@@ -20,7 +20,8 @@
                     <div class="col-4">
                         <ul class="nav nav-pills justify-content-end">
                             <li class="nav-item mr-2 mr-md-0">
-                                <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-transparent py-2 px-3">
+                                <a href="javascript:void(0);" onclick="window.history.back();"
+                                    class="btn btn-transparent py-2 px-3">
                                     <span class="d-none d-md-block">Volver</span>
                                     <span class="d-md-none"><i class="fas fa-arrow-left"></i></span>
                                 </a>
@@ -40,7 +41,7 @@
         <div class="row">
             <div class="col-xl-12 bg-white rounded mb-4 card ">
                 <div class="mt-4 p-2 mr-2">
-                    <form id="proyectosForm" action="{{ route('actividades.store') }}" method="POST">
+                    <form id="proyectosForm" action="{{ route('actividades.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="proyecto_id" value="{{ $proyecto->id }}">
                         <h5 class="heading  mb-0">Proyecto: {{ $proyecto->nombre }}</h5>
@@ -147,8 +148,9 @@
                                     <div class="form-group">
                                         <label class="form-control-label" for="avance">Avance de Actividad</label>
                                         <input type="number" id="avance" name="avance" class="form-control"
-                                               placeholder="Ingrese El Numero de Avance de Su Actividad" min="0"
-                                               max="100" required oninput="this.value = Math.max(0, Math.min(100, this.value));">
+                                            placeholder="Ingrese El Numero de Avance de Su Actividad" min="0"
+                                            max="100" required
+                                            oninput="this.value = Math.max(0, Math.min(100, this.value));">
                                         @if ($errors->has('avance'))
                                             <span class="text-danger">{{ $errors->first('avance') }}</span>
                                         @endif
@@ -188,6 +190,28 @@
                                     </div>
                                 </div>
                             </div>
+                             <div class="row">
+                                <div class="col-lg-12">
+                                    <ul class="nav" id="input">
+                                        <li class="nav-item mr-2">
+                                            <label class="input-file-pregunta icon icon-sm icon-shape"
+                                                data-toggle="tooltip" title=""
+                                                data-original-title="Cargar Evidencias">
+                                                <input type="file" class="inputResponseFiles custom-file-input"
+                                                    data-id-inputrespuesta="images" id="documentos" name="responseFiles[]"
+                                                    aria-describedby="inputResponseFilesimages" accept="*"
+                                                    multiple="true" aria-invalid="false" multiple>
+                                                <i class="fas fa-upload" aria-hidden="true"></i>
+                                            </label>
+                                        </li>
+                                        <span id="fileError" class="text-danger"></span>
+                                        <li class="nav-item">
+                                            <a type="button" class="btn btn-success d-none" href="#"
+                                                id="buttonId"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                             <hr class="my-4">
                             <button type="submit" id="btnCrearActividad" class="btn btn-info mb-2">Crear
                                 Actividad</button>
@@ -224,7 +248,6 @@
             }
         });
     </script>
-
     <script>
         document.getElementById('avance').addEventListener('input', function() {
             if (this.value > 100) {
@@ -242,6 +265,49 @@
             progressBar.style.width = value + '%';
             progressBar.setAttribute('aria-valuenow', value);
             progressBar.textContent = value + '%';
+        });
+    </script>
+    <script>
+        document.getElementById('documentos').addEventListener('change', function() {
+            var files = this.files;
+            var errorElement = document.getElementById('fileError');
+            errorElement.textContent = ''; // Borra cualquier mensaje de error anterior
+            for (var i = 0; i < files.length; i++) {
+                if (files[i].size > 5 * 1024 * 1024) { // 5 MB
+                    errorElement.textContent = 'El archivo ' + files[i].name +
+                        ' es demasiado grande. No puede ser mayor de 5 MB.';
+                    this.value = '';
+                    break;
+                }
+            }
+
+        });
+    </script>
+    <script>
+        // Selecciona el input de archivo y el botón
+        var inputFile = document.getElementById('documentos');
+        var button = document.getElementById('buttonId'); // Reemplaza 'buttonId' con el id de tu botón
+
+        // Agrega un evento de escucha de cambio al input de archivo
+        inputFile.addEventListener('change', function() {
+            // Obtiene la cantidad de archivos seleccionados
+            var fileCount = this.files.length;
+
+            if (fileCount > 3) {
+                button.classList.remove('d-none');
+                button.classList.add('btn-danger');
+                button.textContent = 'Solo se permiten 3 archivos';
+                return;
+            } else if (fileCount === 0) {
+                button.classList.add('d-none');
+            } else {
+                // Actualiza el texto del botón con la cantidad de archivos seleccionados
+                button.classList.remove('btn-danger');
+                button.classList.add('btn-success');
+                button.classList.remove('d-none');
+                button.textContent = fileCount + ' archivos seleccionados';
+            }
+
         });
     </script>
 @endsection

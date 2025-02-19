@@ -30,14 +30,14 @@
                     @php
                         $user = Auth::user();
                     @endphp
-                    @if ($user->personal->areas->nombre == 'Consultores'|| $user->hasRole('Administrador'))
+                    {{-- @if ($user->personal->areas->nombre == 'Consultores'|| $user->hasRole('Administrador'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('auditorias.index') }}">
                                 <i class="fas fa-swatchbook text-info"></i>
                                 <span class="nav-link-text">Auditorias</span>
                             </a>
                         </li>
-                    @endif
+                    @endif --}}
                 </ul>
 
                 <hr class="my-3">

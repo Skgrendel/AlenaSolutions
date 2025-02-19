@@ -8,7 +8,10 @@ use App\Models\vs_estados;
 use App\Models\vs_areas;
 use App\Models\vs_prioridades;
 use App\Services\SagrilaftServices;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProyectosController extends Controller
 {
@@ -43,45 +46,59 @@ class ProyectosController extends Controller
         request()->validate(proyectos::$rules);
 
         if ($request->finalizado == 1) {
-
             $proyecto = new proyectos();
-            $imagenes = [];
+            $evidencias = [];
+            $area = str::slug($request->input('area'), '_'); // Convierte el área en un nombre seguro para carpetas
             if ($request->hasFile('responseFiles')) {
-                foreach ($request->file('responseFiles') as $imagen) {
-                    $path = 'imagen/';
-                    $nombre = rand(1000, 9999) . "_" . date('YmdHis') . "." . $imagen->getClientOriginalExtension();
-                    $imagen->move($path, $nombre);
-                    // Añade el nombre del archivo al array
-                    $imagenes[] = $nombre;
+                foreach ($request->file('responseFiles') as $file) {
+                    $nombreOriginal = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME); // Obtener el nombre sin extensión
+                    $extension = $file->getClientOriginalExtension(); // Obtener la extensión del archivo
+                    $nombre = uniqid() . "_" . Str::slug($nombreOriginal, '_') . "." . $extension; // Generar nombre único
+
+                    $path = Storage::disk('s3')->putFileAs("evidencias/$area", $file, $nombre);
+
+                    // Guarda la URL en el array de evidencias
+                    $evidencias[] = Storage::disk('s3')->url($path);
                 }
             }
-            $proyecto->imagenes = json_encode($imagenes);
-            $proyecto->nombre = request('nombre');
-            $proyecto->descripcion = request('descripcion');
-            $proyecto->area = request('area');
-            $proyecto->prioridad = request('prioridad');
+
+            // Guardar evidencias directamente como JSON
+            $proyecto->evidencias = json_encode($evidencias, JSON_UNESCAPED_SLASHES);
+            $proyecto->nombre = $request->input('nombre');
+            $proyecto->descripcion = $request->input('descripcion');
+            $proyecto->area = $request->input('area');
+            $proyecto->prioridad = $request->input('prioridad');
             $proyecto->user_id = auth()->id();
             $proyecto->estado = 3;
-            $proyecto->fecha_final = request('fecha_final');
-            $proyecto->fecha_inicio = request('fecha_inicio');
+            $proyecto->fecha_final = $request->input('fecha_final');
+            $proyecto->fecha_inicio = $request->input('fecha_inicio');
             $proyecto->avance = 100;
             $proyecto->save();
-            return redirect()->route('proyectos.index')->with('success', 'Proyecto Finalizado exitosamente.')
-                ->with('icon', 'success')->with('title', '¡Éxito!');
+
+            return redirect()->route('proyectos.index')
+                ->with('success', 'Proyecto Finalizado exitosamente.')
+                ->with('icon', 'success')
+                ->with('title', '¡Éxito!');
         } else {
 
             $proyecto = new proyectos();
-            $imagenes = [];
+            $evidencias = [];
+            $area = str::slug($request->input('area'), '_'); // Convierte el área en un nombre seguro para carpetas
             if ($request->hasFile('responseFiles')) {
-                foreach ($request->file('responseFiles') as $imagen) {
-                    $path = 'imagen/';
-                    $nombre = rand(1000, 9999) . "_" . date('YmdHis') . "." . $imagen->getClientOriginalExtension();
-                    $imagen->move($path, $nombre);
-                    // Añade el nombre del archivo al array
-                    $imagenes[] = $nombre;
+                foreach ($request->file('responseFiles') as $file) {
+                    $nombreOriginal = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME); // Obtener el nombre sin extensión
+                    $extension = $file->getClientOriginalExtension(); // Obtener la extensión del archivo
+                    $nombre = uniqid() . "_" . Str::slug($nombreOriginal, '_') . "." . $extension; // Generar nombre único
+
+                    $path = Storage::disk('s3')->putFileAs("evidencias/$area", $file, $nombre);
+
+                    // Guarda la URL en el array de evidencias
+                    $evidencias[] = Storage::disk('s3')->url($path);
                 }
             }
-            $proyecto->imagenes = json_encode($imagenes);
+
+            // Guardar evidencias directamente como JSON
+            $proyecto->evidencias = json_encode($evidencias, JSON_UNESCAPED_SLASHES);
             $proyecto->user_id = auth()->id();
             $proyecto->fill($request->all());
             $proyecto->save();
@@ -100,13 +117,14 @@ class ProyectosController extends Controller
         }
     }
 
+   
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
         $proyecto = proyectos::findOrFail($id);
-        $proyecto->imagenes = json_decode($proyecto->imagenes);
+        $proyecto->evidencias = json_decode($proyecto->evidencias);
         return view('proyectos.show', compact('proyecto'));
     }
 
@@ -128,45 +146,49 @@ class ProyectosController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
         request()->validate(proyectos::$rules);
         $proyecto = proyectos::findOrFail($id);
 
-        if ($request->finalizado == 1) {
-            $imagenes = [];
-            if ($request->hasFile('responseFiles')) {
-                foreach ($request->file('responseFiles') as $imagen) {
-                    $path = 'imagen/';
-                    $nombre = rand(1000, 9999) . "_" . date('YmdHis') . "." . $imagen->getClientOriginalExtension();
-                    $imagen->move($path, $nombre);
-                    // Añade el nombre del archivo al array
-                    $imagenes[] = $nombre;
-                }
+        $evidencias = json_decode($proyecto->evidencias, true) ?? []; // Mantener las evidencias previas
+
+        if ($request->hasFile('responseFiles')) {
+            $area = Str::slug($request->input('area'), '_'); // Convertir el área en un nombre seguro
+
+            foreach ($request->file('responseFiles') as $file) {
+                $nombreOriginal = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                $extension = $file->getClientOriginalExtension();
+                $nombre = uniqid() . "_" . Str::slug($nombreOriginal, '_') . "." . $extension;
+
+                // Guardar archivo en S3 en la carpeta del área
+                $path = Storage::disk('s3')->putFileAs("evidencias/$area", $file, $nombre);
+
+                // Guardar la URL del archivo en el array de evidencias
+                $evidencias[] = Storage::disk('s3')->url($path);
             }
-            $proyecto->imagenes = json_encode($imagenes);
-            $proyecto->estado = 3;
-            $proyecto->fecha_final = request('fecha_final');
-            $proyecto->fecha_inicio = request('fecha_inicio');
-            $proyecto->avance = 100;
-            $proyecto->update();
-            return redirect()->route('proyectos.index')->with('success', 'Proyecto Finalizado exitosamente.')
-                ->with('icon', 'success')->with('title', '¡Éxito!');
         }
 
-        $imagenes = [];
-        if ($request->hasFile('responseFiles')) {
-            foreach ($request->file('responseFiles') as $imagen) {
-                $path = 'imagen/';
-                $nombre = rand(1000, 9999) . "_" . date('YmdHis') . "." . $imagen->getClientOriginalExtension();
-                $imagen->move($path, $nombre);
-                // Añade el nombre del archivo al array
-                $imagenes[] = $nombre;
-            }
+        $proyecto->evidencias = json_encode($evidencias, JSON_UNESCAPED_SLASHES);
+
+        if ($request->finalizado == 1) {
+            $proyecto->estado = 3;
+            $proyecto->fecha_final = $request->input('fecha_final');
+            $proyecto->fecha_inicio = $request->input('fecha_inicio');
+            $proyecto->avance = 100;
+            $proyecto->save();
+
+            return redirect()->route('proyectos.index')
+                ->with('success', 'Proyecto Finalizado exitosamente.')
+                ->with('icon', 'success')
+                ->with('title', '¡Éxito!');
         }
-        $proyecto->imagenes = json_encode($imagenes);
-        $proyecto->update($request->all());
-        return redirect()->route('proyectos.index')->with('success', 'Proyecto actualizado exitosamente.')
-            ->with('icon', 'success')->with('title', '¡Éxito!');
+
+        // Actualizar el resto de los campos
+        $proyecto->update($request->except('responseFiles'));
+
+        return redirect()->route('proyectos.index')
+            ->with('success', 'Proyecto actualizado exitosamente.')
+            ->with('icon', 'success')
+            ->with('title', '¡Éxito!');
     }
 
     /**

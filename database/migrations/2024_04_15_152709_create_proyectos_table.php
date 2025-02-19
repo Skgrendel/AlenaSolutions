@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('avance')->nullable()->default('0');
             $table->string('prioridad');
             $table->string('estado')->default('1');
-            $table->string('imagenes')->nullable();
+            $table->json('evidencias')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
