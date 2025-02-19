@@ -15,33 +15,37 @@ class ProyectosDatatable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
-        ->setTableRowUrl(function($row) {
-            return route('proyectos.actividades', $row);
-        });
+            ->setTableRowUrl(function ($row) {
+                return route('proyectos.actividades', $row);
+            });
 
         $this->setTableAttributes([
             'class' => 'table custom-table',
         ]);
     }
 
-      public function columns(): array
+    public function columns(): array
     {
         return [
             Column::make("Nombre", "nombre")
                 ->sortable(),
             Column::make("Area", "areas.nombre")
                 ->sortable(),
-                Column::make("Fecha Creacion", "Created_at")
+            Column::make("Fecha Creacion", "Created_at")
+                ->format(fn($value) => \Carbon\Carbon::parse($value)->format('d/m/Y h:i A'))
                 ->sortable(),
             Column::make("Fecha estimada", "fecha_estimada")
+                ->format(fn($value) => \Carbon\Carbon::parse($value)->format('d/m/Y'))
                 ->sortable(),
             Column::make("Fecha Inicio", "fecha_inicio")
                 ->sortable()
+                ->format(fn($value) => \Carbon\Carbon::parse($value)->format('d/m/Y h:i A'))
                 ->collapseAlways(),
             Column::make("Fecha Final", "fecha_final")
+                ->format(fn($value) => \Carbon\Carbon::parse($value)->format('d/m/Y h:i A'))
                 ->sortable()
                 ->collapseAlways(),
-                Column::make("Avance", "avance")
+            Column::make("Avance", "avance")
                 ->format(
                     fn($value) => '
                         <div class="progress text-dark" style="height:10px;">
@@ -53,30 +57,30 @@ class ProyectosDatatable extends DataTableComponent
                 )
                 ->html(),
             Column::make("Prioridad", "prioridad")
-            ->format(
-                fn ($value, $row, Column $column) => match ($value) {
-                    '4' => '<span class="badge badge-success">Finalizado</span>',
-                    '5' => '<span class="badge badge-info">Baja</span>',
-                    '6' => '<span class="badge badge-warning">Media</span>',
-                    '7' => '<span class="badge badge-danger">Alta</span>',
-                }
-            )
-            ->html()
-            ->collapseOnMobile(),
+                ->format(
+                    fn($value, $row, Column $column) => match ($value) {
+                        '4' => '<span class="badge badge-success">Finalizado</span>',
+                        '5' => '<span class="badge badge-info">Baja</span>',
+                        '6' => '<span class="badge badge-warning">Media</span>',
+                        '7' => '<span class="badge badge-danger">Alta</span>',
+                    }
+                )
+                ->html()
+                ->collapseOnMobile(),
             Column::make("Estado", "estado")
-            ->format(
-                fn ($value, $row, Column $column) => match ($value) {
-                    '1' => '<span class="badge badge-danger">Pendiente</span>',
-                    '2' => '<span class="badge badge-warning">En curso</span>',
-                    '3' => '<span class="badge badge-success">Finalizado</span>',
-                }
-            )
-            ->html()
-            ->collapseOnMobile(),
-                Column::make('Acciones', 'id')
+                ->format(
+                    fn($value, $row, Column $column) => match ($value) {
+                        '1' => '<span class="badge badge-danger">Pendiente</span>',
+                        '2' => '<span class="badge badge-warning">En curso</span>',
+                        '3' => '<span class="badge badge-success">Finalizado</span>',
+                    }
+                )
+                ->html()
+                ->collapseOnMobile(),
+            Column::make('Acciones', 'id')
                 ->unclickable()
                 ->format(
-                    fn ($value, $row, Column $column) => view('proyectos.actions', compact('value'))
+                    fn($value, $row, Column $column) => view('proyectos.actions', compact('value'))
                 ),
 
         ];

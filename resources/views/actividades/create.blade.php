@@ -111,25 +111,27 @@
                             <div class="row" id="fechas">
                                 <div class="col-lg-6">
                                     <div class="row">
+                                        <!-- Fecha y Hora de Inicio -->
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label class="form-control-label" for="fecha_estimada">Fecha
-                                                    Inicial</label>
-                                                <input type="date" id="fecha_inicio" name="fecha_inicio"
-                                                    class="form-control mb-2" placeholder="Dirección"
-                                                    value="{{ old('fecha_estimada') }}">
+                                                <label class="form-control-label" for="fecha_inicio">Fecha y Hora de Inicio</label>
+                                                <input type="datetime-local" id="fecha_inicio" name="fecha_inicio"
+                                                    class="form-control mb-2"
+                                                    value="{{ old('fecha_inicio') }}">
                                                 @if ($errors->has('fecha_inicio'))
                                                     <span class="text-danger">{{ $errors->first('fecha_inicio') }}</span>
                                                 @endif
                                             </div>
                                         </div>
+
+                                        <!-- Fecha y Hora Final -->
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label class="form-control-label" for="fecha_estimada">Fecha Final</label>
-                                                <input type="date" id="fecha_final" name="fecha_final"
-                                                    class="form-control mb-2" placeholder="Dirección"
-                                                    value="{{ old('fecha_estimada') }}">
-                                                @if ($errors->has('fecha_inicio'))
+                                                <label class="form-control-label" for="fecha_final">Fecha y Hora Final</label>
+                                                <input type="datetime-local" id="fecha_final" name="fecha_final"
+                                                    class="form-control mb-2"
+                                                    value="{{ old('fecha_final') }}">
+                                                @if ($errors->has('fecha_final'))
                                                     <span class="text-danger">{{ $errors->first('fecha_final') }}</span>
                                                 @endif
                                             </div>
@@ -149,6 +151,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
 
                                 <div class="col-lg-12">

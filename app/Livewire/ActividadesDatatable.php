@@ -41,8 +41,10 @@ class ActividadesDatatable extends DataTableComponent
             Column::make("Personal asignado", "personal_asignado")
                 ->sortable(),
             Column::make("Fecha Creacion", "Created_at")
+            ->format(fn($value) => \Carbon\Carbon::parse($value)->format('d/m/Y h:i A'))
                 ->sortable(),
             Column::make("Fecha estimada", "fecha_estimada")
+            ->format(fn($value) => \Carbon\Carbon::parse($value)->format('d/m/Y'))
                 ->sortable(),
             Column::make("Avance", "avance")
                 ->format(
@@ -76,9 +78,10 @@ class ActividadesDatatable extends DataTableComponent
                 )
                 ->html()
                 ->collapseOnMobile(),
-            Column::make("Fecha inicio", "fecha_inicio")
+                Column::make("Fecha inicio", "fecha_inicio")
                 ->collapseAlways()
-                ->sortable(),
+                ->sortable()
+                ->format(fn($value) => \Carbon\Carbon::parse($value)->format('d/m/Y h:i A')),
             Column::make("Fecha final", "fecha_final")
                 ->collapseAlways()
                 ->sortable(),

@@ -41,7 +41,8 @@
         <div class="row">
             <div class="col-xl-12 bg-white rounded mb-4 card ">
                 <div class="mt-4 p-2 mr-2">
-                    <form id="proyectosForm" action="{{ route('actividades.update', $actividades->id) }}" method="POST" enctype="multipart/form-data">
+                    <form id="proyectosForm" action="{{ route('actividades.update', $actividades->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
 
@@ -67,10 +68,10 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="personal_asignado">Nombre de la persona
-                                            Asignada <span class="text-danger">*</span></label>
+                                            Asignada</label>
                                         <input type="text" id="personal_asignado" name="personal_asignado"
                                             class="form-control" placeholder="Ingrese El Nombre de la Persona Asignada"
-                                            required value="{{ $actividades->personal_asignado }}">
+                                             value="{{ $actividades->personal_asignado }}" readonly>
                                         @if ($errors->has('nombre'))
                                             <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                         @endif
@@ -82,7 +83,7 @@
                                     <div class="form-group">
                                         <label class="form-control-label" for="fecha_estimada">Fecha Estimada</label>
                                         <input type="date" id="fecha_estimada" name="fecha_estimada" class="form-control"
-                                            placeholder="Dirección" value="{{ $actividades->fecha_estimada }}">
+                                            placeholder="Dirección" value="{{ $actividades->fecha_estimada }}" readonly>
                                         @if ($errors->has('fecha_estimada'))
                                             <span class="text-danger">{{ $errors->first('fecha_estimada') }}</span>
                                         @endif
@@ -113,9 +114,9 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="fecha_estimada">Fecha
                                                     Inicial</label>
-                                                <input type="date" id="fecha_inicio" name="fecha_inicio"
+                                                <input type="datetime-local" id="fecha_inicio" name="fecha_inicio"
                                                     class="form-control mb-2" placeholder="Dirección"
-                                                    value="{{ old('fecha_estimada') }}">
+                                                    value="{{ $actividades->fecha_inicio }}" readonly>
                                                 @if ($errors->has('fecha_inicio'))
                                                     <span class="text-danger">{{ $errors->first('fecha_inicio') }}</span>
                                                 @endif
@@ -124,9 +125,9 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="fecha_estimada">Fecha Final</label>
-                                                <input type="date" id="fecha_final" name="fecha_final"
+                                                <input type="datetime-local" id="fecha_final" name="fecha_final"
                                                     class="form-control mb-2" placeholder="Dirección"
-                                                    value="{{ old('fecha_estimada') }}">
+                                                    value="{{ $actividades->fecha_final }}">
                                                 @if ($errors->has('fecha_inicio'))
                                                     <span class="text-danger">{{ $errors->first('fecha_final') }}</span>
                                                 @endif
