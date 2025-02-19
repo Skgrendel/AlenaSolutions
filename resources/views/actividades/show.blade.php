@@ -93,6 +93,31 @@
 
                             </div>
                         </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="fecha_estimada">Fecha
+                                                Inicial</label>
+                                            <div class="alert border border-info font-weight-bold bg-white">
+                                                {{ $actividades->fecha_inicio }}
+                                            </div>
+                                            @if ($errors->has('fecha_inicio'))
+                                                <span class="text-danger">{{ $errors->first('fecha_inicio') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="fecha_estimada">Fecha Final</label>
+                                            <div class="alert border border-info font-weight-bold bg-white">
+                                                {{ $actividades->fecha_final }}
+                                            </div>
+                                            @if ($errors->has('fecha_inicio'))
+                                                <span class="text-danger">{{ $errors->first('fecha_final') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">

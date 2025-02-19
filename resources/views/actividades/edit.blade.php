@@ -106,7 +106,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row d-none" id="fechas">
+                            <div class="row" id="fechas">
                                 <div class="col-lg-6">
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -134,20 +134,21 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="avance">Avance de Actividad</label>
                                         <input type="number" id="avance" name="avance" class="form-control"
                                             placeholder="Ingrese El Numero de Avance de Su Actividad" min="0"
-                                            max="100" required>
+                                            max="100" required
+                                            oninput="this.value = Math.max(0, Math.min(100, this.value));">
                                         @if ($errors->has('avance'))
                                             <span class="text-danger">{{ $errors->first('avance') }}</span>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="form-control-label  " for="avance">Porcentace de Avance</label>
                                         <div class="progress mt-2 " style="height: 20px;">

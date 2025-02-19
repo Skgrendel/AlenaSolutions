@@ -41,7 +41,8 @@
         <div class="row">
             <div class="col-xl-12 bg-white rounded mb-4 card ">
                 <div class="mt-4 p-2 mr-2">
-                    <form id="proyectosForm" action="{{ route('actividades.store') }}" method="POST" enctype="multipart/form-data">
+                    <form id="proyectosForm" action="{{ route('actividades.store') }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="proyecto_id" value="{{ $proyecto->id }}">
                         <h5 class="heading  mb-0">Proyecto: {{ $proyecto->nombre }}</h5>
@@ -87,13 +88,6 @@
                                         @if ($errors->has('fecha_estimada'))
                                             <span class="text-danger">{{ $errors->first('fecha_estimada') }}</span>
                                         @endif
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="1" id="finalizado"
-                                                name="finalizado">
-                                            <label class="form-check-label" for="defaultCheck1">
-                                                Finalizado
-                                            </label>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -114,7 +108,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row d-none" id="fechas">
+                            <div class="row" id="fechas">
                                 <div class="col-lg-6">
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -142,8 +136,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="avance">Avance de Actividad</label>
@@ -156,7 +148,10 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                            </div>
+                            <div class="row">
+
+                                <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="form-control-label  " for="avance">Porcentace de Avance</label>
                                         <div class="progress mt-2 " style="height: 20px;">
@@ -190,7 +185,7 @@
                                     </div>
                                 </div>
                             </div>
-                             <div class="row">
+                            <div class="row">
                                 <div class="col-lg-12">
                                     <ul class="nav" id="input">
                                         <li class="nav-item mr-2">
@@ -198,9 +193,9 @@
                                                 data-toggle="tooltip" title=""
                                                 data-original-title="Cargar Evidencias">
                                                 <input type="file" class="inputResponseFiles custom-file-input"
-                                                    data-id-inputrespuesta="images" id="documentos" name="responseFiles[]"
-                                                    aria-describedby="inputResponseFilesimages" accept="*"
-                                                    multiple="true" aria-invalid="false" multiple>
+                                                    data-id-inputrespuesta="images" id="documentos"
+                                                    name="responseFiles[]" aria-describedby="inputResponseFilesimages"
+                                                    accept="*" multiple="true" aria-invalid="false" multiple>
                                                 <i class="fas fa-upload" aria-hidden="true"></i>
                                             </label>
                                         </li>
