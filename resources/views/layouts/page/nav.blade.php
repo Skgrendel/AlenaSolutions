@@ -38,10 +38,10 @@
                          <div class="dropdown-header noti-title">
                              <h6 class="text-overflow m-0">Bienvenido!</h6>
                          </div>
-                         <a href="#" class="dropdown-item">
+                         {{-- <a href="#" class="dropdown-item">
                             <i class="fas fa-user-cog"></i>
                             <span>Mi Perfil</span>
-                          </a>
+                          </a> --}}
                          <div class="dropdown-divider"></div>
                          <form action="{{ route('logout') }}" method="post">
                              @csrf
