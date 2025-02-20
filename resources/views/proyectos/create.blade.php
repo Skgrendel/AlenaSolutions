@@ -98,19 +98,13 @@
                                 <div class="col-lg-6" id="estimada">
                                     <div class="form-group">
                                         <label class="form-control-label" for="fecha_estimada">Fecha Estimada de
-                                            Finalizacion</label>
+                                            Finalizacion<span
+                                            class="text-danger">*</span></label>
                                         <input type="date" id="fecha_estimada" name="fecha_estimada"
                                             class="form-control mb-2" required value="{{ old('fecha_estimada') }}">
                                         @if ($errors->has('fecha_estimada'))
                                             <span class="text-danger">{{ $errors->first('fecha_estimada') }}</span>
                                         @endif
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="1" id="finalizado"
-                                                name="finalizado">
-                                            <label class="form-check-label" for="finalizado">
-                                                Finalizado
-                                            </label>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -131,13 +125,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row d-none" id="fechas">
+                            <div class="row" id="fechas">
                                 <div class="col-lg-12">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="fecha_inicio">Fecha Inicial</label>
-                                                <input type="date" id="fecha_inicio" name="fecha_inicio"
+                                                <input type="datetime-local" id="fecha_inicio" name="fecha_inicio"
                                                     class="form-control mb-2" value="{{ old('fecha_estimada') }}">
                                                 @if ($errors->has('fecha_inicio'))
                                                     <span class="text-danger">{{ $errors->first('fecha_inicio') }}</span>
@@ -147,7 +141,7 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="fecha_final">Fecha Final</label>
-                                                <input type="date" id="fecha_final" name="fecha_final"
+                                                <input type="datetime-local" id="fecha_final" name="fecha_final"
                                                     class="form-control mb-2" value="{{ old('fecha_estimada') }}">
                                                 @if ($errors->has('fecha_inicio'))
                                                     <span class="text-danger">{{ $errors->first('fecha_final') }}</span>

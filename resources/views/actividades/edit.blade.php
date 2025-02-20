@@ -112,32 +112,36 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label class="form-control-label" for="fecha_estimada">Fecha
-                                                    Inicial</label>
+                                                <label class="form-control-label" for="fecha_inicio">Fecha Inicial</label>
                                                 <input type="datetime-local" id="fecha_inicio" name="fecha_inicio"
-                                                    class="form-control mb-2" placeholder="Dirección"
-                                                    value="{{ $actividades->fecha_inicio }}" readonly>
+                                                    class="form-control mb-2"
+                                                    value="{{ $actividades->fecha_inicio ?? '' }}"
+                                                    {{ $actividades->fecha_inicio ? 'readonly' : '' }}>
                                                 @if ($errors->has('fecha_inicio'))
                                                     <span class="text-danger">{{ $errors->first('fecha_inicio') }}</span>
                                                 @endif
                                             </div>
                                         </div>
+
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label class="form-control-label" for="fecha_estimada">Fecha Final</label>
+                                                <label class="form-control-label" for="fecha_final">Fecha Final</label>
                                                 <input type="datetime-local" id="fecha_final" name="fecha_final"
-                                                    class="form-control mb-2" placeholder="Dirección"
-                                                    value="{{ $actividades->fecha_final }}">
-                                                @if ($errors->has('fecha_inicio'))
+                                                    class="form-control mb-2"
+                                                    value="{{ $actividades->fecha_final ?? '' }}"
+                                                    {{ $actividades->fecha_final ? 'readonly' : '' }}>
+                                                @if ($errors->has('fecha_final'))
                                                     <span class="text-danger">{{ $errors->first('fecha_final') }}</span>
                                                 @endif
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="avance">Avance de Actividad</label>
+                                        <label class="form-control-label" for="avance">Avance de Actividad<span
+                                            class="text-danger">*</span></label>
                                         <input type="number" id="avance" name="avance" class="form-control"
                                             placeholder="Ingrese El Numero de Avance de Su Actividad" min="0"
                                             max="100" required

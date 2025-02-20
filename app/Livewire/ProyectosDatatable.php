@@ -22,12 +22,15 @@ class ProyectosDatatable extends DataTableComponent
         $this->setTableAttributes([
             'class' => 'table custom-table',
         ]);
+
+        $this->setDefaultSort('Created_at', 'desc');
     }
 
     public function columns(): array
     {
         return [
             Column::make("Nombre", "nombre")
+             ->searchable()
                 ->sortable(),
             Column::make("Area", "areas.nombre")
                 ->sortable(),
