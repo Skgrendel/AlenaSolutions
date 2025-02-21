@@ -173,7 +173,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="row">
+                            <div class="row">
                                 <div class="col-lg-12">
                                     <ul class="nav" id="input">
                                         <li class="nav-item mr-2">
@@ -194,7 +194,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div> --}}
+                            </div>
                             <hr class="my-4">
                             <!-- Mostrar archivos actuales -->
                             <h6 class="heading-small text-muted mb-3">Archivos Adjuntos</h6>

@@ -181,7 +181,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="row">
+                            <div class="row">
                                 <div class="col-lg-12">
                                     <ul class="nav" id="input">
                                         <li class="nav-item mr-2">
@@ -202,7 +202,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div> --}}
+                            </div>
                             <hr class="my-4">
                             <button type="submit" id="btnCrearActividad" class="btn btn-info mb-2">Crear
                                 Proyecto</button>
