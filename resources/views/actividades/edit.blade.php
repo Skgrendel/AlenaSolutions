@@ -59,7 +59,7 @@
                                                 class="text-danger">*</span></label>
                                         <input type="text" id="nombres" name="nombre" class="form-control"
                                             placeholder="Ingrese El Nombre de Su Actividad" required
-                                            value="{{ $actividades->nombre }}">
+                                            value="{{ $actividades->nombre }}" {{ $actividades->fecha_inicio ? 'readonly' : '' }}>
                                         @if ($errors->has('nombre'))
                                             <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                         @endif
@@ -71,7 +71,7 @@
                                             Asignada</label>
                                         <input type="text" id="personal_asignado" name="personal_asignado"
                                             class="form-control" placeholder="Ingrese El Nombre de la Persona Asignada"
-                                             value="{{ $actividades->personal_asignado }}" readonly>
+                                             value="{{ $actividades->personal_asignado }}" {{ $actividades->fecha_inicio ? 'readonly' : '' }}>
                                         @if ($errors->has('nombre'))
                                             <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                         @endif
@@ -96,9 +96,7 @@
                                         <select name="prioridad" id="prioridad" class="form-control" required>
                                             <option value="" disabled selected>Seleccione su Prioridad</option>
                                             @foreach ($prioridades as $id => $nombre)
-                                                <option value="{{ $id }}"
-                                                    {{ $actividades->prioridad == $id ? 'selected' : '' }}>
-                                                    {{ $nombre }}</option>
+                                                <option value="{{ $id }}"{{ $actividades->prioridad == $id ? 'selected' : '' }}> {{ $nombre }}</option>
                                             @endforeach
                                         </select>
                                         @if ($errors->has('prioridad'))
@@ -128,8 +126,7 @@
                                                 <label class="form-control-label" for="fecha_final">Fecha Final</label>
                                                 <input type="datetime-local" id="fecha_final" name="fecha_final"
                                                     class="form-control mb-2"
-                                                    value="{{ $actividades->fecha_final ?? '' }}"
-                                                    {{ $actividades->fecha_final ? 'readonly' : '' }}>
+                                                    value="{{ $actividades->fecha_final ?? '' }}"{{ $actividades->fecha_final ? 'readonly' : '' }}>
                                                 @if ($errors->has('fecha_final'))
                                                     <span class="text-danger">{{ $errors->first('fecha_final') }}</span>
                                                 @endif
@@ -140,12 +137,10 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="avance">Avance de Actividad<span
-                                            class="text-danger">*</span></label>
+                                        <label class="form-control-label" for="avance">Avance de Actividad</label>
                                         <input type="number" id="avance" name="avance" class="form-control"
                                             placeholder="Ingrese El Numero de Avance de Su Actividad" min="0"
-                                            max="100" required
-                                            oninput="this.value = Math.max(0, Math.min(100, this.value));">
+                                            max="100" oninput="this.value = Math.max(0, Math.min(100, this.value));" value="{{ $actividades->avance ?? '' }}" {{ $actividades->fecha_final ? 'readonly' : '' }}>
                                         @if ($errors->has('avance'))
                                             <span class="text-danger">{{ $errors->first('avance') }}</span>
                                         @endif
@@ -191,13 +186,13 @@
                                 <div class="col-lg-12">
                                     <ul class="nav" id="input">
                                         <li class="nav-item mr-2">
-                                            <label class="input-file-pregunta icon icon-sm icon-shape"
+                                            <label class="input-file-pregunta icon icon-sm icon-shape {{ $actividades->fecha_final ? 'd-none' : '' }}"
                                                 data-toggle="tooltip" title=""
-                                                data-original-title="Cargar Evidencias">
+                                                data-original-title="Cargar Evidencias" >
                                                 <input type="file" class="inputResponseFiles custom-file-input"
                                                     data-id-inputrespuesta="images" id="documentos"
                                                     name="responseFiles[]" aria-describedby="inputResponseFilesimages"
-                                                    accept="*" multiple="true" aria-invalid="false" multiple>
+                                                    accept="*" multiple="true" aria-invalid="false" multiple >
                                                 <i class="fas fa-upload" aria-hidden="true"></i>
                                             </label>
                                         </li>

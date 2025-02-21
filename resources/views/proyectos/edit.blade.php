@@ -59,7 +59,7 @@
                                                 class="text-danger">*</span></label>
                                         <input type="text" id="nombres" name="nombre" class="form-control"
                                             placeholder="Ingrese El Nombre de Su Proyecto" required
-                                            value="{{ $proyecto->nombre }}">
+                                            value="{{ $proyecto->nombre }}" >
                                         @if ($errors->has('nombre'))
                                             <span class="text-danger">{{ $errors->first('nombre') }}</span>
                                         @endif
@@ -90,17 +90,10 @@
                                             Finalizacion</label>
                                         <input type="date" id="fecha_estimada" name="fecha_estimada"
                                             class="form-control mb-2" placeholder="Dirección"
-                                            value="{{ $proyecto->fecha_estimada }}">
+                                            value="{{ $proyecto->fecha_estimada }}" readonly>
                                         @if ($errors->has('fecha_estimada'))
                                             <span class="text-danger">{{ $errors->first('fecha_estimada') }}</span>
                                         @endif
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="1" id="finalizado"
-                                                name="finalizado" @if ($proyecto->fecha_final) checked @endif>
-                                            <label class="form-check-label" for="defaultCheck1">
-                                                Finalizado
-                                            </label>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -122,8 +115,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row d-none" id="fechas">
-                                <div class="col-lg-6">
+                            <div class="row" id="fechas">
+                                <div class="col-lg-12">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
