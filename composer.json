@@ -5,16 +5,16 @@
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.1",
+        "php": "^8.3",
         "guzzlehttp/guzzle": "^7.2",
         "laravel-lang/locales": "^2.7",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.5",
-        "league/flysystem-aws-s3-v3": "3.0",
+        "league/flysystem-aws-s3-v3": "^3.29",
         "livewire/livewire": "^3.5",
-        "rappasoft/laravel-livewire-tables": "^3.2",
+        "rappasoft/laravel-livewire-tables": "3.2.4",
         "spatie/laravel-permission": "^6.4"
     },
     "require-dev": {
