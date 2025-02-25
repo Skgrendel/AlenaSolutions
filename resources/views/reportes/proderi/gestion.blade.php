@@ -37,7 +37,7 @@
     <div id="contenedorFullPreguntas" class="container-fluid mt--6">
         <div class="row">
             <div class="col-xl-12">
-                <iframe title="Operaciones" class="rounded" width="100%" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiZjU0NGExMzktNTAyNy00OTNkLThiZDAtYjgyZjRhMzAzYzIyIiwidCI6ImE3MDViNGI5LWE3Y2UtNDA3YS04YTdlLTY0NThlYjVkZDQxNiJ9"
+                <iframe title="Operaciones" class="rounded" width="100%" height="720" src="https://app.powerbi.com/view?r=eyJrIjoiMjEyMTMwY2MtZTViZi00NGY5LWI3NGYtNTU4ZDRhNmFmMjIxIiwidCI6ImE3MDViNGI5LWE3Y2UtNDA3YS04YTdlLTY0NThlYjVkZDQxNiJ9"
                 frameborder="0" allowFullScreen="true"></iframe>
             </div>
         </div>
