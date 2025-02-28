@@ -32,7 +32,6 @@ class SagrilaftServices
 
         if (!$user || !$user->personal) {
             Log::error("User or personal information is missing.");
-            dd('eror');
             return;
         }
 
@@ -41,12 +40,12 @@ class SagrilaftServices
                 actividades::create([
                     'proyecto_id' => $id,
                     'nombre' => $encabezado['nombre'],
+                    'prioridad' => 7,
                     'personal_asignado' => $user->personal->nombres,
                     'descripcion' => $encabezado['nombre'],
                     'avance' => 0,
                 ]);
             } catch (\Exception $e) {
-                dd($e->getMessage());
                 Log::error("Failed to create actividad: " . $e->getMessage());
             }
         }
