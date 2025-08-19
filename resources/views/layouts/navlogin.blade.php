@@ -38,11 +38,11 @@
             </a>
           </li>
 
-          <li class="nav-item d-none d-lg-block ml-lg-4">
+          {{-- <li class="nav-item d-none d-lg-block ml-lg-4">
             <a href="{{route('Registrarse')}}" class="btn btn-neutral ">
               <span class="nav-link-inner--text">Registrarse</span>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </div>
     </div>
