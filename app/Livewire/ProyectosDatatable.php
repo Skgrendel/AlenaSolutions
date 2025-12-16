@@ -86,6 +86,7 @@ class ProyectosDatatable extends DataTableComponent
         if (Auth::user()->hasRole('Administrador')) {
             $columns[] = Column::make("Propietario", "user.personal.nombres")
                 ->sortable()
+                ->searchable()
                 ->collapseOnMobile();
         }
 
