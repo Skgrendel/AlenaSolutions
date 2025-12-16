@@ -34,7 +34,7 @@ class ActividadesDatatable extends DataTableComponent
 
     public function columns(): array
     {
-        return [
+        $columns = [
             column::make('id')
                 ->collapseAlways()
                 ->setColumnLabelStatusDisabled(),
@@ -89,24 +89,32 @@ class ActividadesDatatable extends DataTableComponent
                 ->format(fn($value) => \Carbon\Carbon::parse($value)->format('d/m/Y h:i A'))
                 ->collapseAlways()
                 ->sortable(),
-            Column::make('Acciones', 'id')
+        ];
+
+        // Agregar columna de propietario solo para administradores
+        if (Auth::user()->hasRole('Administrador')) {
+            $columns[] = Column::make("Propietario", "proyectos.user.name")
+                ->sortable()
+                ->collapseOnMobile();
+        }
+
+        $columns[] = Column::make('Acciones', 'id')
                 ->unclickable()
                 ->format(
                     fn($value, $row, Column $column) => view('actividades.actions', compact('value'))
-                ),
-        ];
+                );
+
+        return $columns;
     }
 
 
     public function builder(): Builder
     {
-        $query = actividades::query();
-
-        if (!Auth::user()->hasRole('Administrador')) {
-            $query->where('proyecto_id', $this->idProyecto);
-        }
-
-        return $query;
+        // Filtrar actividades por proyecto, sin importar el rol
+        // Cargar las relaciones necesarias
+        return actividades::query()
+            ->with(['proyectos', 'proyectos.user'])
+            ->where('proyecto_id', $this->idProyecto);
     }
 
 }

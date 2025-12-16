@@ -39,7 +39,7 @@ class proyectos extends Model
 
     public function user()
     {
-        return $this->belngsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function areas()

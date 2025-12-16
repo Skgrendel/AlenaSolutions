@@ -28,7 +28,7 @@ class ProyectosDatatable extends DataTableComponent
 
     public function columns(): array
     {
-        return [
+        $columns = [
             Column::make("Nombre", "nombre")
              ->searchable()
                 ->sortable(),
@@ -80,18 +80,27 @@ class ProyectosDatatable extends DataTableComponent
                 )
                 ->html()
                 ->collapseOnMobile(),
-            Column::make('Acciones', 'id')
+        ];
+
+        // Agregar columna de propietario solo para administradores
+        if (Auth::user()->hasRole('Administrador')) {
+            $columns[] = Column::make("Propietario", "user.name")
+                ->sortable()
+                ->collapseOnMobile();
+        }
+
+        $columns[] = Column::make('Acciones', 'id')
                 ->unclickable()
                 ->format(
                     fn($value, $row, Column $column) => view('proyectos.actions', compact('value'))
-                ),
+                );
 
-        ];
+        return $columns;
     }
 
     public function builder(): Builder
     {
-        $query = proyectos::query();
+        $query = proyectos::query()->with(['areas', 'user']);
 
         if (!Auth::user()->hasRole('Administrador')) {
             $query->where('user_id', auth()->id());

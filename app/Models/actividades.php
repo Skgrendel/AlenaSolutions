@@ -33,7 +33,7 @@ class actividades extends Model
 
     public function proyectos()
     {
-        return $this->belongsTo(proyectos::class);
+        return $this->belongsTo(proyectos::class, 'proyecto_id');
     }
 
     public function prioridades()
