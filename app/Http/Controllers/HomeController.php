@@ -10,16 +10,6 @@ class HomeController extends Controller
 
     public function index()
     {
-
-        if (auth()->user()->hasRole('Administrador')) {
-            return view('reportes.index');
-        } elseif (auth()->user()->hasRole('Cliente')) {
-            return view('reportes.index');
-        } elseif (auth()->user()->hasRole('Empleado')) {
-            return redirect()->route('proyectos.index');
-        } else {
-            return view('dashboard.home');
-        }
-
+        return redirect()->route('dashboard');
     }
 }

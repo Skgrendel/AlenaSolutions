@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActividadesController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DiagnosticoController;
 use App\Http\Controllers\FuntionController;
 use App\Http\Controllers\GrupodiagnosticoController;
@@ -34,6 +35,7 @@ Route::post('/registrarse',[RegisterPersonalsController::class,'store'])->name('
 Auth::routes();
 Route::middleware('check_user_status')->group(function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/vixor',[ReportController::class,'vixor'])->name('Rerpotevixor');
 Route::get('/reportes',[ReportController::class,'index'])->name('Rerpoteindex');
 Route::get('/operaciones',[ReportController::class,'operacion'])->name('ReportOperaciones');

@@ -19,6 +19,17 @@
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
                 <!-- Nav items -->
+                <h6 class="navbar-heading p-0 text-muted">Principal</h6>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('dashboard') }}">
+                            <i class="fas fa-chart-line text-primary"></i>
+                            <span class="nav-link-text">Dashboard</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <hr class="my-3">
                 <h6 class="navbar-heading p-0 text-muted">Herramientas</h6>
                 <ul class="navbar-nav">
                     <li class="nav-item">
