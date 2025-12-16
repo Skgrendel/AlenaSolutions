@@ -93,7 +93,7 @@ class ActividadesDatatable extends DataTableComponent
 
         // Agregar columna de propietario solo para administradores
         if (Auth::user()->hasRole('Administrador')) {
-            $columns[] = Column::make("Propietario", "proyectos.user.name")
+            $columns[] = Column::make("Propietario", "proyectos.user.personal.nombres")
                 ->sortable()
                 ->collapseOnMobile();
         }
