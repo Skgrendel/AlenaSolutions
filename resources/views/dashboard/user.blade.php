@@ -850,4 +850,3 @@
             </div>
         </div>
     </div>
-@endsection
